@@ -1,0 +1,26 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Fussball", "Fussball\Fussball.csproj", "{CCA73CF4-B43B-4A72-A4E4-FAB320A58A8C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Fussball.Tests", "Fussball.Tests\Fussball.Tests.csproj", "{AA25C591-7501-4597-8732-FD6012AC43E1}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{CCA73CF4-B43B-4A72-A4E4-FAB320A58A8C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CCA73CF4-B43B-4A72-A4E4-FAB320A58A8C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CCA73CF4-B43B-4A72-A4E4-FAB320A58A8C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CCA73CF4-B43B-4A72-A4E4-FAB320A58A8C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AA25C591-7501-4597-8732-FD6012AC43E1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AA25C591-7501-4597-8732-FD6012AC43E1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AA25C591-7501-4597-8732-FD6012AC43E1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AA25C591-7501-4597-8732-FD6012AC43E1}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

@@ -1,0 +1,73 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ordesignerObjectsDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 11, 8.5" name="Fussball">
+  <DataContextMoniker Name="/FussballDataContext" />
+  <nestedChildShapes>
+    <classShape Id="8eb127ad-b8e3-4c43-840a-e93e59729abb" absoluteBounds="3.375, 3.625, 2, 2.3478011067708335">
+      <DataClassMoniker Name="/FussballDataContext/Game" />
+      <nestedChildShapes>
+        <elementListCompartment Id="1d92d3f1-3290-4049-85ee-0514e30bf89d" absoluteBounds="3.39, 4.085, 1.9700000000000002, 1.7878011067708335" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="669f7d9a-3897-4f6c-a8ca-af27ab689ab2" absoluteBounds="3.375, 0.875, 2, 2.1554996744791666">
+      <DataClassMoniker Name="/FussballDataContext/Score" />
+      <nestedChildShapes>
+        <elementListCompartment Id="4691a749-c959-4a6a-ad04-e3dff81899b0" absoluteBounds="3.3899999999999997, 1.335, 1.9700000000000002, 1.5954996744791665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="d398624d-da19-42a9-9b94-6103878be85a" absoluteBounds="0.625, 1.75, 2, 1.1939925130208335">
+      <DataClassMoniker Name="/FussballDataContext/Player" />
+      <nestedChildShapes>
+        <elementListCompartment Id="027ee318-a1f0-4e1f-98bd-d709b576df3a" absoluteBounds="0.64, 2.21, 1.9700000000000002, 0.63399251302083326" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <associationConnector edgePoints="[(4.375 : 3.625); (4.375 : 3.03049967447917)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/FussballDataContext/Game/Game_Score" />
+      <nodes>
+        <classShapeMoniker Id="8eb127ad-b8e3-4c43-840a-e93e59729abb" />
+        <classShapeMoniker Id="669f7d9a-3897-4f6c-a8ca-af27ab689ab2" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(1.625 : 2.94399251302083); (1.625 : 4.79890055338542); (3.375 : 4.79890055338542)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/FussballDataContext/Player/Player_Game" />
+      <nodes>
+        <classShapeMoniker Id="d398624d-da19-42a9-9b94-6103878be85a" />
+        <classShapeMoniker Id="8eb127ad-b8e3-4c43-840a-e93e59729abb" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(2.1562525 : 2.94399251302083); (2.1562525 : 4.18069777669271); (3.375 : 4.18069777669271)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/FussballDataContext/Player/Player_Game1" />
+      <nodes>
+        <classShapeMoniker Id="d398624d-da19-42a9-9b94-6103878be85a" />
+        <classShapeMoniker Id="8eb127ad-b8e3-4c43-840a-e93e59729abb" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(1.0937475 : 2.94399251302083); (1.0937475 : 5.41710333007813); (3.375 : 5.41710333007813)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/FussballDataContext/Player/Player_Game2" />
+      <nodes>
+        <classShapeMoniker Id="d398624d-da19-42a9-9b94-6103878be85a" />
+        <classShapeMoniker Id="8eb127ad-b8e3-4c43-840a-e93e59729abb" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(2.42187875 : 2.94399251302083); (2.42187875 : 3.87159638834635); (3.375 : 3.87159638834635)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/FussballDataContext/Player/Player_Game3" />
+      <nodes>
+        <classShapeMoniker Id="d398624d-da19-42a9-9b94-6103878be85a" />
+        <classShapeMoniker Id="8eb127ad-b8e3-4c43-840a-e93e59729abb" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(2.625 : 2.34699625651042); (3.375 : 2.34699625651042)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/FussballDataContext/Player/Player_Score" />
+      <nodes>
+        <classShapeMoniker Id="d398624d-da19-42a9-9b94-6103878be85a" />
+        <classShapeMoniker Id="669f7d9a-3897-4f6c-a8ca-af27ab689ab2" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(2.625 : 1.98599812825521); (3.375 : 1.98599812825521)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/FussballDataContext/Player/Player_Score1" />
+      <nodes>
+        <classShapeMoniker Id="d398624d-da19-42a9-9b94-6103878be85a" />
+        <classShapeMoniker Id="669f7d9a-3897-4f6c-a8ca-af27ab689ab2" />
+      </nodes>
+    </associationConnector>
+  </nestedChildShapes>
+</ordesignerObjectsDiagram>

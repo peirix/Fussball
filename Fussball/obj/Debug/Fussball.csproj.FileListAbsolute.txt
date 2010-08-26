@@ -1,0 +1,5 @@
+C:\Code\Playground\Fussball\Fussball\bin\Fussball.dll
+C:\Code\Playground\Fussball\Fussball\bin\Fussball.pdb
+C:\Code\Playground\Fussball\Fussball\obj\Debug\ResolveAssemblyReference.cache
+C:\Code\Playground\Fussball\Fussball\obj\Debug\Fussball.dll
+C:\Code\Playground\Fussball\Fussball\obj\Debug\Fussball.pdb

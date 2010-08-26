@@ -1,0 +1,8 @@
+C:\Code\Playground\Fussball\Fussball.Tests\obj\Debug\ResolveAssemblyReference.cache
+C:\Code\Playground\Fussball\Fussball.Tests\bin\Debug\Fussball.Tests.dll.config
+C:\Code\Playground\Fussball\Fussball.Tests\bin\Debug\Fussball.Tests.dll
+C:\Code\Playground\Fussball\Fussball.Tests\bin\Debug\Fussball.Tests.pdb
+C:\Code\Playground\Fussball\Fussball.Tests\bin\Debug\Fussball.dll
+C:\Code\Playground\Fussball\Fussball.Tests\bin\Debug\Fussball.pdb
+C:\Code\Playground\Fussball\Fussball.Tests\obj\Debug\Fussball.Tests.dll
+C:\Code\Playground\Fussball\Fussball.Tests\obj\Debug\Fussball.Tests.pdb

@@ -1,0 +1,46 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="Fussball" Class="FussballDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="WebSettings" ConnectionString="Data Source=.\SQLEXPRESS;AttachDbFilename=|DataDirectory|\Fussball.mdf;Integrated Security=True;User Instance=True" SettingsObjectName="System.Configuration.ConfigurationManager.ConnectionStrings" SettingsPropertyName="FussballConnectionString" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.Game" Member="Games">
+    <Type Name="Game">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="DateStart" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="DateEnd" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="Blue1" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Blue2" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Red1" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Red2" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="WinningTeam" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Association Name="Game_Score" Member="Scores" ThisKey="ID" OtherKey="GameID" Type="Score" />
+      <Association Name="Player_Game" Member="Player" ThisKey="Blue1" OtherKey="ID" Type="Player" IsForeignKey="true" />
+      <Association Name="Player_Game1" Member="Player1" ThisKey="Blue2" OtherKey="ID" Type="Player" IsForeignKey="true" />
+      <Association Name="Player_Game2" Member="Player2" ThisKey="Red1" OtherKey="ID" Type="Player" IsForeignKey="true" />
+      <Association Name="Player_Game3" Member="Player3" ThisKey="Red2" OtherKey="ID" Type="Player" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Score" Member="Scores">
+    <Type Name="Score">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="PlayerID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ScoreDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="Position" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Team" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="GameID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="OppDefenseID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Association Name="Game_Score" Member="Game" ThisKey="GameID" OtherKey="ID" Type="Game" IsForeignKey="true" />
+      <Association Name="Player_Score" Member="Player" ThisKey="PlayerID" OtherKey="ID" Type="Player" IsForeignKey="true" />
+      <Association Name="Player_Score1" Member="Player1" ThisKey="OppDefenseID" OtherKey="ID" Type="Player" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Player" Member="Players">
+    <Type Name="Player">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Association Name="Player_Game" Member="Games" ThisKey="ID" OtherKey="Blue1" Type="Game" />
+      <Association Name="Player_Game1" Member="Games1" ThisKey="ID" OtherKey="Blue2" Type="Game" />
+      <Association Name="Player_Game2" Member="Games2" ThisKey="ID" OtherKey="Red1" Type="Game" />
+      <Association Name="Player_Game3" Member="Games3" ThisKey="ID" OtherKey="Red2" Type="Game" />
+      <Association Name="Player_Score" Member="Scores" ThisKey="ID" OtherKey="PlayerID" Type="Score" />
+      <Association Name="Player_Score1" Member="Scores1" ThisKey="ID" OtherKey="OppDefenseID" Type="Score" />
+    </Type>
+  </Table>
+</Database>

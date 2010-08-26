@@ -1,0 +1,50 @@
+﻿#Position {
+    float: left;
+    width: 60px;
+    padding-top: 20px;
+}
+    #Position span {
+        margin: 30px 0;
+        display: block;
+    }
+
+#PlayGame #RedTeam,
+#PlayGame #BlueTeam {
+    float: left;
+    width: 80px;
+    height: 135px;
+    position: relative;
+}
+
+#PlayGame #BlueTeam strong,
+#PlayGame #RedTeam strong {
+    font-size: 30px;
+    display: block;
+    text-align: center;
+}
+
+#PlayGame div button {
+    height: 50px;
+    width: 80px;
+    font-size: 16px;
+    position: absolute;
+}
+
+#PlayGame #BlueTeam button {
+    background-color: #00f;
+    border: 2px inset #00f;
+    color: White;
+}
+
+#PlayGame #RedTeam button {
+    background-color: #f00;
+    border: 2px inset #f00;
+}
+
+#PlayGame .playerDefense {
+    bottom: 50px;
+}
+
+#PlayGame .playerOffense {
+    bottom: 0px;
+}
