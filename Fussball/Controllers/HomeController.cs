@@ -12,8 +12,8 @@ namespace Fussball.Controllers
     public class HomeController : Controller
     {
         private FussballDataContext db = new FussballDataContext();
-        private GameRepository gameRepository = new GameRepository();
-        private ScoreRepository scoreRepository = new ScoreRepository();
+        private GameRepository gameRep = new GameRepository();
+        private ScoreRepository scoreRep = new ScoreRepository();
 
         public ActionResult Index()
         {
@@ -35,8 +35,8 @@ namespace Fussball.Controllers
                 DateEnd = DateTime.Now
             };
 
-            gameRepository.Add(game);
-            gameRepository.Save();
+            gameRep.Add(game);
+            gameRep.Save();
 
             return RedirectToAction("Play", "Home",  new { BlueDef = BlueDef,
                                                            BlueOff = BlueOff,
@@ -50,7 +50,7 @@ namespace Fussball.Controllers
         {
             var viewmodel = new PlayGameViewModel
             {
-                Game = gameRepository.GetGame(GameID),
+                Game = gameRep.GetGame(GameID),
                 Blue1 = db.Players.Where(p => p.ID == BlueDef).Single(),
                 Blue2 = db.Players.Where(p => p.ID == BlueOff).Single(),
                 Red1 = db.Players.Where(p => p.ID == RedDef).Single(),
@@ -63,7 +63,7 @@ namespace Fussball.Controllers
         [AcceptVerbs(HttpVerbs.Post)]
         public ActionResult GameOver(int gameID, int winningTeam)
         {
-            var game = gameRepository.GetGame(gameID);
+            var game = gameRep.GetGame(gameID);
             game.WinningTeam = winningTeam;
 
             return RedirectToAction("GameOver", "Home", new { gameID = gameID });
@@ -71,7 +71,7 @@ namespace Fussball.Controllers
 
         public ActionResult GameOver(int gameID)
         {
-            var game = gameRepository.GetGame(gameID);
+            var game = gameRep.GetGame(gameID);
 
             var viewmodel = new GameOverViewModel
             {
@@ -80,7 +80,7 @@ namespace Fussball.Controllers
                 Red1 = db.Players.Where(p => p.ID == game.Red1).Single(),
                 Red2 = db.Players.Where(p => p.ID == game.Red2).Single(),
                 Game = game,
-                GameScore = scoreRepository.GetScoreByGame(game.ID)
+                GameScore = scoreRep.GetScoreByGame(game.ID)
             };
 
             return View(viewmodel);
@@ -89,7 +89,7 @@ namespace Fussball.Controllers
 
         //AJAX
         [AcceptVerbs(HttpVerbs.Post)]
-        public void ScoreGoal(int scorer, int position, int team, int gameID, int oppDefID)
+        public void ScoreGoal(int scorer, int position, int team, int gameID, int oppDefID, int selfGoal)
         {
             var score = new Score
             {
@@ -98,11 +98,12 @@ namespace Fussball.Controllers
                 ScoreDate = DateTime.Now,
                 Team = team,
                 GameID = gameID,
-                OppDefenseID = oppDefID
+                OppDefenseID = oppDefID,
+                SelfGoal = selfGoal
             };
 
-            scoreRepository.Add(score);
-            scoreRepository.Save();
+            scoreRep.Add(score);
+            scoreRep.Save();
         }
     }
 }

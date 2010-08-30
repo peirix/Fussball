@@ -69,6 +69,7 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\StatisticsController.cs" />
+    <Compile Include="Models\PlayerRepository.cs" />
     <Compile Include="Models\ScoreRepository.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -91,8 +92,10 @@
       <DependentUpon>Fussball.mdf</DependentUpon>
     </Content>
     <Content Include="Global.asax" />
+    <Content Include="Scripts\playgame.js" />
     <Content Include="Views\Home\GameOver.aspx" />
     <Content Include="Views\Home\Play.aspx" />
+    <Content Include="Views\Statistics\Index.aspx" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
