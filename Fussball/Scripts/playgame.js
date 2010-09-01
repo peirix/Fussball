@@ -30,7 +30,6 @@ Goal = {
 
 function showMessage(msg, color) {
     var height = $("#message").height();
-    console.log(height*0.8);
     $("#message")
         .text(msg)
         .css({
@@ -61,17 +60,19 @@ $(document).ready(function () {
         if (Goal.team == 0)
             Goal.oppDefId = $("#RedTeam .playerDefense").attr("id");
         else
-            Goal.oppDefID = $("#BlueTeam .playerDefense").attr("id");
+            Goal.oppDefId = $("#BlueTeam .playerDefense").attr("id");
 
         if ($(this).parent().attr("id") == "BlueTeam" && Goal.team == 1 ||
             $(this).parent().attr("id") == "RedTeam" && Goal.team == 0)
             Goal.selfGoal = 1;
+        else
+            Goal.selfGoal = 0;
 
         //Goal.team == 0 ? Fussball.blueGoal() : Fussball.redGoal();
         //$("button").hide();
 
         $.ajax({
-            url: "/Home/ScoreGoal",
+            url: "ScoreGoal",
             type: "post",
             data: Goal,
             success: function () {

@@ -70,7 +70,7 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\StatisticsController.cs" />
     <Compile Include="Models\PlayerRepository.cs" />
-    <Compile Include="Models\ScoreRepository.cs" />
+    <Compile Include="Models\GoalRepository.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>

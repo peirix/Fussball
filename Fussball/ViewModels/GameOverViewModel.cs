@@ -8,7 +8,7 @@ namespace Fussball.ViewModels
 {
     public class GameOverViewModel
     {
-        public List<Score> GameScore { get; set; }
+        public List<Goal> GameScore { get; set; }
         public Player Blue1 { get; set; }
         public Player Blue2 { get; set; }
         public Player Red1 { get; set; }

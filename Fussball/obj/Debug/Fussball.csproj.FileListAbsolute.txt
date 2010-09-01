@@ -3,3 +3,8 @@ C:\Code\Playground\Fussball\Fussball\bin\Fussball.pdb
 C:\Code\Playground\Fussball\Fussball\obj\Debug\ResolveAssemblyReference.cache
 C:\Code\Playground\Fussball\Fussball\obj\Debug\Fussball.dll
 C:\Code\Playground\Fussball\Fussball\obj\Debug\Fussball.pdb
+C:\projects\nonework\Fussball\Fussball\bin\Fussball.dll
+C:\projects\nonework\Fussball\Fussball\bin\Fussball.pdb
+C:\projects\nonework\Fussball\Fussball\obj\Debug\ResolveAssemblyReference.cache
+C:\projects\nonework\Fussball\Fussball\obj\Debug\Fussball.dll
+C:\projects\nonework\Fussball\Fussball\obj\Debug\Fussball.pdb

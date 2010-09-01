@@ -6,6 +6,21 @@ body, html { height: 100%; font-size: 100%; }
 
 #main { height: 100%; }
 
+#message {
+    width: 60%;
+    height: 20%;
+    position: absolute;
+    background-color: red;
+    z-index: 10;
+    border: 2px solid black;
+    left: 50%;
+    margin-left: -30%;
+    top: 50%;
+    margin-top: -10%;
+    text-align: center;
+    display: none;
+}
+
 #PlayGame {
     width: 100%;
     height: 100%;
@@ -40,13 +55,20 @@ body, html { height: 100%; font-size: 100%; }
             display: block;
             text-align: center;
             height: 10%;
+            min-height: 30px;
+            position: relative;
+            z-index: 2;
+            border-bottom: 1px solid black;
         }
+        #BlueTeam strong { background-color: #00f; }
+        #RedTeam strong  { background-color: #f00; }
 
         #PlayGame div button {
             height: 45%;
             width: 100%;
             font-size: 40px;
             display: block;
+            position: absolute;
         }
 
         #PlayGame #BlueTeam button {
@@ -61,9 +83,9 @@ body, html { height: 100%; font-size: 100%; }
         }
 
     #PlayGame .playerDefense {
-        bottom: 50px;
+        bottom: 50%;
     }
 
     #PlayGame .playerOffense {
-        bottom: 0px;
+        bottom: 0;
     }

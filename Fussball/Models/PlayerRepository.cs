@@ -15,31 +15,36 @@ namespace Fussball.Models
             return db.Players.Where(p => p.ID == id).Single();
         }
 
+        public List<Player> GetAllPlayers()
+        {
+            return db.Players.ToList();
+        }
+
         public Player GetTopScorer()
         {
             return (from player in db.Players
-                    orderby player.Scores.Where(s => s.SelfGoal == 0).Count() descending
+                    orderby player.Goals.Where(s => s.SelfGoal == 0).Count() descending
                     select player).First();
         }
 
         public Player GetWorstScorer()
         {
             return (from player in db.Players
-                    orderby player.Scores.Where(s => s.SelfGoal == 0).Count()
+                    orderby player.Goals.Where(s => s.SelfGoal == 0).Count()
                     select player).First();
         }
 
         public Player GetMostSelfScores()
         {
             return (from player in db.Players
-                    orderby player.Scores.Where(s => s.SelfGoal == 1).Count() descending
+                    orderby player.Goals.Where(s => s.SelfGoal == 1).Count() descending
                     select player).First();
         }
 
         public Player GetLeastSelfScores()
         {
             return (from player in db.Players
-                    orderby player.Scores.Where(s => s.SelfGoal == 1).Count()
+                    orderby player.Goals.Where(s => s.SelfGoal == 1).Count()
                     select player).First();
         }
 
@@ -51,6 +56,10 @@ namespace Fussball.Models
         }
 
         //Insert/Update
+        public void Add(Player player)
+        {
+            db.Players.InsertOnSubmit(player);
+        }
 
         //Persist
         public void Save()

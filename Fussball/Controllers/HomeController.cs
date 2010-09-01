@@ -11,15 +11,26 @@ namespace Fussball.Controllers
     [HandleError]
     public class HomeController : Controller
     {
-        private FussballDataContext db = new FussballDataContext();
+        private PlayerRepository playerRep = new PlayerRepository();
         private GameRepository gameRep = new GameRepository();
-        private ScoreRepository scoreRep = new ScoreRepository();
+        private GoalRepository scoreRep = new GoalRepository();
 
         public ActionResult Index()
         {
-            var players = db.Players.ToList();
+            var players = playerRep.GetAllPlayers();
 
             return View(players);
+        }
+
+        [AcceptVerbs(HttpVerbs.Post)]
+        public ActionResult Index(string name)
+        {
+            var player = new Player { Name = name };
+
+            playerRep.Add(player);
+            playerRep.Save();
+
+            return RedirectToAction("Index");
         }
 
         [AcceptVerbs(HttpVerbs.Post)]
@@ -51,10 +62,10 @@ namespace Fussball.Controllers
             var viewmodel = new PlayGameViewModel
             {
                 Game = gameRep.GetGame(GameID),
-                Blue1 = db.Players.Where(p => p.ID == BlueDef).Single(),
-                Blue2 = db.Players.Where(p => p.ID == BlueOff).Single(),
-                Red1 = db.Players.Where(p => p.ID == RedDef).Single(),
-                Red2 = db.Players.Where(p => p.ID == RedOff).Single()
+                Blue1 = playerRep.GetPlayer(BlueDef),
+                Blue2 = playerRep.GetPlayer(BlueOff),
+                Red1 = playerRep.GetPlayer(RedDef),
+                Red2 = playerRep.GetPlayer(RedOff)
             };
 
             return View(viewmodel);
@@ -65,6 +76,7 @@ namespace Fussball.Controllers
         {
             var game = gameRep.GetGame(gameID);
             game.WinningTeam = winningTeam;
+            gameRep.Save();
 
             return RedirectToAction("GameOver", "Home", new { gameID = gameID });
         }
@@ -75,10 +87,10 @@ namespace Fussball.Controllers
 
             var viewmodel = new GameOverViewModel
             {
-                Blue1 = db.Players.Where(p => p.ID == game.Blue1).Single(),
-                Blue2 = db.Players.Where(p => p.ID == game.Blue2).Single(),
-                Red1 = db.Players.Where(p => p.ID == game.Red1).Single(),
-                Red2 = db.Players.Where(p => p.ID == game.Red2).Single(),
+                Blue1 = playerRep.GetPlayer(game.Blue1),
+                Blue2 = playerRep.GetPlayer(game.Blue2),
+                Red1 = playerRep.GetPlayer(game.Red1),
+                Red2 = playerRep.GetPlayer(game.Red2),
                 Game = game,
                 GameScore = scoreRep.GetScoreByGame(game.ID)
             };
@@ -91,11 +103,11 @@ namespace Fussball.Controllers
         [AcceptVerbs(HttpVerbs.Post)]
         public void ScoreGoal(int scorer, int position, int team, int gameID, int oppDefID, int selfGoal)
         {
-            var score = new Score
+            var score = new Goal
             {
                 PlayerID = scorer,
                 Position = position,
-                ScoreDate = DateTime.Now,
+                GoalDate = DateTime.Now,
                 Team = team,
                 GameID = gameID,
                 OppDefenseID = oppDefID,

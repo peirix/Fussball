@@ -5,10 +5,10 @@
 </asp:Content>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
-    <a href="/Statistics/">Statistikk</a>
+    <a href="<%= Url.Content("~/Statistics/") %>">Statistikk</a>
 
     <h2>Velg spillere</h2>
-    <form action="/Home/Play/" method="post" name="StartupForm">
+    <form action="<%= Url.Content("~/Home/Play/") %>" method="post" name="StartupForm">
         <div id="BlueTeam">
             <select id="BlueDef" name="BlueDef">
                 <option value="0">Velg blå forsvarsspiller</option>
@@ -43,5 +43,10 @@
             </select>
         </div>
         <button type="submit">Play game!</button>
+    </form>
+
+    <form method="post" action="">
+        <h4>Opprett ny spiller</h4>
+        <input type="text" name="name"><input type="submit" value="Opprett">
     </form>
 </asp:Content>

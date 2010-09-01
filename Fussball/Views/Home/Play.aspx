@@ -6,8 +6,8 @@
 
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
     
-    <script src="/Scripts/playgame.js"></script>
-    <form id="GameOver" action="/Home/GameOver/" type="post">
+    <script src="<%= Url.Content("~/Scripts/playgame.js") %>"></script>
+    <form id="GameOver" action="<%= Url.Content("GameOver/") %>" type="post">
         <input type="hidden" value="<%= Model.Game.ID %>" id="gameID" name="gameID">
         <input type="hidden" name="winningTeam" id="winningTeam">
     </form>

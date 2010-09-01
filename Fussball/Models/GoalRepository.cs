@@ -5,27 +5,27 @@ using System.Text;
 
 namespace Fussball.Models
 {
-    class ScoreRepository
+    class GoalRepository
     {
         FussballDataContext db = new FussballDataContext();
 
         //Queries
-        public Score GetScore(int ScoreID)
+        public Goal GetScore(int ScoreID)
         {
-            return db.Scores.Where(s => s.ID == ScoreID).SingleOrDefault();
+            return db.Goals.Where(s => s.ID == ScoreID).SingleOrDefault();
         }
 
-        public List<Score> GetScoreByGame(int gameID)
+        public List<Goal> GetScoreByGame(int gameID)
         {
-            return (from score in db.Scores
+            return (from score in db.Goals
                     where score.GameID == gameID
                     select score).ToList();
         }
 
         //Insert/Delete/Update
-        public void Add(Score score)
+        public void Add(Goal score)
         {
-            db.Scores.InsertOnSubmit(score);
+            db.Goals.InsertOnSubmit(score);
         }
 
         //Persist
