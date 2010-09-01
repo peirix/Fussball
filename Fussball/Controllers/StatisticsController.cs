@@ -18,11 +18,33 @@ namespace Fussball.Controllers
         {
             //Get the properties for the statistics view model
 
-            var viewmodel = new Dictionary<string, Player>();
-            viewmodel.Add("flest mål", playerRep.GetTopScorer());
-            viewmodel.Add("færrest mål", playerRep.GetWorstScorer());
-            viewmodel.Add("flest selvmål", playerRep.GetMostSelfScores());
-            viewmodel.Add("færrest selvmål", playerRep.GetLeastSelfScores());
+            List<StatisticsIndexViewModel> viewmodel = new List<StatisticsIndexViewModel>();
+            viewmodel.Add(new StatisticsIndexViewModel
+            {
+                Desc = "Flest mål",
+                Player = playerRep.GetTopScorer(),
+                Num = playerRep.GetTopScorer().Games.Count()
+            });
+            viewmodel.Add(new StatisticsIndexViewModel
+            {
+                Desc = "Færrest mål",
+                Player = playerRep.GetWorstScorer(),
+                Num = playerRep.GetWorstScorer().Goals.Where(g => g.SelfGoal == 0).Count()
+            });
+            viewmodel.Add(new StatisticsIndexViewModel
+            {
+                Desc = "Flest selvmål",
+                Player = playerRep.GetMostSelfScores(),
+                Num = playerRep.GetMostSelfScores().Goals.Where(g => g.SelfGoal == 0).Count()
+            });
+            viewmodel.Add(new StatisticsIndexViewModel
+            {
+                Desc = "Færrest selvmål",
+                Player = playerRep.GetLeastSelfScores(),
+                Num = playerRep.GetLeastSelfScores().Goals.Where(g => g.SelfGoal == 0).Count()
+            });
+
+            ViewData["AllPlayers"] = playerRep.GetAllPlayers();
 
             return View(viewmodel);
         }

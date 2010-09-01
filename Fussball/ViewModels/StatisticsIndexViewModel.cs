@@ -8,9 +8,8 @@ namespace Fussball.ViewModels
 {
     public class StatisticsIndexViewModel
     {
-        public Player MostScore { get; set; }
-        public Player MostWins { get; set; }
-        public Player WorstScore { get; set; }
-        public Player MostLosses { get; set; }
+        public string Desc { get; set; }
+        public Player Player { get; set; }
+        public int Num { get; set; }
     }
 }
