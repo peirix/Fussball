@@ -1,5 +1,21 @@
 ﻿<?xml version="1.0" encoding="utf-8"?><Database Name="Fussball" Class="FussballDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
   <Connection Mode="WebSettings" ConnectionString="Data Source=yoda\yoda;Initial Catalog=Fussball;Integrated Security=True;Pooling=False" SettingsObjectName="System.Configuration.ConfigurationManager.ConnectionStrings" SettingsPropertyName="FussballConnectionString1" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.Game" Member="Games">
+    <Type Name="Game">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="DateStart" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="DateEnd" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="Blue1" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Blue2" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Red1" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Red2" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="WinningTeam" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Association Name="Player_Game" Member="Player" ThisKey="Blue1" OtherKey="ID" Type="Player" IsForeignKey="true" />
+      <Association Name="Player_Game1" Member="Player1" ThisKey="Blue2" OtherKey="ID" Type="Player" IsForeignKey="true" />
+      <Association Name="Player_Game2" Member="Player2" ThisKey="Red1" OtherKey="ID" Type="Player" IsForeignKey="true" />
+      <Association Name="Player_Game3" Member="Player3" ThisKey="Red2" OtherKey="ID" Type="Player" IsForeignKey="true" />
+    </Type>
+  </Table>
   <Table Name="dbo.Player" Member="Players">
     <Type Name="Player">
       <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
@@ -12,23 +28,6 @@
       <Association Name="Player_Goal1" Member="Goals1" ThisKey="ID" OtherKey="OppDefenseID" Type="Goal" />
     </Type>
   </Table>
-  <Table Name="dbo.Game" Member="Games">
-    <Type Name="Game">
-      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
-      <Column Name="DateStart" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
-      <Column Name="DateEnd" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
-      <Column Name="Blue1" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="Blue2" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="Red1" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="Red2" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="WinningTeam" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Association Name="Game_Goal" Member="Goals" ThisKey="ID" OtherKey="GameID" Type="Goal" />
-      <Association Name="Player_Game" Member="Player" ThisKey="Blue1" OtherKey="ID" Type="Player" IsForeignKey="true" />
-      <Association Name="Player_Game1" Member="Player1" ThisKey="Blue2" OtherKey="ID" Type="Player" IsForeignKey="true" />
-      <Association Name="Player_Game2" Member="Player2" ThisKey="Red1" OtherKey="ID" Type="Player" IsForeignKey="true" />
-      <Association Name="Player_Game3" Member="Player3" ThisKey="Red2" OtherKey="ID" Type="Player" IsForeignKey="true" />
-    </Type>
-  </Table>
   <Table Name="dbo.Goal" Member="Goals">
     <Type Name="Goal">
       <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
@@ -39,7 +38,6 @@
       <Column Name="GameID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
       <Column Name="OppDefenseID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
       <Column Name="SelfGoal" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Association Name="Game_Goal" Member="Game" ThisKey="GameID" OtherKey="ID" Type="Game" IsForeignKey="true" />
       <Association Name="Player_Goal" Member="Player" ThisKey="PlayerID" OtherKey="ID" Type="Player" IsForeignKey="true" />
       <Association Name="Player_Goal1" Member="Player1" ThisKey="OppDefenseID" OtherKey="ID" Type="Player" IsForeignKey="true" />
     </Type>

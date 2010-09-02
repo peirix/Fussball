@@ -15,10 +15,11 @@
     <%  } %>
     </ul>
 
+    <h3>Antall kamper</h3>
     <ul>
-    <%  foreach (var player in ViewData["AllPlayers"] as List<Fussball.Models.Player>)
+    <%  foreach (var player in ViewData["AllPlayers"] as Dictionary<Fussball.Models.Player, int>)
         { %>
-            <li><%= player.Name %> - <%= player.Games.Count() %></li>
+            <li><%= player.Key.Name %> - <%= player.Value %></li>
     <%  } %>
     </ul>
 

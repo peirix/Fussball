@@ -20,6 +20,22 @@ namespace Fussball.Models
             return db.Players.ToList();
         }
 
+        public int GetPlayerGames(int playerID)
+        {
+            var games = db.Games.ToList();
+            return GetPlayerGames(games, playerID);
+        }
+
+        public int GetPlayerGames(List<Game> games, int playerID)
+        {
+            return (from game in games
+                    where game.Blue1 == playerID
+                    || game.Blue2 == playerID
+                    || game.Red1 == playerID
+                    || game.Red2 == playerID
+                    select game).Count();
+        }
+
         public Player GetTopScorer()
         {
             return (from player in db.Players
@@ -29,7 +45,8 @@ namespace Fussball.Models
 
         public Player GetWorstScorer()
         {
-            return (from player in db.Players
+            return (from player in db.Players.ToList()
+                    where GetPlayerGames(player.ID) > 0
                     orderby player.Goals.Where(s => s.SelfGoal == 0).Count()
                     select player).First();
         }
@@ -43,7 +60,8 @@ namespace Fussball.Models
 
         public Player GetLeastSelfScores()
         {
-            return (from player in db.Players
+            return (from player in db.Players.ToList()
+                    where GetPlayerGames(player.ID) > 0
                     orderby player.Goals.Where(s => s.SelfGoal == 1).Count()
                     select player).First();
         }
