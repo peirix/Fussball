@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.Mvc;
 using Fussball.Models;
 using Fussball.ViewModels;
+using Newtonsoft.Json;
 
 namespace Fussball.Controllers
 {
@@ -13,7 +14,7 @@ namespace Fussball.Controllers
     {
         private PlayerRepository playerRep = new PlayerRepository();
         private GameRepository gameRep = new GameRepository();
-        private GoalRepository scoreRep = new GoalRepository();
+        private GoalRepository goalRep = new GoalRepository();
 
         public ActionResult Index()
         {
@@ -92,7 +93,7 @@ namespace Fussball.Controllers
                 Red1 = playerRep.GetPlayer(game.Red1),
                 Red2 = playerRep.GetPlayer(game.Red2),
                 Game = game,
-                GameScore = scoreRep.GetScoreByGame(game.ID)
+                GameScore = goalRep.GetGoalsByGame(game.ID)
             };
 
             return View(viewmodel);
@@ -101,7 +102,7 @@ namespace Fussball.Controllers
 
         //AJAX
         [AcceptVerbs(HttpVerbs.Post)]
-        public void ScoreGoal(int scorer, int position, int team, int gameID, int oppDefID, int selfGoal)
+        public string ScoreGoal(int scorer, int position, int team, int gameID, int oppDefID, int selfGoal)
         {
             var score = new Goal
             {
@@ -114,8 +115,19 @@ namespace Fussball.Controllers
                 SelfGoal = selfGoal
             };
 
-            scoreRep.Add(score);
-            scoreRep.Save();
+            goalRep.Add(score);
+            goalRep.Save();
+
+            return string.Format("{0}", score.ID);
+        }
+
+        //AJAX
+        [AcceptVerbs(HttpVerbs.Post)]
+        public void DeleteGoal(int goalID)
+        {
+            var goal = goalRep.GetGoal(goalID);
+            goalRep.Delete(goal);
+            goalRep.Save();
         }
     }
 }

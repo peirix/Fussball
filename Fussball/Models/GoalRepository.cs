@@ -10,22 +10,35 @@ namespace Fussball.Models
         FussballDataContext db = new FussballDataContext();
 
         //Queries
-        public Goal GetScore(int ScoreID)
+        public Goal GetGoal(int goalID)
         {
-            return db.Goals.Where(s => s.ID == ScoreID).SingleOrDefault();
+            return db.Goals.Where(s => s.ID == goalID).SingleOrDefault();
         }
 
-        public List<Goal> GetScoreByGame(int gameID)
+        public List<Goal> GetGoalsByGame(int gameID)
         {
-            return (from score in db.Goals
-                    where score.GameID == gameID
-                    select score).ToList();
+            return (from goal in db.Goals
+                    where goal.GameID == gameID
+                    select goal).ToList();
+        }
+
+        public List<Goal> GetGoalsByGameAndTeam(int gameID, int team)
+        {
+            return (from goal in db.Goals
+                    where goal.GameID == gameID
+                    where goal.Team == team
+                    select goal).ToList();
         }
 
         //Insert/Delete/Update
-        public void Add(Goal score)
+        public void Add(Goal goal)
         {
-            db.Goals.InsertOnSubmit(score);
+            db.Goals.InsertOnSubmit(goal);
+        }
+
+        public void Delete(Goal goal)
+        {
+            db.Goals.DeleteOnSubmit(goal);
         }
 
         //Persist

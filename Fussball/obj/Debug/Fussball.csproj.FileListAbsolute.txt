@@ -8,3 +8,6 @@ C:\projects\nonework\Fussball\Fussball\bin\Fussball.pdb
 C:\projects\nonework\Fussball\Fussball\obj\Debug\ResolveAssemblyReference.cache
 C:\projects\nonework\Fussball\Fussball\obj\Debug\Fussball.dll
 C:\projects\nonework\Fussball\Fussball\obj\Debug\Fussball.pdb
+C:\projects\nonework\Fussball\Fussball\bin\Newtonsoft.Json.dll
+C:\projects\nonework\Fussball\Fussball\bin\Newtonsoft.Json.pdb
+C:\projects\nonework\Fussball\Fussball\bin\Newtonsoft.Json.xml

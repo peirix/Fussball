@@ -42,7 +42,7 @@
                 <%  } %>
             </select>
         </div>
-        <button type="submit">Play game!</button>
+        <button type="submit" style="padding: 10px;">Play game!</button>
     </form>
 
     <form method="post" action="">

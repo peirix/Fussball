@@ -1,17 +1,15 @@
 ﻿Fussball = {
     blueTeam: 0,
     redTeam: 0,
-    blueGoal: function () {
-        this.blueTeam++;
-        $("#BlueTeam strong").text(Fussball.blueTeam);
+    updateBlueScore: function () {
+        $("#BlueTeam .score strong").text(Fussball.blueTeam);
         if (this.blueTeam == 5) {
             $("#BlueTeam > button").toggleClass("playerDefense playerOffense");
             showMessage("Bytte!", "blue");
         }
     },
-    redGoal: function () {
-        this.redTeam++;
-        $("#RedTeam strong").text(Fussball.redTeam);
+    updateRedScore: function () {
+        $("#RedTeam .score strong").text(Fussball.redTeam);
         if (this.redTeam == 5) {
             $("#RedTeam > button").toggleClass("playerDefense playerOffense");
             showMessage("Bytte!", "red");
@@ -44,15 +42,25 @@ function showMessage(msg, color) {
 $(document).ready(function () {
     $("button").hide();
 
+    $("#undo").click(function () {
+        $("button").hide();
+        $(this).hide();
+    });
+
     $("#BlueTeam, #RedTeam").click(function (e) {
         if (e.target.tagName.toLowerCase() == "div") {
             $(this).attr("id") == "BlueTeam" ? Goal.team = 0 : Goal.team = 1;
             $("button").show();
+            $("#undo").show();
         }
     });
 
     $("button").click(function (e) {
         e.preventDefault();
+        $("#undo").hide();
+        var $this = $(this);
+
+        var scorerName = $(this).text();
 
         Goal.scorer = $(this).attr("id");
         Goal.position = $(this).attr("class") == "playerDefense" ? 0 : 1;
@@ -75,17 +83,57 @@ $(document).ready(function () {
             url: "ScoreGoal",
             type: "post",
             data: Goal,
-            success: function () {
-                Goal.team == 0 ? Fussball.blueGoal() : Fussball.redGoal();
+            success: function (goalId) {
+                if (Goal.team == 0) {
+                    Fussball.blueTeam++;
+                    Fussball.updateBlueScore();
+                } else {
+                    Fussball.redTeam++;
+                    Fussball.updateRedScore();
+                }
+
                 if (Fussball.blueTeam == 10 || Fussball.redTeam == 10) {
                     Goal.team == 0 ? showMessage("Blå vinner!", "blue") : showMessage("Rød vinner!", "red");
                     $("#winningTeam").val(Goal.team);
                     $("#GameOver").submit();
                 }
+
+                $this.siblings(".summary").append("<strong>" + scorerName + "</strong> - <a data-goalid='" + goalId + "'>Delete</a><br>");
+
                 $("button").hide();
             }
         });
+    });
 
+    $(".score a").click(function () {
+        $(this).parent().prev().show();
+    });
 
+    $(".summary .closeSummary").click(function () {
+        $(this).parent().hide();
+    });
+
+    $(".summary a").live("click", function () {
+        var $this = $(this);
+        var goalId = $this.attr("data-goalid");
+        var gameId = $("#gameID").val();
+        var team = $this.parent().parent().attr("id");
+
+        $.ajax({
+            url: "DeleteGoal",
+            type: "post",
+            data: { gameID: gameId, goalID: goalId },
+            success: function () {
+                $this.prev().remove();
+                $this.remove();
+                if (team == "BlueTeam") {
+                    Fussball.blueTeam--;
+                    Fussball.updateBlueScore();
+                } else {
+                    Fussball.redTeam--;
+                    Fussball.updateRedScore();
+                }
+            }
+        });
     });
 });
