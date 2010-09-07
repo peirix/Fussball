@@ -5,7 +5,7 @@
 </asp:Content>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
-    <a href="<%= Url.Content("~/Statistics/") %>">Statistikk</a>
+    <a href="<%= Url.Content("~/Statistics/") %>">Statistikk</a> | <a href="<%= Url.Content("~/Player/") %>">Spillere</a>
 
     <h2>Velg spillere</h2>
     <form action="<%= Url.Content("~/Home/Play/") %>" method="post" name="StartupForm">

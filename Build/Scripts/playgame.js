@@ -2,14 +2,14 @@
     blueTeam: 0,
     redTeam: 0,
     updateBlueScore: function () {
-        $("#BlueTeam strong").text(Fussball.blueTeam);
+        $("#BlueTeam .score strong").text(Fussball.blueTeam);
         if (this.blueTeam == 5) {
             $("#BlueTeam > button").toggleClass("playerDefense playerOffense");
             showMessage("Bytte!", "blue");
         }
     },
     updateRedScore: function () {
-        $("#RedTeam strong").text(Fussball.redTeam);
+        $("#RedTeam .score strong").text(Fussball.redTeam);
         if (this.redTeam == 5) {
             $("#RedTeam > button").toggleClass("playerDefense playerOffense");
             showMessage("Bytte!", "red");
@@ -98,7 +98,7 @@ $(document).ready(function () {
                     $("#GameOver").submit();
                 }
 
-                $this.prevAll(".summary").append("<strong>" + scorerName + "</strong> - <a data-goalid='" + goalId + "'>Delete</a><br>");
+                $this.siblings(".summary").append("<strong>" + scorerName + "</strong> - <a data-goalid='" + goalId + "'>Delete</a><br>");
 
                 $("button").hide();
             }

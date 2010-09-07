@@ -71,6 +71,7 @@
   <ItemGroup>
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\PlayerController.cs" />
     <Compile Include="Controllers\StatisticsController.cs" />
     <Compile Include="Models\PlayerRepository.cs" />
     <Compile Include="Models\GoalRepository.cs" />
@@ -86,6 +87,7 @@
     <Compile Include="Models\GameRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ViewModels\GameOverViewModel.cs" />
+    <Compile Include="ViewModels\PlayerViewModel.cs" />
     <Compile Include="ViewModels\PlayGameViewModel.cs" />
     <Compile Include="ViewModels\StatisticsIndexViewModel.cs" />
   </ItemGroup>
@@ -98,6 +100,8 @@
     <Content Include="Scripts\playgame.js" />
     <Content Include="Views\Home\GameOver.aspx" />
     <Content Include="Views\Home\Play.aspx" />
+    <Content Include="Views\Player\Details.aspx" />
+    <Content Include="Views\Player\Index.aspx" />
     <Content Include="Views\Statistics\Index.aspx" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">

@@ -36,6 +36,11 @@ namespace Fussball.Models
                     select game).Count();
         }
 
+        public int GetPlayerGoals(Player player)
+        {
+            return player.Goals.Where(s => s.SelfGoal == 0).Count();
+        }
+
         public Player GetTopScorer()
         {
             return (from player in db.Players
