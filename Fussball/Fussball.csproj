@@ -96,7 +96,12 @@
     <Content Include="App_Data\Fussball_log.ldf">
       <DependentUpon>Fussball.mdf</DependentUpon>
     </Content>
+    <Content Include="Content\img\bord.png" />
+    <Content Include="Content\img\playfuss-inactive.png" />
+    <Content Include="Content\img\playfuss.png" />
     <Content Include="Global.asax" />
+    <Content Include="Scripts\dragdrop.js" />
+    <Content Include="Scripts\index.js" />
     <Content Include="Scripts\playgame.js" />
     <Content Include="Views\Home\GameOver.aspx" />
     <Content Include="Views\Home\Play.aspx" />
@@ -148,7 +153,6 @@
       <DependentUpon>Fussball.dbml</DependentUpon>
     </None>
   </ItemGroup>
-  <ItemGroup />
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

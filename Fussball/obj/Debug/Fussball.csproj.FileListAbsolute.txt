@@ -11,3 +11,6 @@ C:\projects\nonework\Fussball\Fussball\obj\Debug\Fussball.pdb
 C:\projects\nonework\Fussball\Fussball\bin\Newtonsoft.Json.dll
 C:\projects\nonework\Fussball\Fussball\bin\Newtonsoft.Json.pdb
 C:\projects\nonework\Fussball\Fussball\bin\Newtonsoft.Json.xml
+C:\Code\Playground\Fussball\Fussball\bin\Newtonsoft.Json.dll
+C:\Code\Playground\Fussball\Fussball\bin\Newtonsoft.Json.pdb
+C:\Code\Playground\Fussball\Fussball\bin\Newtonsoft.Json.xml

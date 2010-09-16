@@ -17,7 +17,6 @@ namespace Fussball.Controllers
         public ActionResult Index()
         {
             //Get the properties for the statistics view model
-
             List<StatisticsIndexViewModel> viewmodel = new List<StatisticsIndexViewModel>();
             viewmodel.Add(new StatisticsIndexViewModel
             {

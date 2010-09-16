@@ -1,9 +1,85 @@
 ﻿* { margin: 0; padding: 0; }
 
-body, html { height: 100%; font-size: 100%; }
+body, html { height: 100%; font-size: 100%; font-family: Arial, Sans-Serif; }
 
 .clear { clear: both; }
 
+/* INDEX */
+#playerPicker {
+    width: 100%;
+    overflow: hidden;
+    height: 80px;
+}
+    #playerPicker ul {
+        width: 9999px;
+        height: 80px;
+        margin-left: 0px;
+    }
+        #playerPicker ul li,
+        #playerForm > ul li {
+            width: 80px;
+            height: 60px;
+            padding-top: 20px;
+            float: left;
+            list-style: none;
+            margin: 0 5px;
+            background-color: #ccc;
+            -webkit-border-radius: 5px;
+            text-align: center;
+        }
+        
+        #playerPicker ul .selected { background-color: #ff0; }
+
+#playerForm {
+    height: 450px;
+    position: relative;
+    padding-top: 150px;
+    width: 500px;
+    margin: 0 auto;
+}
+    #playerForm > ul {
+        position: absolute;
+        height: 80px;
+        width: 80px;
+        padding: 10px;
+        -webkit-border-radius: 5px;
+        border: 2px dashed #000;
+    }
+        #redDef { left: 160px; top: 30px; }
+        #redOff { left: 360px; top: 30px; }
+        #blueOff { left: 20px; top: 420px; }
+        #blueDef { left: 220px; top: 420px; }
+        
+        #playerForm > .highlight {
+            background-color: #4f4;
+            -webkit-box-shadow: -1px -1px 10px #4f4;
+        }
+        
+        #playerForm > ul li { margin: 0; }
+        
+    #table {
+        background: url(img/bord.png) no-repeat center center;
+        height: 254px;
+    }
+    
+    #playBtn {
+        position: absolute;
+        bottom: 0;
+        width: 296px;
+        left: 50%;
+        margin-left: -148px;
+        height: 53px;
+        background-image: url(img/playfuss.png);
+        border: 0;
+        color: #fff;
+        font-size: 22px;
+        text-shadow: -1px -1px #000;
+        cursor: pointer;
+    }
+        #playBtn:disabled { background-image: url(img/playfuss-inactive.png); }
+
+
+/* PLAY GAME */
 #main { height: 100%; }
 
 #message {
