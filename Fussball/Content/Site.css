@@ -28,7 +28,8 @@ body, html { height: 100%; font-size: 100%; font-family: Arial, Sans-Serif; }
             text-align: center;
         }
         
-        #playerPicker ul .selected { background-color: #ff0; }
+        #playerPicker ul .selected,
+        #playerForm ul .selected { background-color: #ff0; }
 
 #playerForm {
     height: 450px;
@@ -58,7 +59,7 @@ body, html { height: 100%; font-size: 100%; font-family: Arial, Sans-Serif; }
         #playerForm > ul li { margin: 0; }
         
     #table {
-        background: url(img/bord.png) no-repeat center center;
+        background: url(img/table-hor.png) no-repeat center center;
         height: 254px;
     }
     
@@ -87,7 +88,7 @@ body, html { height: 100%; font-size: 100%; font-family: Arial, Sans-Serif; }
     height: 20%;
     position: absolute;
     background-color: red;
-    z-index: 10;
+    z-index: 12;
     border: 2px solid black;
     left: 50%;
     margin-left: -30%;
@@ -98,13 +99,13 @@ body, html { height: 100%; font-size: 100%; font-family: Arial, Sans-Serif; }
 }
 
 #undo {
-    width: 90%;
+    width: 100%;
     position: absolute;
     height: 10%;
     top: 0;
     right: 0;
     background-color: #ff0;
-    z-index: 10;
+    z-index: 12;
     font-size: 50px;
     text-align: center;
     min-height: 30px;
@@ -116,27 +117,24 @@ body, html { height: 100%; font-size: 100%; font-family: Arial, Sans-Serif; }
     width: 100%;
     height: 100%;
     overflow: hidden;
+    background: url(img/table-vert.png) no-repeat center 170px;
 }
-
-    #Position {
-        float: left;
-        width: 10%;
-        height: 100%;
-        padding-top: 10%;
-    }
-        #Position span {
-            height: 50%;
-            display: block;
-            vertical-align: middle;
-        }
         
-    #PlayGame #RedTeam  { background-color: #f00; }
-    #PlayGame #BlueTeam { background-color: #00f; }
+    #PlayGame #RedTeam .overlay,
+    #PlayGame #BlueTeam .overlay  {
+        background-color: #f00;
+        height: 100%;
+        width: 100%;
+        opacity: 0.4;
+        position: absolute;
+        z-index: 10;
+    }
+    #PlayGame #BlueTeam .overlay { background-color: #00f; }
 
     #PlayGame #RedTeam,
     #PlayGame #BlueTeam {
         float: left;
-        width: 45%;
+        width: 50%;
         height: 100%;
         position: relative;
     }
@@ -150,6 +148,7 @@ body, html { height: 100%; font-size: 100%; font-family: Arial, Sans-Serif; }
             margin-top: -200px;
             border: 2px solid #000;
             display: none;
+            z-index: 11;
         }
             #PlayGame .closeSummary {
                 float: right;
@@ -162,14 +161,14 @@ body, html { height: 100%; font-size: 100%; font-family: Arial, Sans-Serif; }
             font-size: 30px;
             display: block;
             text-align: center;
-            height: 10%;
+            height: 70px;
             min-height: 30px;
             position: relative;
-            z-index: 2;
+            z-index: 11;
             border-bottom: 1px solid black;
         }
-        #BlueTeam .score { background-color: #00f; }
-        #RedTeam .score  { background-color: #f00; }
+        #PlayGame #RedTeam .score  { background-color: #f00; }
+        #PlayGame #BlueTeam .score { background-color: #00f; }
         
             #PlayGame .score a {
                 margin-left: 20px;
@@ -179,23 +178,29 @@ body, html { height: 100%; font-size: 100%; font-family: Arial, Sans-Serif; }
                 }
 
         #PlayGame div button {
-            height: 45%;
-            width: 100%;
+            height: 100px;
+            width: 200px;
             font-size: 40px;
             display: block;
             position: absolute;
         }
-
+        
+        #PlayGame #RedTeam button {
+            background-color: #f00;
+            border: 2px inset #f00;
+            right: 100px;
+        }
+        #PlayGame #RedTeam .playerDefense { top: 180px; }
+        #PlayGame #RedTeam .playerOffense { top: 377px; }
+        
         #PlayGame #BlueTeam button {
             background-color: #00f;
             border: 2px inset #00f;
             color: White;
+            left: 100px;
         }
-
-        #PlayGame #RedTeam button {
-            background-color: #f00;
-            border: 2px inset #f00;
-        }
+        #PlayGame #BlueTeam .playerDefense { top: 323px; }
+        #PlayGame #BlueTeam .playerOffense { top: 523px; }
 
     #PlayGame .playerDefense {
         bottom: 50%;
@@ -203,4 +208,20 @@ body, html { height: 100%; font-size: 100%; font-family: Arial, Sans-Serif; }
 
     #PlayGame .playerOffense {
         bottom: 0;
+    }
+    
+    
+/* GAME OVER */
+#blueGoals { color: #00f; }
+#redGoals  { color: #f00; }
+
+#resultList .blue { color: #00f; }
+#resultList .red  { color: #f00; }
+
+#done {
+    display: block;
+    margin-top: 50px;
+    padding: 20px 30px;
+    background-color: #0f0;
+    float: left;
     }

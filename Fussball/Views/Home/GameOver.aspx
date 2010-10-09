@@ -7,16 +7,24 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
 
     <h2>
-        <% if (Model.Game.WinningTeam == 0) { %> Blå Seier!
-        <% } else { %>Rød Seier!<% } %>
+        Resultat: <span id="blueGoals"><%= Model.BlueGoals %></span> - <span id="redGoals"><%= Model.RedGoals %></span>
     </h2>
 
-    <ul>
+    <ul id="resultList">
         <%  foreach (var score in Model.GameScore)
-            { %>
-                <li><%= score.Player.Name %></li>
+            {
+                var scoreMin = new TimeSpan();
+                scoreMin = score.GoalDate - Model.Game.DateStart;
+                
+                %>
+                <li class="<%= score.Team == 0 ? "blue" : "red" %>">
+                    <%= score.Player.Name %>
+                    <small>(<%= Math.Round(scoreMin.TotalMinutes) %>min.)</small>
+                </li>
         <%  } %>
     </ul>
+
+    <a id="done" href="<%= Url.Content("~/Home") %>">Ferdig!</a>
 
 </asp:Content>
 

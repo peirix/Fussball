@@ -28,6 +28,10 @@
         <ul id="blueOff" class="freeSpot"></ul>
         <ul id="blueDef" class="freeSpot"></ul>
 
+        <input type="hidden" name="BlueDef">
+        <input type="hidden" name="BlueOff">
+        <input type="hidden" name="RedDef">
+        <input type="hidden" name="RedOff">
         <button type="submit" id="playBtn" disabled>Spill fussball</button>
     </form>
 

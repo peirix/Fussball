@@ -96,7 +96,8 @@
     <Content Include="App_Data\Fussball_log.ldf">
       <DependentUpon>Fussball.mdf</DependentUpon>
     </Content>
-    <Content Include="Content\img\bord.png" />
+    <Content Include="Content\img\table-vert.png" />
+    <Content Include="Content\img\table-hor.png" />
     <Content Include="Content\img\playfuss-inactive.png" />
     <Content Include="Content\img\playfuss.png" />
     <Content Include="Global.asax" />

@@ -21,7 +21,7 @@
         $(document).bind("mousemove", scrollPlayerList);
     });
 
-    $("#playerPicker ul li").dblclick(function () {
+    $("#playerPicker ul li").live("dblclick", function () {
         $elm = $(this);
         var $spot = $(".freeSpot:first");
         movePlayerToSpot($spot);
@@ -41,11 +41,23 @@
     });
 
     $(".freeSpot").live("click", function () {
-        var $selected = $("#playerPicker ul .selected");
+        var $selected = $("ul .selected");
         if ($selected.length > 0) {
             $elm = $selected;
             movePlayerToSpot($(this));
         }
+        $("#playerForm ul:empty").removeClass("filledSpot").addClass("freeSpot");
+    });
+
+    $(".filledSpot").live("click", function () {
+        $(".selected").removeClass("selected");
+        $("li", this).addClass("selected");
+        $("#playerForm .freeSpot").addClass("highlight");
+    }).live("dblclick", function () {
+        $("li", this).appendTo("#playerPicker ul");
+        $(this).removeClass("filledSpot").addClass("freeSpot");
+        $(".selected").removeClass("selected");
+        $("#playerForm .highlight").removeClass("highlight");
     });
 
     function scrollPlayerList(e) {
@@ -70,4 +82,14 @@
             $("#playBtn").attr("disabled", true);
         }
     }
+
+    $("#playerForm").submit(function () {
+        if ($("li", this).length < 4)
+            return false;
+
+        $("[name=BlueOff]").val($("#blueOff li").attr("data-playerid"));
+        $("[name=BlueDef]").val($("#blueDef li").attr("data-playerid"));
+        $("[name=RedOff]").val($("#redOff li").attr("data-playerid"));
+        $("[name=RedDef]").val($("#redDef li").attr("data-playerid"));
+    });
 });

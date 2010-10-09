@@ -40,19 +40,17 @@ function showMessage(msg, color) {
 }
 
 $(document).ready(function () {
-    $("button").hide();
 
     $("#undo").click(function () {
-        $("button").hide();
         $(this).hide();
+        $(".overlay").show();
     });
 
-    $("#BlueTeam, #RedTeam").click(function (e) {
-        if (e.target.tagName.toLowerCase() == "div") {
-            $(this).attr("id") == "BlueTeam" ? Goal.team = 0 : Goal.team = 1;
-            $("button").show();
-            $("#undo").show();
-        }
+    $("#BlueTeam .overlay, #RedTeam .overlay").click(function (e) {
+        e.preventDefault();
+        $(this).parent().attr("id") == "BlueTeam" ? Goal.team = 0 : Goal.team = 1;
+        $("#undo").show();
+        $(".overlay").hide();
     });
 
     $("button").click(function (e) {
@@ -100,7 +98,7 @@ $(document).ready(function () {
 
                 $this.siblings(".summary").append("<strong>" + scorerName + "</strong> - <a data-goalid='" + goalId + "'>Delete</a><br>");
 
-                $("button").hide();
+                $(".overlay").show();
             }
         });
     });

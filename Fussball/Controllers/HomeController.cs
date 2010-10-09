@@ -88,6 +88,8 @@ namespace Fussball.Controllers
 
             var viewmodel = new GameOverViewModel
             {
+                BlueGoals = goalRep.GetGoalsByGameAndTeam(game.ID, 0).Count(),
+                RedGoals = goalRep.GetGoalsByGameAndTeam(game.ID, 1).Count(),
                 Blue1 = playerRep.GetPlayer(game.Blue1),
                 Blue2 = playerRep.GetPlayer(game.Blue2),
                 Red1 = playerRep.GetPlayer(game.Red1),
