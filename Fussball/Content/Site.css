@@ -1,8 +1,37 @@
-﻿* { margin: 0; padding: 0; }
+﻿body, html { 
+    height: 100%; 
+    }
 
-body, html { height: 100%; font-size: 100%; font-family: Arial, Sans-Serif; }
+#main {
+    margin: 0 auto;
+    border: 1px solid red;
+    width: 1180px;
+    height: 924px;
+    padding: 50px;
+    }
 
 .clear { clear: both; }
+
+/* TYPOGRAPHY */
+body {
+    font-family: Tahoma, Verdana, Arial;
+    color: #333;
+    }
+
+h1 {
+    margin: 0 auto 20px auto;
+    font-size: 200%;
+    }
+
+h2 {
+    margin-bottom: 20px;
+    text-align: center;
+    }
+    
+a {
+    text-decoration: none;
+    color: #009d0c; 
+    }
 
 /* INDEX */
 #playerPicker {
@@ -19,10 +48,11 @@ body, html { height: 100%; font-size: 100%; font-family: Arial, Sans-Serif; }
         #playerForm > ul li {
             width: 80px;
             height: 60px;
-            padding-top: 20px;
+            padding: 20px 0 0 0;
             float: left;
+            border-bottom: 0 none;
             list-style: none;
-            margin: 0 5px;
+            margin: 0 10px 0 0;
             background-color: #ccc;
             -webkit-border-radius: 5px;
             text-align: center;
@@ -32,11 +62,10 @@ body, html { height: 100%; font-size: 100%; font-family: Arial, Sans-Serif; }
         #playerForm ul .selected { background-color: #ff0; }
 
 #playerForm {
-    height: 450px;
+    height: 580px;
     position: relative;
-    padding-top: 150px;
     width: 500px;
-    margin: 0 auto;
+    margin: 0 auto 30px auto;
 }
     #playerForm > ul {
         position: absolute;
@@ -46,10 +75,12 @@ body, html { height: 100%; font-size: 100%; font-family: Arial, Sans-Serif; }
         -webkit-border-radius: 5px;
         border: 2px dashed #000;
     }
-        #redDef { left: 160px; top: 30px; }
-        #redOff { left: 360px; top: 30px; }
-        #blueOff { left: 20px; top: 420px; }
-        #blueDef { left: 220px; top: 420px; }
+        
+        #redOff { top: 0px }
+        #redDef { top: 159px; }
+        
+        #blueDef { right: 0px; top: 159px; }
+        #blueOff { right: 0px; top: 365px; }
         
         #playerForm > .highlight {
             background-color: #4f4;
@@ -59,8 +90,9 @@ body, html { height: 100%; font-size: 100%; font-family: Arial, Sans-Serif; }
         #playerForm > ul li { margin: 0; }
         
     #table {
-        background: url(img/table-hor.png) no-repeat center center;
-        height: 254px;
+        background: url(img/table-vert.png) no-repeat center center;
+        height: 469px;
+        margin-top: 50px;
     }
     
     #playBtn {
@@ -81,8 +113,6 @@ body, html { height: 100%; font-size: 100%; font-family: Arial, Sans-Serif; }
 
 
 /* PLAY GAME */
-#main { height: 100%; }
-
 #message {
     width: 60%;
     height: 20%;
@@ -225,3 +255,72 @@ body, html { height: 100%; font-size: 100%; font-family: Arial, Sans-Serif; }
     background-color: #0f0;
     float: left;
     }
+    
+/* PLAYERS */
+#PlayerList {
+    background-color: #fff;
+    }
+
+    li {
+        padding: 15px;
+        margin-bottom: 5px;
+        border-bottom: 1px solid #dfdfdf;
+        }
+        
+        #PlayerList li span {
+            float: right;
+            }
+            
+/* PLAYER CARD */
+#PlayerCard {
+    border: 1px solid red;
+    margin: 0 auto;
+    width: 450px;
+    text-align: center;
+    padding: 20px 10px;
+    }
+
+            
+/* STATISTICS */
+#HallOfFameAndShame {
+    display: table;
+    clear: both;
+    margin: 0 auto 40px auto;
+    }
+    
+    #HallOfFameAndShame li {
+        margin: 0 10px 10px 0;
+        width: 200px;
+        padding: 20px 10px;
+        border: 1px solid red;
+        float: left;
+        text-align: center;
+
+    }
+    
+        .awardTitle {
+            font-style: italic;
+            display: block;
+            }
+        
+        .rewardedPlayer {
+            display: block;
+            font-size: 200%;
+            font-weight: bold;
+            margin: 5px 0;
+            }
+            
+.dataList {
+    margin: 0 auto;
+    width: 60%;
+    }
+
+    #NumberOfGamesList li {
+        
+        }
+    
+        .playerName {}
+    
+        .numberOfGames {
+            float: right;
+            }

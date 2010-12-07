@@ -17,7 +17,7 @@ namespace Fussball.Models
 
         public List<Player> GetAllPlayers()
         {
-            return db.Players.ToList();
+            return db.Players.OrderBy(p => p.Name).ToList();
         }
 
         public int GetPlayerGames(int playerID)

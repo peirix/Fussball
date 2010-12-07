@@ -7,17 +7,15 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
     <script src="<%= Url.Content("~/Scripts/index.js") %>"></script>
     
-    <h2>Velg spillere</h2>
+    <h1>Velg spillere</h1>
 
     <div id="playerPicker">
         <ul>
-            <%  foreach (var player in Model)
-                { %>
-                    <li data-playerid="<%= player.ID %>"><%=player.Name %></li>
+            <%  foreach (var player in Model) { %>
+            <li data-playerid="<%= player.ID %>"><%=player.Name %></li>
             <%  } %>
         </ul>
     </div>
-
     
     <form action="<%= Url.Content("~/Home/Play/") %>" method="post" name="StartupForm" id="playerForm">
         <ul id="redDef" class="freeSpot"></ul>
@@ -35,7 +33,7 @@
         <button type="submit" id="playBtn" disabled>Spill fussball</button>
     </form>
 
-    <form method="post" action="">
+    <form method="post" action="" id="NewPlayer">
         <h4>Opprett ny spiller</h4>
         <input type="text" name="name"><input type="submit" value="Opprett">
     </form>

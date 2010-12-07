@@ -100,6 +100,7 @@
     <Content Include="Content\img\table-hor.png" />
     <Content Include="Content\img\playfuss-inactive.png" />
     <Content Include="Content\img\playfuss.png" />
+    <Content Include="Content\Reset.css" />
     <Content Include="Global.asax" />
     <Content Include="Scripts\dragdrop.js" />
     <Content Include="Scripts\index.js" />
@@ -109,7 +110,9 @@
     <Content Include="Views\Player\Details.aspx" />
     <Content Include="Views\Player\Index.aspx" />
     <Content Include="Views\Statistics\Index.aspx" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>

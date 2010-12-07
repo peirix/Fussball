@@ -14,3 +14,11 @@ C:\projects\nonework\Fussball\Fussball.Tests\bin\Debug\Fussball.pdb
 C:\projects\nonework\Fussball\Fussball.Tests\obj\Debug\ResolveAssemblyReference.cache
 C:\projects\nonework\Fussball\Fussball.Tests\obj\Debug\Fussball.Tests.dll
 C:\projects\nonework\Fussball\Fussball.Tests\obj\Debug\Fussball.Tests.pdb
+C:\source\Fussball\Fussball.Tests\bin\Debug\Fussball.Tests.dll.config
+C:\source\Fussball\Fussball.Tests\bin\Debug\Fussball.Tests.dll
+C:\source\Fussball\Fussball.Tests\bin\Debug\Fussball.Tests.pdb
+C:\source\Fussball\Fussball.Tests\bin\Debug\Fussball.dll
+C:\source\Fussball\Fussball.Tests\bin\Debug\Fussball.pdb
+C:\source\Fussball\Fussball.Tests\obj\Debug\ResolveAssemblyReference.cache
+C:\source\Fussball\Fussball.Tests\obj\Debug\Fussball.Tests.dll
+C:\source\Fussball\Fussball.Tests\obj\Debug\Fussball.Tests.pdb
