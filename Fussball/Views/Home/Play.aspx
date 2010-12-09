@@ -22,7 +22,7 @@
                 <span class="closeSummary">Lukk</span>
                 <h1>Røde mål</h1>
             </div>
-            <div class="score"><strong>0</strong><a>Edit</a></div>
+            <div class="score"><strong>0</strong><a>Endre</a></div>
             <button id="<%= Model.Red1.ID %>" class="playerDefense"><%= Model.Red1.Name %></button>
             <button id="<%= Model.Red2.ID %>" class="playerOffense"><%= Model.Red2.Name %></button>
         </div>
@@ -32,7 +32,7 @@
                 <span class="closeSummary">Lukk</span>
                 <h1>Blå mål</h1>
             </div>
-            <div class="score"><strong>0</strong><a>Edit</a></div>
+            <div class="score"><strong>0</strong><a>Endre</a></div>
             <button id="<%= Model.Blue1.ID %>" class="playerDefense"><%= Model.Blue1.Name %></button>
             <button id="<%= Model.Blue2.ID %>" class="playerOffense"><%= Model.Blue2.Name %></button>
         </div>

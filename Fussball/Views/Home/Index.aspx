@@ -37,6 +37,9 @@
         <h4>Opprett ny spiller</h4>
         <input type="text" name="name"><input type="submit" value="Opprett">
     </form>
-    <a href="<%= Url.Content("~/Statistics/") %>">Statistikk</a> | <a href="<%= Url.Content("~/Player/") %>">Spillere</a>
+    <div id="Links">
+        <a href="<%= Url.Content("~/Statistics/") %>">Statistikk</a> | 
+        <a href="<%= Url.Content("~/Player/") %>">Spillere</a>
+    </div>
 
 </asp:Content>
