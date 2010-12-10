@@ -100,6 +100,7 @@
     <Content Include="Content\img\table-hor.png" />
     <Content Include="Content\img\playfuss-inactive.png" />
     <Content Include="Content\img\playfuss.png" />
+    <Content Include="Content\img\tilbake.png" />
     <Content Include="Content\Reset.css" />
     <Content Include="Global.asax" />
     <Content Include="Scripts\bigtarget.js" />
@@ -111,7 +112,6 @@
     <Content Include="Views\Home\GameOver.aspx" />
     <Content Include="Views\Home\Play.aspx" />
     <Content Include="Views\Player\Details.aspx" />
-    <Content Include="Views\Player\Index.aspx" />
     <Content Include="Views\Statistics\Index.aspx" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
