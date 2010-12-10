@@ -19,7 +19,21 @@
             </li>
     <%  } %>
     </ul>
-
+    <%--
+        * Spillerstats:
+            - kamper
+            - gjennomsnittsmål
+            - selvmål
+            - sluppet inn
+            - mål
+        
+        * Generelle
+            - Beste par
+            - Beste farge
+            - Beste posisjon
+            - Værste par
+    
+     --%>
     <table id="StatisticList" class="dataList">
         <thead>
             <tr>

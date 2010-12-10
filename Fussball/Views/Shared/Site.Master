@@ -11,6 +11,7 @@
     <script src="<%= Url.Content("~/Scripts/global.js") %>"></script>
     <script src="<%= Url.Content("~/Scripts/bigtarget.js") %>"></script>
     <script src="<%= Url.Content("~/Scripts/tablesorter.js") %>"></script>
+    <meta content="True" name="HandheldFriendly">
 </head>
 
 <body>
