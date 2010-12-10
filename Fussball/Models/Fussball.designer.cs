@@ -118,6 +118,8 @@ namespace Fussball.Models
 		
 		private int _WinningTeam;
 		
+		private System.Nullable<int> _IsTest;
+		
 		private EntityRef<Player> _Player;
 		
 		private EntityRef<Player> _Player1;
@@ -146,6 +148,8 @@ namespace Fussball.Models
     partial void OnRed2Changed();
     partial void OnWinningTeamChanging(int value);
     partial void OnWinningTeamChanged();
+    partial void OnIsTestChanging(System.Nullable<int> value);
+    partial void OnIsTestChanged();
     #endregion
 		
 		public Game()
@@ -333,6 +337,26 @@ namespace Fussball.Models
 			}
 		}
 		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_IsTest", DbType="Int")]
+		public System.Nullable<int> IsTest
+		{
+			get
+			{
+				return this._IsTest;
+			}
+			set
+			{
+				if ((this._IsTest != value))
+				{
+					this.OnIsTestChanging(value);
+					this.SendPropertyChanging();
+					this._IsTest = value;
+					this.SendPropertyChanged("IsTest");
+					this.OnIsTestChanged();
+				}
+			}
+		}
+		
 		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Player_Game", Storage="_Player", ThisKey="Blue1", OtherKey="ID", IsForeignKey=true)]
 		public Player Player
 		{
@@ -500,6 +524,12 @@ namespace Fussball.Models
 		
 		private string _Name;
 		
+		private string _Image_Small;
+		
+		private string _Image_Large;
+		
+		private string _Image_Square;
+		
 		private EntitySet<Game> _Games;
 		
 		private EntitySet<Game> _Games1;
@@ -520,6 +550,12 @@ namespace Fussball.Models
     partial void OnIDChanged();
     partial void OnNameChanging(string value);
     partial void OnNameChanged();
+    partial void OnImage_SmallChanging(string value);
+    partial void OnImage_SmallChanged();
+    partial void OnImage_LargeChanging(string value);
+    partial void OnImage_LargeChanged();
+    partial void OnImage_SquareChanging(string value);
+    partial void OnImage_SquareChanged();
     #endregion
 		
 		public Player()
@@ -569,6 +605,66 @@ namespace Fussball.Models
 					this._Name = value;
 					this.SendPropertyChanged("Name");
 					this.OnNameChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Image_Small", DbType="VarChar(255)")]
+		public string Image_Small
+		{
+			get
+			{
+				return this._Image_Small;
+			}
+			set
+			{
+				if ((this._Image_Small != value))
+				{
+					this.OnImage_SmallChanging(value);
+					this.SendPropertyChanging();
+					this._Image_Small = value;
+					this.SendPropertyChanged("Image_Small");
+					this.OnImage_SmallChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Image_Large", DbType="VarChar(255)")]
+		public string Image_Large
+		{
+			get
+			{
+				return this._Image_Large;
+			}
+			set
+			{
+				if ((this._Image_Large != value))
+				{
+					this.OnImage_LargeChanging(value);
+					this.SendPropertyChanging();
+					this._Image_Large = value;
+					this.SendPropertyChanged("Image_Large");
+					this.OnImage_LargeChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Image_Square", DbType="VarChar(255)")]
+		public string Image_Square
+		{
+			get
+			{
+				return this._Image_Square;
+			}
+			set
+			{
+				if ((this._Image_Square != value))
+				{
+					this.OnImage_SquareChanging(value);
+					this.SendPropertyChanging();
+					this._Image_Square = value;
+					this.SendPropertyChanged("Image_Square");
+					this.OnImage_SquareChanged();
 				}
 			}
 		}

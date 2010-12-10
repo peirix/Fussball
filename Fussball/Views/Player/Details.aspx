@@ -5,10 +5,10 @@
 </asp:Content>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
-
+    <a class="backBtn"></a>
     <div id="PlayerCard">
         <h1><%= Model.Player.Name %></h1>
-        [BILDE INN HER]<br />
+        <img src="<%= Model.Player.Image_Large %>" alt="Bilde av <%= Model.Player.Name %>">
         <p>Mål pr kamp: <%= Model.AvgGoals %></p>
     </div>
 

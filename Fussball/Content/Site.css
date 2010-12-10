@@ -5,8 +5,8 @@
 #main {
     margin: 0 auto;
     width: 1180px;
-    height: 924px;
     padding: 50px;
+    position: relative;
     }
 
 .clear { clear: both; }
@@ -32,6 +32,29 @@ a {
     color: #009d0c; 
     }
 
+.backBtn {
+    display: block;
+    width: 137px;
+    height: 58px;
+    background: url(img/tilbake.png) no-repeat;
+    }
+
+.largeBtn {
+    width: 296px;
+    height: 53px;
+    background: url(img/playfuss.png) no-repeat;
+    border: 0;
+    color: #fff;
+    font-size: 22px;
+    text-shadow: -1px -1px #000;
+    cursor: pointer;
+    margin: 0 0 30px -148px;
+    left: 50%;
+    position: relative;
+    display: block;
+    text-align: center;
+}
+
 /* INDEX */
 #playerPicker {
     width: 100%;
@@ -46,19 +69,36 @@ a {
         #playerPicker ul li,
         #playerForm > ul li {
             width: 80px;
-            height: 60px;
-            padding: 20px 0 0 0;
+            height: 80px;
             float: left;
             border-bottom: 0 none;
             list-style: none;
             margin: 0 10px 0 0;
-            background-color: #ccc;
             -webkit-border-radius: 5px;
             text-align: center;
+            padding: 0;
+            position: relative;
         }
+            
+            #playerPicker ul li img,
+            #playerForm ul li img { width: 80px; }
+            
+            #playerPicker ul li span,
+            #playerForm ul li span {
+                display: block;
+                background-color: rgba(0,0,0,0.5);
+                margin-top: -18px;
+                color: #fff;
+                position: absolute;
+                width: 100%;
+            }
         
         #playerPicker ul .selected,
-        #playerForm ul .selected { background-color: #ff0; }
+        #playerForm ul .selected {
+            background-color: #000;
+        }
+        
+        #playerPicker ul .selected img { opacity: 0.8; }
 
 #playerForm {
     height: 580px;
@@ -72,7 +112,7 @@ a {
         width: 80px;
         padding: 10px;
         -webkit-border-radius: 5px;
-        border: 2px dashed #000;
+        border: 1px dashed #333;
     }
         
         #redOff { top: 0px }
@@ -97,16 +137,6 @@ a {
     #playBtn {
         position: absolute;
         bottom: 0;
-        width: 296px;
-        left: 50%;
-        margin: 0 0 30px -148px;
-        height: 53px;
-        background-image: url(img/playfuss.png);
-        border: 0;
-        color: #fff;
-        font-size: 22px;
-        text-shadow: -1px -1px #000;
-        cursor: pointer;
     }
         #playBtn:disabled { background-image: url(img/playfuss-inactive.png); }
         
@@ -259,12 +289,9 @@ a {
 #resultList .red  { color: #f00; }
 
 #done {
-    display: block;
-    margin-top: 50px;
-    padding: 20px 30px;
-    background-color: #0f0;
-    float: left;
-    }
+    padding-top: 14px;
+    margin-top: 40px;
+}
     
 /* PLAYERS */
 #PlayerList {
@@ -285,7 +312,7 @@ a {
 #PlayerCard {
     border: 1px solid #dfdfdf;
     margin: 0 auto;
-    width: 450px;
+    width: 780px;
     text-align: center;
     padding: 20px 10px;
     }
@@ -300,17 +327,17 @@ a {
     
     #HallOfFameAndShame li {
         margin: 0 10px 10px 0;
-        width: 200px;
-        padding: 20px 10px;
+        width: 230px;
+        padding: 10px 0;
         border: 1px solid #dfdfdf;
         float: left;
         text-align: center;
-
     }
     
         .awardTitle {
             font-style: italic;
             display: block;
+            margin-bottom: 5px;
             }
         
         .rewardedPlayer {
@@ -324,13 +351,41 @@ a {
     margin: 0 auto;
     width: 60%;
     }
-
-    #NumberOfGamesList li {
-        
+    
+    #StatisticList {
+        border-collapse: collapse;
         }
     
-        .playerName {}
+        #StatisticList th {
+            text-align: left;
+            padding: 10px 5px;
+            border-bottom: 2px solid #3336;
+            cursor: pointer;
+        }
+            
+            th span {
+                display: block;
+                float: left;
+            }
+        
+            th .sorter {
+                border-color: transparent;
+                border-width: 6px;
+                border-style: solid;
+                width: 0;
+                height: 0;
+                margin-left: 10px;
+            }
+            
+            .headerSortDown .sorter { border-color: #f00 transparent transparent transparent; }
+            .headerSortUp .sorter   { border-color: transparent transparent #f00 transparent; }
+        
+        #StatisticList td {
+            padding: 10px 5px;
+            border-bottom: 1px solid #dfdfdf;
+        }
     
-        .numberOfGames {
-            float: right;
+        #StatisticList tr.hover {
+            background-color: #dfdfdf;
+            cursor: pointer;
             }

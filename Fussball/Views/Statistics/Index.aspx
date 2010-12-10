@@ -6,25 +6,36 @@
 </asp:Content>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
-
+    <a class="backBtn"></a>
     <h1>Statistikk</h1>
     <ul id="HallOfFameAndShame">
     <%  foreach (var stat in Model) 
         { %>
             <li>
                 <span class="awardTitle"><%= stat.Desc %></span> 
+                <img src="<%= stat.Player.Image_Small %>" alt="bilde av <%= stat.Player.Name %>">
                 <span class="rewardedPlayer"><%= stat.Player.Name %></span> 
                 <small>(<%= stat.Num %>)</small>
             </li>
     <%  } %>
     </ul>
 
-    <h2>Antall kamper</h2>
-    <ul id="NumberOfGamesList" class="dataList">
-    <%  foreach (var player in ViewData["AllPlayers"] as Dictionary<Fussball.Models.Player, int>)
-        { %>
-            <li><span class="playerName"><%= player.Key.Name %></span> <span class="numberOfGames"><%= player.Value %></span></li>
-    <%  } %>
-    </ul>
+    <table id="StatisticList" class="dataList">
+        <thead>
+            <tr>
+                <th><span>Spiller</span> <span class="sorter"></span></th>
+                <th><span>Kamper</span> <span class="sorter"></span></th>
+            </tr>
+        </thead>
+        <tbody>
+        <%  foreach (var player in ViewData["AllPlayers"] as Dictionary<Fussball.Models.Player, int>)
+            { %>
+            <tr>
+                <td><a href="<%= Url.Content("~/Player/Details/") %>" class="playerName"><%= player.Key.Name %></a></td>
+                <td class="numberOfGames"><%= player.Value %></td>
+            </tr>
+        <%  } %>
+        </tbody>
+    </table>
 
 </asp:Content>

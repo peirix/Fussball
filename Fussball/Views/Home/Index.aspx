@@ -12,7 +12,10 @@
     <div id="playerPicker">
         <ul>
             <%  foreach (var player in Model) { %>
-            <li data-playerid="<%= player.ID %>"><%=player.Name %></li>
+            <li data-playerid="<%= player.ID %>">
+                <img src="<%= player.Image_Square %>" alt="bilde av <%= player.Name %>">
+                <span><%= player.Name %></span>
+            </li>
             <%  } %>
         </ul>
     </div>
@@ -30,7 +33,7 @@
         <input type="hidden" name="BlueOff">
         <input type="hidden" name="RedDef">
         <input type="hidden" name="RedOff">
-        <button type="submit" id="playBtn" disabled>Spill fussball</button>
+        <button type="submit" id="playBtn" class="largeBtn" disabled>Spill fussball</button>
     </form>
 
     <form method="post" action="" id="NewPlayer">
@@ -38,8 +41,7 @@
         <input type="text" name="name"><input type="submit" value="Opprett">
     </form>
     <div id="Links">
-        <a href="<%= Url.Content("~/Statistics/") %>">Statistikk</a> | 
-        <a href="<%= Url.Content("~/Player/") %>">Spillere</a>
+        <a href="<%= Url.Content("~/Statistics/") %>">Statistikk</a>
     </div>
 
 </asp:Content>

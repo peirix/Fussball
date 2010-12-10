@@ -102,9 +102,12 @@
     <Content Include="Content\img\playfuss.png" />
     <Content Include="Content\Reset.css" />
     <Content Include="Global.asax" />
+    <Content Include="Scripts\bigtarget.js" />
     <Content Include="Scripts\dragdrop.js" />
+    <Content Include="Scripts\global.js" />
     <Content Include="Scripts\index.js" />
     <Content Include="Scripts\playgame.js" />
+    <Content Include="Scripts\tablesorter.js" />
     <Content Include="Views\Home\GameOver.aspx" />
     <Content Include="Views\Home\Play.aspx" />
     <Content Include="Views\Player\Details.aspx" />

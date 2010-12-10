@@ -6,11 +6,11 @@
 
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
 
-    <h2>
+    <h1>
         Resultat: <span id="blueGoals"><%= Model.BlueGoals %></span> - <span id="redGoals"><%= Model.RedGoals %></span>
-    </h2>
+    </h1>
 
-    <ul id="resultList">
+    <ul id="resultList" class="dataList">
         <%  foreach (var score in Model.GameScore)
             {
                 var scoreMin = new TimeSpan();
@@ -24,7 +24,7 @@
         <%  } %>
     </ul>
 
-    <a id="done" href="<%= Url.Content("~/Home") %>">Ferdig!</a>
+    <a id="done" class="largeBtn" href="<%= Url.Content("~/Home") %>">Ferdig!</a>
 
 </asp:Content>
 

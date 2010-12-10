@@ -13,7 +13,7 @@
 
     $("#playerPicker ul").mousedown(function (e) {
         mouseOnPlayer = e.target.tagName.toLowerCase() == "li" ? true : false;
-        $elm = $(e.target);
+        $elm = mouseOnPlayer ? $(e.target) : $(e.target).parent();
         mouseLeft = e.pageX;
         marginLeft = $("#playerPicker ul").css("margin-left");
         marginLeft = marginLeft.substr(0, marginLeft.indexOf("px")) - 0; //casting to int
@@ -44,6 +44,7 @@
         var $selected = $("ul .selected");
         if ($selected.length > 0) {
             $elm = $selected;
+            //TODO: behold i liste, men gjør halvt gjennomsiktig
             movePlayerToSpot($(this));
         }
         $("#playerForm ul:empty").removeClass("filledSpot").addClass("freeSpot");
@@ -63,10 +64,13 @@
     function scrollPlayerList(e) {
         var newLeft = e.pageX - mouseLeft;
         newLeft += marginLeft;
+        console.log(newLeft);
 
-        if (newLeft > 0) newLeft = 0;
+        if (newLeft > 0)
+            newLeft = 0;
 
-        if (newLeft < $(window).width() - $("#playerPicker ul").width()) newLeft = $(window).width() - $("#playerPicker ul").width();
+        if (newLeft < $("#playerPicker").width() - $("#playerPicker ul").width())
+            newLeft = $("#playerPicker").width() - $("#playerPicker ul").width();
 
         $("#playerPicker ul").css("margin-left", newLeft);
     }
