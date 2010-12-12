@@ -73,6 +73,7 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\PlayerController.cs" />
     <Compile Include="Controllers\StatisticsController.cs" />
+    <Compile Include="Models\Player.cs" />
     <Compile Include="Models\PlayerRepository.cs" />
     <Compile Include="Models\GoalRepository.cs" />
     <Compile Include="Global.asax.cs">
@@ -96,6 +97,7 @@
     <Content Include="App_Data\Fussball_log.ldf">
       <DependentUpon>Fussball.mdf</DependentUpon>
     </Content>
+    <Content Include="Content\img\default_square.jpg" />
     <Content Include="Content\img\table-vert.png" />
     <Content Include="Content\img\table-hor.png" />
     <Content Include="Content\img\playfuss-inactive.png" />

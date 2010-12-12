@@ -24,7 +24,7 @@ namespace Fussball.Controllers
         public ActionResult Details(int id)
         {
             var player = playerRep.GetPlayer(id);
-            var goals = playerRep.GetPlayerGoals(player);
+            var goals = player.TotalGoals();
             var games = playerRep.GetPlayerGames(id);
 
             var avg = (double)goals / (double)games;

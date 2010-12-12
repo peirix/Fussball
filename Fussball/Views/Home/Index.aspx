@@ -13,7 +13,11 @@
         <ul>
             <%  foreach (var player in Model) { %>
             <li data-playerid="<%= player.ID %>">
+                <% if (!string.IsNullOrEmpty(player.Image_Square)) { %>
                 <img src="<%= player.Image_Square %>" alt="bilde av <%= player.Name %>">
+                <% } else { %>
+                <img src="<%= Url.Content("~/Content/img/default.jpg") %>" alt="bilde av <%= player.Name %>">
+                <% } %>
                 <span><%= player.Name %></span>
             </li>
             <%  } %>

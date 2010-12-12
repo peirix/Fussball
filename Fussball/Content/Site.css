@@ -248,29 +248,38 @@ a {
                 }
 
         #PlayGame div button {
-            height: 100px;
+            height: 200px;
             width: 200px;
-            font-size: 40px;
+            font-size: 30px;
             display: block;
             position: absolute;
+            padding: 5px;
         }
+            #PlayGame div button img { width: 100%; }
+            #PlayGame div button span {
+                display: block;
+                position: absolute;
+                bottom: 5px;
+                text-align: center;
+                width: 186px;
+                background-color: rgba(255,255,255,0.8);
+            }
         
         #PlayGame #RedTeam button {
             background-color: #f00;
             border: 2px inset #f00;
             left: 150px;
         }
-        #PlayGame #RedTeam .playerDefense { top: 450px; }
-        #PlayGame #RedTeam .playerOffense { top: 620px; }
+        #PlayGame #RedTeam .playerDefense { top: 383px; }
+        #PlayGame #RedTeam .playerOffense { top: 597px; }
         
         #PlayGame #BlueTeam button {
             background-color: #00f;
             border: 2px inset #00f;
-            color: White;
             right: 150px;
         }
-        #PlayGame #BlueTeam .playerDefense { top: 304px; }
-        #PlayGame #BlueTeam .playerOffense { top: 506px; }
+        #PlayGame #BlueTeam .playerDefense { top: 240px; }
+        #PlayGame #BlueTeam .playerOffense { top: 457px; }
 
     #PlayGame .playerDefense {
         bottom: 50%;

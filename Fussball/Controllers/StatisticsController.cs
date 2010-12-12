@@ -17,7 +17,7 @@ namespace Fussball.Controllers
         public ActionResult Index()
         {
             //TODO: WTF!?
-
+            /*
             //Get the properties for the statistics view model
             List<StatisticsIndexViewModel> viewmodel = new List<StatisticsIndexViewModel>();
             viewmodel.Add(new StatisticsIndexViewModel
@@ -52,9 +52,14 @@ namespace Fussball.Controllers
             }
 
 
-            ViewData["AllPlayers"] = playerGames;
+            ViewData["AllPlayers"] = playerGames;*/
 
-            return View(viewmodel);
+            ViewData["TopScorer"] = playerRep.GetTopScorer();
+            ViewData["WorstScorer"] = playerRep.GetWorstScorer();
+            ViewData["MostSelfScore"] = playerRep.GetMostSelfScores();
+            ViewData["LeastSelfScore"] = playerRep.GetLeastSelfScores();
+
+            return View(playerRep.GetAllPlayers());
         }
 
 
