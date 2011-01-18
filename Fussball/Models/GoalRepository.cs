@@ -30,6 +30,14 @@ namespace Fussball.Models
                     select goal).ToList();
         }
 
+        public List<Goal> GetGoalsByPlayer(int playerID)
+        {
+            return (from goal in db.Goals
+                    where goal.PlayerID == playerID
+                    where goal.SelfGoal == 0
+                    select goal).ToList();
+        }
+
         //Insert/Delete/Update
         public void Add(Goal goal)
         {

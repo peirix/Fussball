@@ -118,7 +118,7 @@ namespace Fussball.Models
 		
 		private int _WinningTeam;
 		
-		private System.Nullable<int> _IsTest;
+		private bool _IsTest;
 		
 		private EntityRef<Player> _Player;
 		
@@ -148,7 +148,7 @@ namespace Fussball.Models
     partial void OnRed2Changed();
     partial void OnWinningTeamChanging(int value);
     partial void OnWinningTeamChanged();
-    partial void OnIsTestChanging(System.Nullable<int> value);
+    partial void OnIsTestChanging(bool value);
     partial void OnIsTestChanged();
     #endregion
 		
@@ -337,8 +337,8 @@ namespace Fussball.Models
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_IsTest", DbType="Int")]
-		public System.Nullable<int> IsTest
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_IsTest", DbType="Bit NOT NULL")]
+		public bool IsTest
 		{
 			get
 			{

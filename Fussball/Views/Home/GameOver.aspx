@@ -9,21 +9,31 @@
     <h1>
         Resultat: <span id="blueGoals"><%= Model.BlueGoals %></span> - <span id="redGoals"><%= Model.RedGoals %></span>
     </h1>
+    <div id="GoalLists">
+        <ul id="blueGoalsList" class="dataList">
+            <%  foreach (var score in Model.GameScore.Where(g => g.Team == 0)) {
+                    var scoreMin = new TimeSpan();
+                    scoreMin = score.GoalDate - Model.Game.DateStart; 
+            %>
+                    <li <%= score.SelfGoal == 1 ? "class='selfgoal'" : "" %>>
+                        <%= score.Player.Name %>
+                        <small>(<%= Math.Round(scoreMin.TotalMinutes) %>min.)</small>
+                    </li>
+            <%  } %>
+        </ul>
 
-    <ul id="resultList" class="dataList">
-        <%  foreach (var score in Model.GameScore)
-            {
+        <ul id="redGoalsList" class="dataList">
+            <% foreach (var score in Model.GameScore.Where(g => g.Team == 1)) {
                 var scoreMin = new TimeSpan();
                 scoreMin = score.GoalDate - Model.Game.DateStart;
-                
-                %>
-                <li class="<%= score.Team == 0 ? "blue" : "red" %>">
+            %>
+                <li <%= score.SelfGoal == 1 ? "class='selfgoal'" : "" %>>
                     <%= score.Player.Name %>
                     <small>(<%= Math.Round(scoreMin.TotalMinutes) %>min.)</small>
                 </li>
-        <%  } %>
-    </ul>
-
+            <% } %>
+        </ul>
+    </div>
     <a id="done" class="largeBtn" href="<%= Url.Content("~/Home") %>">Ferdig!</a>
 
 </asp:Content>

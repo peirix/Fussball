@@ -70,6 +70,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\DebugController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\PlayerController.cs" />
     <Compile Include="Controllers\StatisticsController.cs" />
@@ -97,20 +98,38 @@
     <Content Include="App_Data\Fussball_log.ldf">
       <DependentUpon>Fussball.mdf</DependentUpon>
     </Content>
+    <Content Include="Content\images\ui-bg_diagonals-thick_18_b81900_40x40.png" />
+    <Content Include="Content\images\ui-bg_diagonals-thick_20_666666_40x40.png" />
+    <Content Include="Content\images\ui-bg_flat_10_000000_40x100.png" />
+    <Content Include="Content\images\ui-bg_glass_100_f6f6f6_1x400.png" />
+    <Content Include="Content\images\ui-bg_glass_100_fdf5ce_1x400.png" />
+    <Content Include="Content\images\ui-bg_glass_65_ffffff_1x400.png" />
+    <Content Include="Content\images\ui-bg_gloss-wave_35_f6a828_500x100.png" />
+    <Content Include="Content\images\ui-bg_highlight-soft_100_eeeeee_1x100.png" />
+    <Content Include="Content\images\ui-bg_highlight-soft_75_ffe45c_1x100.png" />
+    <Content Include="Content\images\ui-icons_222222_256x240.png" />
+    <Content Include="Content\images\ui-icons_228ef1_256x240.png" />
+    <Content Include="Content\images\ui-icons_ef8c08_256x240.png" />
+    <Content Include="Content\images\ui-icons_ffd27a_256x240.png" />
+    <Content Include="Content\images\ui-icons_ffffff_256x240.png" />
+    <Content Include="Content\img\default_small.jpg" />
     <Content Include="Content\img\default_square.jpg" />
     <Content Include="Content\img\table-vert.png" />
     <Content Include="Content\img\table-hor.png" />
     <Content Include="Content\img\playfuss-inactive.png" />
     <Content Include="Content\img\playfuss.png" />
     <Content Include="Content\img\tilbake.png" />
+    <Content Include="Content\jquery-ui-1.8.8.custom.css" />
     <Content Include="Content\Reset.css" />
     <Content Include="Global.asax" />
     <Content Include="Scripts\bigtarget.js" />
     <Content Include="Scripts\dragdrop.js" />
     <Content Include="Scripts\global.js" />
     <Content Include="Scripts\index.js" />
+    <Content Include="Scripts\jquery.ui.js" />
     <Content Include="Scripts\playgame.js" />
     <Content Include="Scripts\tablesorter.js" />
+    <Content Include="Views\Debug\Index.aspx" />
     <Content Include="Views\Home\GameOver.aspx" />
     <Content Include="Views\Home\Play.aspx" />
     <Content Include="Views\Player\Details.aspx" />

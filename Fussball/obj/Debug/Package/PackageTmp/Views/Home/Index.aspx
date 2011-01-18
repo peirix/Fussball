@@ -5,48 +5,49 @@
 </asp:Content>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
-    <a href="<%= Url.Content("~/Statistics/") %>">Statistikk</a> | <a href="<%= Url.Content("~/Player/") %>">Spillere</a>
+    <script src="<%= Url.Content("~/Scripts/index.js") %>"></script>
+    
+    <h1>Velg spillere</h1>
 
-    <h2>Velg spillere</h2>
-    <form action="<%= Url.Content("~/Home/Play/") %>" method="post" name="StartupForm">
-        <div id="BlueTeam">
-            <select id="BlueDef" name="BlueDef">
-                <option value="0">Velg blå forsvarsspiller</option>
-                <%  foreach (var player in Model)
-                    { %>
-                        <option value="<%= player.ID %>"><%= player.Name %></option>
-                <%  } %>
-            </select>
-            <select id="BlueOff" name="BlueOff">
-                <option value="0">Velg blå angrepsspiller</option>
-                <%  foreach (var player in Model)
-                    { %>
-                        <option value="<%= player.ID %>"><%= player.Name %></option>
-                <%  } %>
-            </select>
-        </div>
+    <div id="playerPicker">
+        <ul>
+            <%  foreach (var player in Model) { %>
+            <li data-playerid="<%= player.ID %>">
+                <% if (!string.IsNullOrEmpty(player.Image_Square)) { %>
+                <img src="<%= player.Image_Square %>" alt="bilde av <%= player.Name %>">
+                <% } else { %>
+                <img src="<%= Url.Content("~/Content/img/default_square.jpg") %>" alt="bilde av <%= player.Name %>">
+                <% } %>
+                <span><%= player.Name %></span>
+            </li>
+            <%  } %>
+        </ul>
+    </div>
+    
+    <form action="<%= Url.Content("~/Home/Play/") %>" method="post" name="StartupForm" id="playerForm">
+        <ul id="blueDef" class="freeSpot"></ul>
+        <ul id="blueOff" class="freeSpot"></ul>
 
-        <div id="RedTeam">
-            <select id="RedDef" name="RedDef">
-                <option value="0">Velg rød forsvarsspiller</option>
-                <%  foreach (var player in Model)
-                    { %>
-                        <option value="<%= player.ID %>"><%= player.Name %></option>
-                <%  } %>
-            </select>
-            <select id="RedOff" name="RedOff">
-                <option value="0">Velg rød angrepsspiller</option>
-                <%  foreach (var player in Model)
-                    { %>
-                        <option value="<%= player.ID %>"><%= player.Name %></option>
-                <%  } %>
-            </select>
-        </div>
-        <button type="submit" style="padding: 10px;">Play game!</button>
+        <div id="table"></div>
+        
+        <ul id="redOff" class="freeSpot"></ul>
+        <ul id="redDef" class="freeSpot"></ul>
+
+        <input type="hidden" name="BlueDef">
+        <input type="hidden" name="BlueOff">
+        <input type="hidden" name="RedDef">
+        <input type="hidden" name="RedOff">
+        <input type="hidden" name="IsTest">
+        <button type="submit" id="playBtn" class="largeBtn" disabled>Spill fussball</button>
+        <button type="submit" id="playTestBtn">Spill testkamp</button>
     </form>
 
-    <form method="post" action="">
+    <form method="post" action="" id="NewPlayer">
         <h4>Opprett ny spiller</h4>
         <input type="text" name="name"><input type="submit" value="Opprett">
     </form>
+    <div id="Links">
+        <a href="<%= Url.Content("~/Statistics/") %>">Statistikk</a>
+    </div>
+
 </asp:Content>

@@ -24,22 +24,9 @@ namespace Fussball.Controllers
         public ActionResult Details(int id)
         {
             var player = playerRep.GetPlayer(id);
-            var goals = player.TotalGoals();
-            var games = playerRep.GetPlayerGames(id);
 
-            var avg = (double)goals / (double)games;
-
-            avg = Math.Round(avg, 2);
-
-            PlayerViewModel viewmodel = new PlayerViewModel
-            {
-                Player = player,
-                Games = games,
-                Goals = goals,
-                AvgGoals = avg
-            };
             
-            return View(viewmodel);
+            return View(player);
         }
 
     }

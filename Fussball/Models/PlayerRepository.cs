@@ -54,7 +54,7 @@ namespace Fussball.Models
         public Player GetMostSelfScores()
         {
             return (from player in db.Players
-                    orderby player.Goals.Where(s => s.SelfGoal == 1).Count() descending
+                    orderby player.Goals.Where(s => s.SelfGoal == 1).Count() + player.Goals1.Where(s => s.SelfGoal == 1).Count() descending
                     select player).First();
         }
 
@@ -66,9 +66,22 @@ namespace Fussball.Models
                     select player).First();
         }
 
+        public Player GetBestRanked()
+        {
+            return (from player in db.Players
+                    orderby (player.TotalGoals() - player.LetInGoals() - (player.TotalSelfGoals() * 2)) / player.TotalGames() descending
+                    select player).First();
+        }
+
         public Player GetTopWinner()
         {
             //Get all winning teams
+            var red1Wins = db.Games.Where(g => g.WinningTeam == 0).Select(g => g.Red1);
+            var red2Wins = db.Games.Where(g => g.WinningTeam == 0).Select(g => g.Red2);
+            var blue1Wins = db.Games.Where(g => g.WinningTeam == 1).Select(g => g.Blue1);
+            var blue2Wins = db.Games.Where(g => g.WinningTeam == 1).Select(g => g.Blue2);
+
+            //Count which player occures the most
 
             throw new NotImplementedException();
         }

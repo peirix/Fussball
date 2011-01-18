@@ -10,6 +10,11 @@ namespace Fussball.Models
         FussballDataContext db = new FussballDataContext();
 
         //Queries
+        public IEnumerable<Game> GetAllGames()
+        {
+            return db.Games;
+        }
+
         public Game GetGame(int GameID)
         {
             return db.Games.Where(g => g.ID == GameID).SingleOrDefault();
@@ -19,6 +24,11 @@ namespace Fussball.Models
         public void Add(Game game)
         {
             db.Games.InsertOnSubmit(game);
+        }
+
+        public void Delete(Game game)
+        {
+            db.Games.DeleteOnSubmit(game);
         }
 
         //Persist

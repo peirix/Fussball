@@ -10,7 +10,7 @@
       <Column Name="Red1" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
       <Column Name="Red2" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
       <Column Name="WinningTeam" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="IsTest" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="IsTest" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
       <Association Name="Player_Game" Member="Player" ThisKey="Blue1" OtherKey="ID" Type="Player" IsForeignKey="true" />
       <Association Name="Player_Game1" Member="Player1" ThisKey="Blue2" OtherKey="ID" Type="Player" IsForeignKey="true" />
       <Association Name="Player_Game2" Member="Player2" ThisKey="Red1" OtherKey="ID" Type="Player" IsForeignKey="true" />

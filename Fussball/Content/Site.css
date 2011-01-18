@@ -5,7 +5,7 @@
 #main {
     margin: 0 auto;
     width: 1180px;
-    padding: 50px;
+    padding: 35px 50px;
     position: relative;
     }
 
@@ -20,6 +20,7 @@ body {
 h1 {
     margin: 0 auto 20px auto;
     font-size: 200%;
+    float: left;
     }
 
 h2 {
@@ -37,6 +38,7 @@ a {
     width: 137px;
     height: 58px;
     background: url(img/tilbake.png) no-repeat;
+    float: left;
     }
 
 .largeBtn {
@@ -60,6 +62,7 @@ a {
     width: 100%;
     overflow: hidden;
     height: 80px;
+    clear: left;
 }
     #playerPicker ul {
         width: 9999px;
@@ -115,11 +118,11 @@ a {
         border: 1px dashed #333;
     }
         
-        #redOff { top: 0px }
-        #redDef { top: 159px; }
+        #redOff { right: 0px; top: 159px }
+        #redDef { right: 0px; top: 365px; }
         
-        #blueDef { right: 0px; top: 159px; }
-        #blueOff { right: 0px; top: 365px; }
+        #blueDef { top: 0px; }
+        #blueOff { top: 159px; }
         
         #playerForm > .highlight {
             background-color: #4f4;
@@ -139,6 +142,16 @@ a {
         bottom: 0;
     }
         #playBtn:disabled { background-image: url(img/playfuss-inactive.png); }
+        
+    #playTestBtn {
+        position: absolute;
+        top: -230px;
+        left: 150px;
+        width: 200px;
+        background-color: #333;
+        height: 40px;
+        visibility: hidden;
+    }
         
 #NewPlayer {
     width: auto;
@@ -184,24 +197,15 @@ a {
 #PlayGame {
     width: 1280px;
     height: 1024px;
-    margin: -50px;
+    margin: -35px -50px;
     overflow: hidden;
     background: url(img/table-vert.png) no-repeat center 288px;
 }
-        
-    #PlayGame #RedTeam .overlay,
-    #PlayGame #BlueTeam .overlay  {
-        background-color: #f00;
-        height: 100%;
-        width: 100%;
-        opacity: 0.4;
-        position: absolute;
-        z-index: 10;
-    }
-    #PlayGame #BlueTeam .overlay { background-color: #00f; }
-
-    #PlayGame #RedTeam,
-    #PlayGame #BlueTeam {
+    #RedTeam { background-color: rgba(200,0,0,0.5); }
+    #BlueTeam { background-color: rgba(0,0,200,0.5); }
+    
+    #RedTeam,
+    #BlueTeam {
         float: right;
         width: 50%;
         height: 100%;
@@ -218,6 +222,7 @@ a {
             border: 2px solid #000;
             display: none;
             z-index: 11;
+            background-color: #fff;
         }
             #PlayGame .closeSummary {
                 float: right;
@@ -270,8 +275,8 @@ a {
             border: 2px inset #f00;
             left: 150px;
         }
-        #PlayGame #RedTeam .playerDefense { top: 383px; }
-        #PlayGame #RedTeam .playerOffense { top: 597px; }
+        #PlayGame #RedTeam .playerOffense { top: 383px; }
+        #PlayGame #RedTeam .playerDefense { top: 597px; }
         
         #PlayGame #BlueTeam button {
             background-color: #00f;
@@ -289,17 +294,95 @@ a {
         bottom: 0;
     }
     
+    #RedSwitch,
+    #BlueSwitch {
+        height: 35px;
+        width: 100px;
+        background-color: rgba(100,200,100,0.9);
+        position: absolute;
+        color: #000;
+        text-transform: uppercase;
+        text-align: center;
+        padding-top: 20px;
+        display: none;
+    }
+    
+    #RedSwitch {
+        top: 566px;
+        right: 177px;
+    }
+    #BlueSwitch {
+        top: 424px;
+        left: 177px;
+    }
+    
+    #SelfGoalOverlay {
+        width: 600px;
+        height: 74px;
+        position: absolute;
+        top: 810px;
+        left: 340px;
+        font-size: 40px;
+        text-align: center;
+        padding-top: 37px;
+        background-color: rgba(200, 200, 100, 0.9);
+        display: none;
+    }
+    
+    #PlayTime {
+        font-family: Consolas, Monospace;
+        font-size: 50px;
+        position: absolute;
+        top: 130px;
+        text-align: center;
+        width: 150px;
+        left: 563px;
+        color: #fff;
+        background-color: #333;
+        border: 2px solid #fff;
+    }
+    
+    #TestMatch {
+        position: absolute;
+        z-index: 1000;
+        color: #333;
+        width: 150px;
+        left: 563px;
+        background-color: #fff;
+        text-align: center;
+    }
     
 /* GAME OVER */
 #blueGoals { color: #00f; }
 #redGoals  { color: #f00; }
 
-#resultList .blue { color: #00f; }
-#resultList .red  { color: #f00; }
+#GoalLists {
+    width: 600px;
+    margin: 0 auto;
+    display: table;
+    clear: left;
+}
+
+    #blueGoalsList {
+        float: left;
+        width: 290px;
+    }
+
+    #redGoalsList {
+        float: right;
+        width: 290px;
+    }
+
+    #blueGoalsList li { color: #00f; text-align: right; }
+    #redGoalsList li  { color: #f00; }
+    
+    #blueGoalsList li.selfgoal { color: #f00; }
+    #redGoalsList li.selfgoal  { color: #00f; }
 
 #done {
     padding-top: 14px;
     margin-top: 40px;
+    clear: both;
 }
     
 /* PLAYERS */
@@ -325,13 +408,33 @@ a {
     text-align: center;
     padding: 20px 10px;
     }
+    
+    #PlayerCard img { margin-bottom: 20px; }
+    
+    #PlayerCard dl { display: table; }
+    
+    #PlayerCard dt {
+        line-height: 20px;
+        float: left;
+        width: 300px;
+        text-align: right;
+        font-weight: bold;
+        margin-right: 10px;
+    }
+    
+    #PlayerCard dd {
+        line-height: 20px;
+        float: left;
+        width: 400px;
+        text-align: left;
+    }
 
             
 /* STATISTICS */
 #HallOfFameAndShame {
     display: table;
     clear: both;
-    margin: 0 auto 40px auto;
+    margin: 0 auto 15px;
     }
     
     #HallOfFameAndShame li {
@@ -355,46 +458,72 @@ a {
             font-weight: bold;
             margin: 5px 0;
             }
+ 
+#Tabs > ul {
+    overflow: hidden;
+    display: table;
+    margin: 0 auto;
+    }
             
 .dataList {
     margin: 0 auto;
     width: 60%;
+    border-collapse: collapse;
     }
     
-    #StatisticList {
-        border-collapse: collapse;
+    .dataList th {
+        text-align: left;
+        padding: 10px 5px;
+        border-bottom: 2px solid #3336;
+        cursor: pointer;
+    }
+            
+        th span {
+            display: block;
+            float: left;
         }
-    
-        #StatisticList th {
-            text-align: left;
-            padding: 10px 5px;
-            border-bottom: 2px solid #3336;
-            cursor: pointer;
+        
+        th .sorter {
+            border-color: transparent;
+            border-width: 6px;
+            border-style: solid;
+            width: 0;
+            height: 0;
+            margin-left: 10px;
         }
             
-            th span {
-                display: block;
-                float: left;
-            }
+        .headerSortDown .sorter { border-color: #f00 transparent transparent transparent; }
+        .headerSortUp .sorter   { border-color: transparent transparent #f00 transparent; }
         
-            th .sorter {
-                border-color: transparent;
-                border-width: 6px;
-                border-style: solid;
-                width: 0;
-                height: 0;
-                margin-left: 10px;
-            }
-            
-            .headerSortDown .sorter { border-color: #f00 transparent transparent transparent; }
-            .headerSortUp .sorter   { border-color: transparent transparent #f00 transparent; }
-        
-        #StatisticList td {
-            padding: 10px 5px;
-            border-bottom: 1px solid #dfdfdf;
-        }
+    .dataList td {
+        padding: 10px 5px;
+        border-bottom: 1px solid #dfdfdf;
+    }
     
-        #StatisticList tr.hover {
-            background-color: #dfdfdf;
-            cursor: pointer;
-            }
+    .dataList tr.hover {
+        background-color: #dfdfdf;
+        cursor: pointer;
+        }
+            
+            
+            
+            
+            
+ * jQuery UI Tabs 1.8.8
+ *
+ * Copyright 2010, AUTHORS.txt (http://jqueryui.com/about)
+ * Dual licensed under the MIT or GPL Version 2 licenses.
+ * http://jquery.org/license
+ *
+ * http://docs.jquery.com/UI/Tabs#theming
+ */
+.ui-tabs { position: relative; padding: .2em; zoom: 1; } /* position: relative prevents IE scroll bug (element with position: relative inside container with overflow: auto appear as "fixed") */
+.ui-tabs .ui-tabs-nav { margin: 0; padding: .2em .2em 0; }
+.ui-tabs .ui-tabs-nav li { list-style: none; float: left; position: relative; top: 1px; margin: 0 .2em 1px 0; border-bottom: 0 !important; padding: 0; white-space: nowrap; }
+.ui-tabs .ui-tabs-nav li a { float: left; padding: .5em 1em; text-decoration: none; }
+.ui-tabs .ui-tabs-nav li.ui-tabs-selected { margin-bottom: 0; padding-bottom: 1px; }
+.ui-tabs .ui-tabs-nav li.ui-tabs-selected a, .ui-tabs .ui-tabs-nav li.ui-state-disabled a, .ui-tabs .ui-tabs-nav li.ui-state-processing a { cursor: text; }
+.ui-tabs .ui-tabs-nav li a, .ui-tabs.ui-tabs-collapsible .ui-tabs-nav li.ui-tabs-selected a { cursor: pointer; } /* first selector in group seems obsolete, but required to overcome bug in Opera applying cursor: text overall if defined elsewhere... */
+.ui-tabs .ui-tabs-panel { display: block; border-width: 0; padding: 1em 1.4em; background: none; }
+.ui-tabs .ui-tabs-hide { display: none !important; }
+.ui-tabs-selected { font-weight: bold; }

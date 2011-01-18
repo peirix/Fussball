@@ -35,7 +35,7 @@ namespace Fussball.Controllers
         }
 
         [AcceptVerbs(HttpVerbs.Post)]
-        public ActionResult Play(int BlueDef, int BlueOff, int RedDef, int RedOff)
+        public ActionResult Play(int BlueDef, int BlueOff, int RedDef, int RedOff, string IsTest)
         {
             var game = new Game()
             {
@@ -44,7 +44,8 @@ namespace Fussball.Controllers
                 Red1 = RedDef,
                 Red2 = RedOff,
                 DateStart = DateTime.Now,
-                DateEnd = DateTime.Now
+                DateEnd = DateTime.Now,
+                IsTest = IsTest == "true"
             };
 
             gameRep.Add(game);
