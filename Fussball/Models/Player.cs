@@ -81,7 +81,7 @@ namespace Fussball.Models
 
         public string GetLast10Stats()
         {
-            var lastGames = GetAllGames().OrderByDescending(g => g.DateStart).Take(10);
+            var lastGames = playerRep.GetPlayerGames(this.ID).OrderByDescending(g => g.DateStart).Take(10);
 
             int goals, letIn, selfGoals;
             goals = letIn = selfGoals = 0;

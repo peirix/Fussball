@@ -20,20 +20,19 @@ namespace Fussball.Models
             return db.Players.OrderBy(p => p.Name).ToList();
         }
 
-        public int GetPlayerGames(int playerID)
+        public int GetPlayerGamesCount(int playerID)
         {
-            var games = db.Games.ToList();
-            return GetPlayerGames(games, playerID);
+            return GetPlayerGames(playerID).Count();
         }
 
-        public int GetPlayerGames(List<Game> games, int playerID)
+        public IEnumerable<Game> GetPlayerGames(int playerID)
         {
-            return (from game in games
-                    where game.Blue1 == playerID
-                    || game.Blue2 == playerID
-                    || game.Red1 == playerID
-                    || game.Red2 == playerID
-                    select game).Count();
+            return from game in db.Games
+                   where game.Blue1 == playerID
+                   || game.Blue2 == playerID
+                   || game.Red1 == playerID
+                   || game.Red2 == playerID
+                   select game;
         }
 
         public Player GetTopScorer()
@@ -46,31 +45,31 @@ namespace Fussball.Models
         public Player GetWorstScorer()
         {
             return (from player in db.Players.ToList()
-                    where GetPlayerGames(player.ID) > 0
+                    where GetPlayerGamesCount(player.ID) > 0
                     orderby player.Goals.Where(s => s.SelfGoal == 0).Count()
-                    select player).First();
+                    select player).FirstOrDefault();
         }
 
         public Player GetMostSelfScores()
         {
             return (from player in db.Players
                     orderby player.Goals.Where(s => s.SelfGoal == 1).Count() + player.Goals1.Where(s => s.SelfGoal == 1).Count() descending
-                    select player).First();
+                    select player).FirstOrDefault();
         }
 
         public Player GetLeastSelfScores()
         {
             return (from player in db.Players.ToList()
-                    where GetPlayerGames(player.ID) > 0
+                    where GetPlayerGamesCount(player.ID) > 0
                     orderby player.Goals.Where(s => s.SelfGoal == 1).Count()
-                    select player).First();
+                    select player).FirstOrDefault();
         }
 
         public Player GetBestRanked()
         {
             return (from player in db.Players
                     orderby (player.TotalGoals() - player.LetInGoals() - (player.TotalSelfGoals() * 2)) / player.TotalGames() descending
-                    select player).First();
+                    select player).FirstOrDefault();
         }
 
         public Player GetTopWinner()
