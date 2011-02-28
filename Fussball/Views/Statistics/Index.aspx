@@ -14,8 +14,8 @@
     </script>
     <a class="backBtn"></a>
     <h1>Statistikk</h1>
-    <ul id="HallOfFameAndShame">
-        <% var topScorer = ViewData["TopScorer"] as Fussball.Models.Player;
+    <%--<ul id="HallOfFameAndShame">
+         var topScorer = ViewData["TopScorer"] as Fussball.Models.Player;
            if (topScorer != null) { %>
         <li>
             <span class="awardTitle">Flest mål</span> 
@@ -51,8 +51,8 @@
             <span class="rewardedPlayer"><%= leastSelfScore.Name%></span> 
             <small>(<%= leastSelfScore.TotalSelfGoals()%>)</small>
         </li>
-        <% } %>
-    </ul>
+        <% } 
+    </ul>--%>
     <%--
         * Generelle
             - Beste par

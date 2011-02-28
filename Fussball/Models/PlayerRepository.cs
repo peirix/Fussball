@@ -53,7 +53,7 @@ namespace Fussball.Models
         public Player GetMostSelfScores()
         {
             return (from player in db.Players
-                    orderby player.Goals.Where(s => s.SelfGoal == 1).Count() + player.Goals1.Where(s => s.SelfGoal == 1).Count() descending
+                    orderby player.Goals.Where(s => s.SelfGoal == 1).Count() descending
                     select player).FirstOrDefault();
         }
 

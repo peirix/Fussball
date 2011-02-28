@@ -47,7 +47,7 @@
         <input type="text" name="name"><input type="submit" value="Opprett">
     </form>
     <div id="Links">
-        <a href="<%= Url.Content("~/Statistics/") %>">Statistikk</a>
+        <a href="<%= Url.Content("~/Statistics/Index") %>">Statistikk</a>
     </div>
 
 </asp:Content>
