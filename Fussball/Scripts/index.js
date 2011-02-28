@@ -3,7 +3,7 @@
     var playerCount = picker.find("li").length;
     var width = playerCount * 90; //80px wide + 10px margin
 
-    picker.find("ul").width(width);
+    picker.find("ul").width(width - 250 );
 
     //drag and scroll
     var mouseOnPlayer = false;

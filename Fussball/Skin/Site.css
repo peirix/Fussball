@@ -1,11 +1,16 @@
 ﻿body, html { 
     height: 100%; 
     }
+    
+body {
+    background: url(gfx/bg_main.gif) top left repeat;
+    }
 
 #Main {
     margin: 0 auto;
     width: 100%;
     max-width: 1180px;
+    min-width: 480px;
     padding: 35px 0;
     position: relative;
     border: 1px solid red;
@@ -39,14 +44,14 @@ a {
     display: block;
     width: 137px;
     height: 58px;
-    background: url(img/tilbake.png) no-repeat;
+    background: url(gfx/tilbake.png) no-repeat;
     float: left;
     }
 
 .largeBtn {
     width: 296px;
     height: 53px;
-    background: url(img/playfuss.png) no-repeat;
+    background-color: #ff3000;
     border: 0;
     color: #fff;
     font-size: 22px;
@@ -105,11 +110,15 @@ a {
             }
 
     #playerPicker ul {
-        width: auto;
-        margin: 0 85px;
+        width: auto!important;
         display: table;
         height: 100%;
         background-color: #ff3000;
+        position: absolute;
+        right: 85px;
+        left: 85px;
+        top: 0;
+        width: 100%;
         }
         
         #playerPicker ul li,
@@ -121,8 +130,7 @@ a {
             text-align: center;
             padding: 0;
             position: relative;
-            margin: 40px 13px 20px 0;
-            border: 1px solid blue;
+            margin: 23px 13px 0 0;
             }
             
             #playerPicker ul li img,
@@ -137,8 +145,6 @@ a {
             #playerPicker ul li span,
             #playerForm ul li span {
                 display: block;
-                background-color: rgba(0,0,0,0.5);
-                margin-top: -18px;
                 color: #fff;
                 width: 100%;
                 border: 1px solid red;
@@ -153,25 +159,28 @@ a {
         #playerPicker ul .selected img { opacity: 0.8; }
 
 #playerForm {
-    height: 580px;
+    height: 650px;
     position: relative;
-    width: 500px;
-    margin: 0 auto 30px auto;
-}
+    max-width: 960px;
+    width: 100%;
+    margin: 20px auto 30px auto;
+    }
+    
     #playerForm > ul {
         position: absolute;
-        height: 120px;
-        width: 120px;
-        padding: 10px;
-        -webkit-border-radius: 5px;
-        border: 1px dashed #333;
+        width: 28%;
+        padding: 10px 0;
+        background-color: #dae9ca;
+        -webkit-border-radius: 10px;
+        -moz-border-radius: 10px;
+        border-radius: 10px;
     }
         
-        #redOff { right: 0px; top: 159px }
-        #redDef { right: 0px; top: 365px; }
+        #redOff { right: 10px; top: 159px }
+        #redDef { right: 10px; top: 365px; }
         
-        #blueDef { top: 0px; }
-        #blueOff { top: 159px; }
+        #blueDef { left: 10px; top: 0px; }
+        #blueOff { left: 10px; top: 159px; }
         
         #playerForm > .highlight {
             background-color: #4f4;
@@ -181,16 +190,19 @@ a {
         #playerForm > ul li { margin: 0; }
         
     #table {
-        background: url(img/table-vert.png) no-repeat center center;
-        height: 469px;
-        margin-top: 50px;
-    }
+        margin: 0 auto;
+        width: 43%;
+        }
+        
+        #table img {
+            width: 100%;
+            }
     
     #playBtn {
         position: absolute;
         bottom: 0;
-    }
-        #playBtn:disabled { background-image: url(img/playfuss-inactive.png); }
+        }
+        #playBtn:disabled { background-color: gray; }
         
     #playTestBtn {
         position: absolute;
@@ -248,7 +260,7 @@ a {
     height: 1024px;
     margin: -35px -50px;
     overflow: hidden;
-    background: url(img/table-vert.png) no-repeat center 288px;
+    background: url(gfx/fussballTable.png) no-repeat center 288px;
 }
     #RedTeam { background-color: rgba(200,0,0,0.5); }
     #BlueTeam { background-color: rgba(0,0,200,0.5); }
