@@ -10,18 +10,20 @@
 
 <div id="playerPicker">
 	<a href="#" class="scrollNav left">bakover</a>
-    <ul>
-        @foreach(var player in Model) {
-        <li data-playerid="@player.ID">
-            @if(!string.IsNullOrEmpty(player.Image_Square)) {
-            <img src="@player.Image_Square" alt="bilde av @player.Name" />
-            } else {
-            <img src="@Url.Content("~/Content/img/default_square.jpg")" alt="bilde av @player.Name" />
+    <div id="PlayerListContainer">
+        <ul>
+            @foreach(var player in Model) {
+            <li data-playerid="@player.ID">
+                @if(!string.IsNullOrEmpty(player.Image_Square)) {
+                <img src="@player.Image_Square" alt="bilde av @player.Name" />
+                } else {
+                <img src="@Url.Content("~/Content/img/default_square.jpg")" alt="bilde av @player.Name" />
+                }
+                <span>@player.Name</span>
+            </li>
             }
-            <span>@player.Name</span>
-        </li>
-        }
-    </ul>
+        </ul>
+    </div>
 	<a href="#" class="scrollNav right">videre</a>
 </div>
     

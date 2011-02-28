@@ -75,11 +75,11 @@ a {
         width: 85px;
         overflow: hidden;
         display: block;
-        position: absolute;
         top: 0;
         height: 100%;
         background: center no-repeat;
         text-indent: -9999em;
+        float: left;
         } 
         
         .scrollNav img { 
@@ -103,54 +103,60 @@ a {
             right: 0; 
             background-image: url(gfx/arrow_right.png);
             }
-
-    #playerPicker ul {
-        width: auto;
-        margin: 0 85px;
-        display: table;
-        height: 100%;
-        background-color: #ff3000;
+    
+    #PlayerListContainer {
+        width: 1010px;
+        float: left;
+        overflow: hidden;
         }
-        
-        #playerPicker ul li,
-        #playerForm > ul li {
-            float: left;
-            border-bottom: 0 none;
-            list-style: none;
-            -webkit-border-radius: 5px;
-            text-align: center;
-            padding: 0;
-            position: relative;
-            margin: 40px 13px 20px 0;
-            border: 1px solid blue;
+    
+        #playerPicker ul {
+            width: auto;
+            display: table;
+            height: 100%;
+            background-color: #ff3000;
+            margin-left: 0;
             }
-            
-            #playerPicker ul li img,
-            #playerForm ul li img { 
-                display: block;
-                width: 120px; 
-                -moz-border-radius: 5px;
+        
+            #playerPicker ul li,
+            #playerForm > ul li {
+                float: left;
+                border-bottom: 0 none;
+                list-style: none;
                 -webkit-border-radius: 5px;
-                border-radius: 5px;
+                text-align: center;
+                padding: 0;
+                position: relative;
+                margin: 40px 13px 20px 0;
+                border: 1px solid blue;
                 }
             
-            #playerPicker ul li span,
-            #playerForm ul li span {
-                display: block;
-                background-color: rgba(0,0,0,0.5);
-                margin-top: -18px;
-                color: #fff;
-                width: 100%;
-                border: 1px solid red;
-                clear: both;
+                #playerPicker ul li img,
+                #playerForm ul li img { 
+                    display: block;
+                    width: 120px; 
+                    -moz-border-radius: 5px;
+                    -webkit-border-radius: 5px;
+                    border-radius: 5px;
+                    }
+            
+                #playerPicker ul li span,
+                #playerForm ul li span {
+                    display: block;
+                    background-color: rgba(0,0,0,0.5);
+                    margin-top: -18px;
+                    color: #fff;
+                    width: 100%;
+                    border: 1px solid red;
+                    clear: both;
+                    }
+        
+            #playerPicker ul .selected,
+            #playerForm ul .selected {
+                background-color: #000;
                 }
         
-        #playerPicker ul .selected,
-        #playerForm ul .selected {
-            background-color: #000;
-            }
-        
-        #playerPicker ul .selected img { opacity: 0.8; }
+            #playerPicker ul .selected img { opacity: 0.8; }
 
 #playerForm {
     height: 580px;

@@ -1,43 +1,38 @@
 ﻿$(document).ready(function () {
-    var picker = $("#playerPicker");
-    var playerCount = picker.find("li").length;
-    var width = playerCount * 90; //80px wide + 10px margin
 
-    picker.find("ul").width(width);
+    var $picker = $("#playerPicker");
+    var $list = $picker.find("ul");
+    var playerCount = $list.find("li").length;
+    var width = playerCount * ($list.find("li:first").outerWidth() + 13); //13px margin
+    $list.width(width);
 
-    //drag and scroll
-    var mouseOnPlayer = false;
-    var mouseLeft = 0;
-    var marginLeft = 0;
+    /* Playerlist navigation */
+    $picker.find(".right").click(function () {
+        console.log($list.css("margin-left"));
+        if ($list.css("margin-left").replace("px", "") > -($list.width() - $("#PlayerListContainer").width())) {
+            $list.animate({ "margin-left": "-=" + 200 });
+        }
+    });
+
+    $picker.find(".left").click(function () {
+        if ($list.css("margin-left").replace("px", "") < 0) {
+            $("#playerPicker ul").animate({ "margin-left": "+=" + 200 });
+        }
+    });
+
     $elm = null;
 
-    $("#playerPicker ul").mousedown(function (e) {
-        mouseOnPlayer = e.target.tagName.toLowerCase() == "li" ? true : false;
-        $elm = mouseOnPlayer ? $(e.target) : $(e.target).parent();
-        mouseLeft = e.pageX;
-        marginLeft = $("#playerPicker ul").css("margin-left");
-        marginLeft = marginLeft.substr(0, marginLeft.indexOf("px")) - 0; //casting to int
-
-        $(document).bind("mousemove", scrollPlayerList);
+    $("#playerPicker ul li").click(function (e) {
+        $elm = $(this);
+        $("#playerPicker ul li").removeClass("selected");
+        $elm.addClass("selected");
+        $("#playerForm .freeSpot").addClass("highlight");
     });
 
     $("#playerPicker ul li").live("dblclick", function () {
         $elm = $(this);
         var $spot = $(".freeSpot:first");
         movePlayerToSpot($spot);
-    });
-
-    $(document).mouseup(function (e) {
-        var newLeft = e.pageX - mouseLeft;
-
-        if (Math.abs(newLeft) < 10) {
-            $("#playerPicker ul li").removeClass("selected");
-            $elm.addClass("selected");
-            $("#playerForm .freeSpot").addClass("highlight");
-        }
-
-        //unbind
-        $(document).unbind("mousemove", scrollPlayerList);
     });
 
     $(".freeSpot").live("click", function () {
@@ -60,20 +55,6 @@
         $(".selected").removeClass("selected");
         $("#playerForm .highlight").removeClass("highlight");
     });
-
-    function scrollPlayerList(e) {
-        var newLeft = e.pageX - mouseLeft;
-        newLeft += marginLeft;
-        console.log(newLeft);
-
-        if (newLeft > 0)
-            newLeft = 0;
-
-        if (newLeft < $("#playerPicker").width() - $("#playerPicker ul").width())
-            newLeft = $("#playerPicker").width() - $("#playerPicker ul").width();
-
-        $("#playerPicker ul").css("margin-left", newLeft);
-    }
 
     function movePlayerToSpot($spot) {
         $elm.appendTo($spot).removeClass("selected");
@@ -103,4 +84,5 @@
         $("[name=RedOff]").val($("#redOff li").attr("data-playerid"));
         $("[name=RedDef]").val($("#redDef li").attr("data-playerid"));
     });
+
 });
