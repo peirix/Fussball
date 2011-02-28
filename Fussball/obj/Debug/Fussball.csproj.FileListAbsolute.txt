@@ -22,3 +22,11 @@ C:\source\Fussball\Fussball\bin\Newtonsoft.Json.xml
 C:\source\Fussball\Fussball\obj\Debug\ResolveAssemblyReference.cache
 C:\source\Fussball\Fussball\obj\Debug\Fussball.dll
 C:\source\Fussball\Fussball\obj\Debug\Fussball.pdb
+C:\projects\Fussball\Fussball\bin\Fussball.dll
+C:\projects\Fussball\Fussball\bin\Fussball.pdb
+C:\projects\Fussball\Fussball\bin\Newtonsoft.Json.dll
+C:\projects\Fussball\Fussball\bin\Newtonsoft.Json.pdb
+C:\projects\Fussball\Fussball\bin\Newtonsoft.Json.xml
+C:\projects\Fussball\Fussball\obj\Debug\ResolveAssemblyReference.cache
+C:\projects\Fussball\Fussball\obj\Debug\Fussball.dll
+C:\projects\Fussball\Fussball\obj\Debug\Fussball.pdb

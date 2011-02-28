@@ -10,7 +10,8 @@
     <h1>Velg spillere</h1>
 
     <div id="playerPicker">
-        <ul>
+        <a href="#" class="scrollNav left">forrige</a>
+		<ul>
             <%  foreach (var player in Model) { %>
             <li data-playerid="<%= player.ID %>">
                 <% if (!string.IsNullOrEmpty(player.Image_Square)) { %>
@@ -22,6 +23,7 @@
             </li>
             <%  } %>
         </ul>
+		<a href="#" class="scrollNav right">videre</a>
     </div>
     
     <form action="<%= Url.Content("~/Home/Play/") %>" method="post" name="StartupForm" id="playerForm">
