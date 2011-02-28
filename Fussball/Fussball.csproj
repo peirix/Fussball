@@ -98,29 +98,20 @@
     <Content Include="App_Data\Fussball_log.ldf">
       <DependentUpon>Fussball.mdf</DependentUpon>
     </Content>
-    <Content Include="Content\images\ui-bg_diagonals-thick_18_b81900_40x40.png" />
-    <Content Include="Content\images\ui-bg_diagonals-thick_20_666666_40x40.png" />
-    <Content Include="Content\images\ui-bg_flat_10_000000_40x100.png" />
-    <Content Include="Content\images\ui-bg_glass_100_f6f6f6_1x400.png" />
-    <Content Include="Content\images\ui-bg_glass_100_fdf5ce_1x400.png" />
-    <Content Include="Content\images\ui-bg_glass_65_ffffff_1x400.png" />
-    <Content Include="Content\images\ui-bg_gloss-wave_35_f6a828_500x100.png" />
-    <Content Include="Content\images\ui-bg_highlight-soft_100_eeeeee_1x100.png" />
-    <Content Include="Content\images\ui-bg_highlight-soft_75_ffe45c_1x100.png" />
-    <Content Include="Content\images\ui-icons_222222_256x240.png" />
-    <Content Include="Content\images\ui-icons_228ef1_256x240.png" />
-    <Content Include="Content\images\ui-icons_ef8c08_256x240.png" />
-    <Content Include="Content\images\ui-icons_ffd27a_256x240.png" />
-    <Content Include="Content\images\ui-icons_ffffff_256x240.png" />
-    <Content Include="Content\img\default_small.jpg" />
-    <Content Include="Content\img\default_square.jpg" />
-    <Content Include="Content\img\table-vert.png" />
-    <Content Include="Content\img\table-hor.png" />
-    <Content Include="Content\img\playfuss-inactive.png" />
-    <Content Include="Content\img\playfuss.png" />
-    <Content Include="Content\img\tilbake.png" />
-    <Content Include="Content\jquery-ui-1.8.8.custom.css" />
-    <Content Include="Content\Reset.css" />
+    <Content Include="Skin\gfx\arrow_left.png" />
+    <Content Include="Skin\gfx\arrow_right.png" />
+    <Content Include="Skin\gfx\bg_main.gif" />
+    <Content Include="Skin\gfx\bg_player_navigation.gif" />
+    <Content Include="Skin\gfx\default_small.jpg" />
+    <Content Include="Skin\gfx\default_square.jpg" />
+    <Content Include="Skin\gfx\fussballTable.png" />
+    <Content Include="Skin\gfx\table-vert.png" />
+    <Content Include="Skin\gfx\table-hor.png" />
+    <Content Include="Skin\gfx\playfuss-inactive.png" />
+    <Content Include="Skin\gfx\playfuss.png" />
+    <Content Include="Skin\gfx\tilbake.png" />
+    <Content Include="Skin\jquery-ui-1.8.8.custom.css" />
+    <Content Include="Skin\Reset.css" />
     <Content Include="Global.asax" />
     <Content Include="Scripts\bigtarget.js" />
     <Content Include="Scripts\dragdrop.js" />
@@ -130,10 +121,6 @@
     <Content Include="Scripts\playgame.js" />
     <Content Include="Scripts\tablesorter.js" />
     <Content Include="Views\Debug\Index.aspx" />
-    <Content Include="Views\Home\GameOver.aspx" />
-    <Content Include="Views\Home\Play.aspx" />
-    <Content Include="Views\Player\Details.aspx" />
-    <Content Include="Views\Statistics\Index.aspx" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
@@ -143,7 +130,7 @@
     <Content Include="Web.Release.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
-    <Content Include="Content\Site.css" />
+    <Content Include="Skin\Site.css" />
     <Content Include="Scripts\jquery-1.4.1.js" />
     <Content Include="Scripts\jquery-1.4.1.min.js" />
     <Content Include="Scripts\jquery-1.4.1-vsdoc.js" />
@@ -160,10 +147,8 @@
     <Content Include="Views\Account\ChangePasswordSuccess.aspx" />
     <Content Include="Views\Account\LogOn.aspx" />
     <Content Include="Views\Account\Register.aspx" />
-    <Content Include="Views\Home\Index.aspx" />
     <Content Include="Views\Shared\Error.aspx" />
     <Content Include="Views\Shared\LogOnUserControl.ascx" />
-    <Content Include="Views\Shared\Site.Master" />
     <Content Include="Views\Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -172,6 +157,12 @@
       <LastGenOutput>Fussball.designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
     </None>
+    <Content Include="Views\Home\GameOver.cshtml" />
+    <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Home\Play.cshtml" />
+    <Content Include="Views\Player\Details.cshtml" />
+    <Content Include="Views\Shared\SiteLayout.cshtml" />
+    <Content Include="Views\Statistics\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{3259AA49-8AA1-44D3-9025-A0B520596A8C}" />
