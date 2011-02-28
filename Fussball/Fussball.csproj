@@ -132,8 +132,8 @@
     <Content Include="Scripts\playgame.js" />
     <Content Include="Scripts\tablesorter.js" />
     <Content Include="Views\Debug\Index.aspx" />
-    <Content Include="Views\Home\GameOver.aspx" />
-    <Content Include="Views\Home\Play.aspx" />
+    <Content Include="Views\Home\GameOver.cshtml" />
+    <Content Include="Views\Home\Play.cshtml" />
     <Content Include="Views\Player\Details.aspx" />
     <Content Include="Views\Statistics\Index.aspx" />
     <Content Include="Web.config">
@@ -163,10 +163,10 @@
     <Content Include="Views\Account\LogOn.aspx" />
     <Content Include="Views\Account\Register.aspx" />
     <Content Include="Views\Home\Index.cshtml" />
-    <None Include="Views\Home\Index.old" />
     <Content Include="Views\Shared\Error.aspx" />
     <Content Include="Views\Shared\LogOnUserControl.ascx" />
-    <Content Include="Views\Shared\Site.Master" />
+    <Content Include="Views\Shared\Default.Master" />
+    <None Include="Views\Shared\Site.old" />
     <Content Include="Views\Web.config" />
     <Content Include="Scripts\jquery-1.4.4.js" />
     <Content Include="Scripts\jquery-1.4.4-vsdoc.js" />
@@ -191,6 +191,8 @@
     <Content Include="Content\themes\base\images\ui-icons_888888_256x240.png" />
     <Content Include="Content\themes\base\images\ui-icons_cd0a0a_256x240.png" />
     <Content Include="Content\themes\base\jquery-ui.css" />
+    <Content Include="Views\_ViewStart.cshtml" />
+    <Content Include="Views\Shared\SiteLayout.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Models\Fussball.dbml">
