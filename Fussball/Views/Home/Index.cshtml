@@ -5,8 +5,6 @@
 }
 
 <script src="@Url.Content("~/Scripts/index.js")"></script>
-    
-<h1>Velg spillere</h1>
 
 <div id="playerPicker">
 	<a href="#" class="scrollNav left">bakover</a>
@@ -26,13 +24,15 @@
     </div>
 	<a href="#" class="scrollNav right">videre</a>
 </div>
+
+<h1>Velg spillere</h1>
     
 <form action="@Url.Content("~/Home/Play/")" method="post" name="StartupForm" id="playerForm">
     <ul id="blueDef" class="freeSpot"></ul>
     <ul id="blueOff" class="freeSpot"></ul>
 
     <div id="table">
-		<img src="Skin/gfx/fussballTable.png" alt="table" id="FussBallTable" />
+		<img src="@Url.Content("~/Skin/gfx/fussballTable.png")" alt="table" id="FussBallTable" />
 	</div>
         
     <ul id="redOff" class="freeSpot"></ul>
@@ -51,7 +51,3 @@
     <h4>Opprett ny spiller</h4>
     <input type="text" name="name"><input type="submit" value="Opprett">
 </form>
-<div id="Links">
-    <a href="@Url.Content("~/Statistics/Index")">Statistikk</a>
-</div>
-

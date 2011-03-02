@@ -4,6 +4,7 @@
     <title>Awesome Foosball App</title>
     <link href="../../Skin/Reset.css" rel="stylesheet">
     <link href="../../Skin/Site.css" rel="stylesheet">
+	<link href="../../Skin/ui-tabs.css" rel="stylesheet">
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.4/jquery.min.js"></script>
     <script src="@Url.Content("~/Scripts/global.js")"></script>
     <script src="@Url.Content("~/Scripts/bigtarget.js")"></script>
@@ -13,6 +14,17 @@
 
 <body>
     <div id="Main">
+		<div id="MastHead">
+			<img id="SiteLogo" alt="hjem" src="@Url.Content("~/Skin/gfx/siteLogo.png")" />
+			<nav>
+				<ul>
+					<li><a href="@Url.Content("~/Home/Index")" title="">Nytt spill</a></li>
+					<li><a href="#" title="">Nye spillere</a></li>
+					<li><a href="@Url.Content("~/Statistics/Index")">Statistikk</a></li>
+					<li><a href="#" title="">Rediger spiller</a></li>
+				</ul>
+			</nav>
+		</div>
         @RenderBody()
     </div>
 </body>

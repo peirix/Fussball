@@ -3,8 +3,9 @@
         history.go(-1);
     });
 
-    $("#StatisticList td a").bigTarget({
-        clickZone: 'tr'
+    $(".dataList td a").bigTarget({
+        clickZone: 'tr',
+        hoverClass: 'hover'
     });
 
     if ($("#StatisticsList tbody tr").length > 0) {
@@ -13,7 +14,7 @@
         });
     }
 
-    $("#OverallList").tablesorter({
+    $(".dataList").tablesorter({
         sortList: [[0, 0]]
     });
 });

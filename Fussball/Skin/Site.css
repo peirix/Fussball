@@ -1,33 +1,57 @@
-﻿body, html { 
-    height: 100%; 
-    }
+﻿body, html { height: 100%; }
     
-body {
-    background: url(gfx/bg_main.gif) top left repeat;
-    }
-
-#Main {
-    margin: 0 auto;
-    width: 100%;
-    max-width: 1180px;
-    min-width: 480px;
-    padding: 35px 0;
-    position: relative;
-    border: 1px solid red;
-    }
+body { background: url(gfx/bg_main.gif) top left repeat; }
 
 .clear { clear: both; }
 
 /* TYPOGRAPHY */
+    /* FONTS */
+    @font-face {
+	    font-family: 'BrandonGrotesqueRegular';
+	    src: url('fonts/brandon_reg-webfont.eot');
+	    src: local('☺'), url('fonts/brandon_reg-webfont.woff') format('woff'), url('fonts/brandon_reg-webfont.ttf') format('truetype'), url('fonts/brandon_reg-webfont.svg#webfontcHb6KBxQ') format('svg');
+	    font-weight: normal;
+	    font-style: normal;
+        }
+        
+    @font-face {
+	    font-family: 'BrandonGrotesqueBold';
+	    src: url('fonts/brandon_bld-webfont.eot');
+	    src: local('☺'), url('fonts/brandon_bld-webfont.woff') format('woff'), url('fonts/brandon_bld-webfont.ttf') format('truetype'), url('fonts/brandon_bld-webfont.svg#webfontcHb6KBxQ') format('svg');
+	    font-weight: normal;
+	    font-style: normal;
+        }
+    
+    @font-face {
+	    font-family: 'BrandonGrotesqueMedium';
+	    src: url('fonts/brandon_med-webfont.eot');
+	    src: local('☺'), url('fonts/brandon_med-webfont.woff') format('woff'), url('fonts/brandon_med-webfont.ttf') format('truetype'), url('fonts/brandon_med-webfont.svg#webfontcHb6KBxQ') format('svg');
+	    font-weight: normal;
+	    font-style: normal;
+        }
+        
+    @font-face {
+	    font-family: 'BrandonGrotesqueLightItalic';
+	    src: url('fonts/brandon_light_it-webfont.eot');
+	    src: local('☺'), url('fonts/brandon_light_it-webfont.woff') format('woff'), url('fonts/brandon_light_it-webfont.ttf') format('truetype'), url('fonts/brandon_light_it-webfont.svg#webfontcHb6KBxQ') format('svg');
+	    font-weight: normal;
+	    font-style: normal;
+        }
+    /* FONTS */
+
 body {
-    font-family: Tahoma, Verdana, Arial;
-    color: #333;
+    font-family: 'BrandonGrotesqueRegular';
+    color: #fff;
+    font-size: 17px;
     }
 
 h1 {
     margin: 0 auto 20px auto;
-    font-size: 200%;
-    float: left;
+    font-size: 48px;
+    font-family: 'BrandonGrotesqueLightItalic';
+    text-align: center;
+    color: #fff;
+    margin-top: 20px;
     }
 
 h2 {
@@ -62,7 +86,61 @@ a {
     position: relative;
     display: block;
     text-align: center;
-}
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    -o-border-radius: 5px;
+    border-radius: 5px;
+    text-transform: uppercase;
+    }
+
+/* MASTERPAGE */
+    #Main {
+        margin: 0 auto;
+        width: 100%;
+        max-width: 1180px;
+        min-width: 480px;
+        padding: 0;
+        position: relative;
+        }
+
+    /* MASTHEAD */
+    #MastHead {
+        background-color: #dae9ca;
+        display: table;
+        width: 100%;
+        }
+        
+        #SiteLogo {
+            float: left;
+            margin: 15px 0 15px 15px;
+            }
+
+        /* NAVIGATION */
+        nav ul {
+            float: right;
+            margin: 28px 55px 0 0;
+            }
+    
+            nav ul li, .ui-state-default {
+                display: inline-block;
+                float: left;
+                background-color: #fff;
+                -webkit-border-radius: 5px;
+                -moz-border-radius: 5px;
+                -o-border-radius: 5px;
+                border-radius: 5px;
+                margin-left: 10px;
+                text-transform: uppercase;
+                font-family: 'BrandonGrotesqueMedium';
+                padding: 7px 10px;
+                font-size: 17px;
+                }
+        
+                nav ul li a { color: #ff3000; }
+
+           .ui-state-active { background-color: #ff3000; }
+           
+           .ui-state-active a { color: #fff; }
 
 /* INDEX */
 #playerPicker {
@@ -74,30 +152,19 @@ a {
     margin: 0;
     padding: 0;
     background: #ff3000 url(gfx/bg_player_navigation.gif) top left repeat;
+    font-family: 'BrandonGrotesqueMedium';
     }
 
     .scrollNav { 
         width: 85px;
         overflow: hidden;
-        display: block;
         top: 0;
         height: 100%;
         background: center no-repeat;
         text-indent: -9999em;
-        float: left;
-        } 
-        
-        .scrollNav img { 
-            position: absolute;
-            left: 30px;
-            top: 75px;
-            -moz-border-radius: 5px;
-            -webkit-border-radius: 5px;
-            border-radius: 5px;
-            -moz-box-shadow: 10px 10px 5px #888;
-            -webkit-box-shadow: 10px 10px 5px #888;
-            box-shadow: 10px 10px 5px #888;
-            }
+        position: absolute;
+        top: 0;
+        }
         
         .left { 
             left: 0; 
@@ -108,7 +175,6 @@ a {
             right: 0; 
             background-image: url(gfx/arrow_right.png);
             }
-<<<<<<< HEAD
 
     #playerPicker ul {
         width: auto!important;
@@ -132,12 +198,14 @@ a {
             padding: 0;
             position: relative;
             margin: 23px 13px 0 0;
-=======
+            }
     
     #PlayerListContainer {
-        width: 1010px;
+        width: 100%;
         float: left;
         overflow: hidden;
+        border: 1px solid blue;
+        margin: 0 85px;
         }
     
         #playerPicker ul {
@@ -146,7 +214,6 @@ a {
             height: 100%;
             background-color: #ff3000;
             margin-left: 0;
->>>>>>> 033a5eb08dac92f862d5c593063c4b6edee22d8e
             }
         
             #playerPicker ul li,
@@ -158,11 +225,9 @@ a {
                 text-align: center;
                 padding: 0;
                 position: relative;
-                margin: 40px 13px 20px 0;
-                border: 1px solid blue;
+                margin: 25px 13px 20px 0;
                 }
             
-<<<<<<< HEAD
             #playerPicker ul li span,
             #playerForm ul li span {
                 display: block;
@@ -171,7 +236,7 @@ a {
                 border: 1px solid red;
                 clear: both;
                 }
-=======
+
                 #playerPicker ul li img,
                 #playerForm ul li img { 
                     display: block;
@@ -179,19 +244,19 @@ a {
                     -moz-border-radius: 5px;
                     -webkit-border-radius: 5px;
                     border-radius: 5px;
+                    -webkit-box-shadow: 1px 1px 10px #2c2c2c;
+                    
                     }
             
                 #playerPicker ul li span,
                 #playerForm ul li span {
                     display: block;
-                    background-color: rgba(0,0,0,0.5);
-                    margin-top: -18px;
                     color: #fff;
                     width: 100%;
-                    border: 1px solid red;
                     clear: both;
+                    text-align: left;
+                    margin-top: 3px;
                     }
->>>>>>> 033a5eb08dac92f862d5c593063c4b6edee22d8e
         
             #playerPicker ul .selected,
             #playerForm ul .selected {
@@ -205,29 +270,45 @@ a {
     position: relative;
     max-width: 960px;
     width: 100%;
-    margin: 20px auto 30px auto;
+    margin: 0 auto 30px auto;
     }
     
-    #playerForm > ul {
+    .freeSpot{
         position: absolute;
-        width: 28%;
         padding: 10px 0;
         background-color: #dae9ca;
         -webkit-border-radius: 10px;
         -moz-border-radius: 10px;
         border-radius: 10px;
-    }
+        display: block;
+        width: 28%;
+        height: 22%;
+        }
         
-        #redOff { right: 10px; top: 159px }
-        #redDef { right: 10px; top: 365px; }
+        #redOff { 
+            right: 10px; 
+            top: 159px;
+            }
+            
+        #redDef { 
+            right: 10px; 
+            top: 365px; 
+            }
         
-        #blueDef { left: 10px; top: 0px; }
-        #blueOff { left: 10px; top: 159px; }
+        #blueDef { 
+            left: 10px; 
+            top: -35px; 
+            }
+            
+        #blueOff { 
+            left: 10px; 
+            top: 224px; 
+            }
         
         #playerForm > .highlight {
             background-color: #4f4;
             -webkit-box-shadow: -1px -1px 10px #4f4;
-        }
+            }
         
         #playerForm > ul li { margin: 0; }
         
@@ -236,34 +317,34 @@ a {
         width: 43%;
         }
         
-        #table img {
-            width: 100%;
-            }
+        #table img { width: 100%; }
     
     #playBtn {
         position: absolute;
         bottom: 0;
         }
-        #playBtn:disabled { background-color: gray; }
+        
+    #playBtn:disabled { 
+        background-color: gray; 
+        color: darkgray;
+        border: 0 none;
+        }
         
     #playTestBtn {
-        position: absolute;
-        top: -230px;
-        left: 150px;
+        position: fixed;
+        bottom: 0;
+        left: 0;
         width: 200px;
         background-color: #333;
         height: 40px;
-        visibility: hidden;
-    }
+        }
         
 #NewPlayer {
     width: auto;
     float: right;
     }
 
-#Links {
-    float: left;
-    }
+#Links { float: left; }
 
 
 /* PLAY GAME */
@@ -280,7 +361,7 @@ a {
     margin-top: -10%;
     text-align: center;
     display: none;
-}
+    }
 
 #undo {
     width: 100%;
@@ -295,7 +376,7 @@ a {
     min-height: 30px;
     cursor: pointer;
     display: none;
-}
+    }
 
 #PlayGame {
     width: 1280px;
@@ -303,8 +384,10 @@ a {
     margin: -35px -50px;
     overflow: hidden;
     background: url(gfx/fussballTable.png) no-repeat center 288px;
-}
+    }
+    
     #RedTeam { background-color: rgba(200,0,0,0.5); }
+    
     #BlueTeam { background-color: rgba(0,0,200,0.5); }
     
     #RedTeam,
@@ -313,7 +396,8 @@ a {
         width: 50%;
         height: 100%;
         position: relative;
-    }
+        }
+    
         #PlayGame .summary {
             position: absolute;
             width: 60%;
@@ -326,12 +410,13 @@ a {
             display: none;
             z-index: 11;
             background-color: #fff;
-        }
+            }
+            
             #PlayGame .closeSummary {
                 float: right;
                 background-color: White;
                 padding: 5px;
-            }
+                }
         
         #PlayGame .score,
         #PlayGame .score {
@@ -343,7 +428,8 @@ a {
             position: relative;
             z-index: 11;
             border-bottom: 1px solid black;
-        }
+            }
+            
         #PlayGame #RedTeam .score  { background-color: #f00; }
         #PlayGame #BlueTeam .score { background-color: #00f; }
         
@@ -362,7 +448,8 @@ a {
             display: block;
             position: absolute;
             padding: 5px;
-        }
+            }
+            
             #PlayGame div button img { width: 100%; }
             #PlayGame div button span {
                 display: block;
@@ -371,13 +458,14 @@ a {
                 text-align: center;
                 width: 186px;
                 background-color: rgba(255,255,255,0.8);
-            }
+                }
         
         #PlayGame #RedTeam button {
             background-color: #f00;
             border: 2px inset #f00;
             left: 150px;
-        }
+            }
+            
         #PlayGame #RedTeam .playerOffense { top: 383px; }
         #PlayGame #RedTeam .playerDefense { top: 597px; }
         
@@ -385,17 +473,16 @@ a {
             background-color: #00f;
             border: 2px inset #00f;
             right: 150px;
-        }
+            }
+            
         #PlayGame #BlueTeam .playerDefense { top: 240px; }
         #PlayGame #BlueTeam .playerOffense { top: 457px; }
 
-    #PlayGame .playerDefense {
-        bottom: 50%;
-    }
+    #PlayGame .playerDefense { bottom: 50%; }
 
     #PlayGame .playerOffense {
         bottom: 0;
-    }
+        }
     
     #RedSwitch,
     #BlueSwitch {
@@ -408,16 +495,17 @@ a {
         text-align: center;
         padding-top: 20px;
         display: none;
-    }
+        }
     
     #RedSwitch {
         top: 566px;
         right: 177px;
-    }
+        }
+    
     #BlueSwitch {
         top: 424px;
         left: 177px;
-    }
+        }
     
     #SelfGoalOverlay {
         width: 600px;
@@ -430,7 +518,7 @@ a {
         padding-top: 37px;
         background-color: rgba(200, 200, 100, 0.9);
         display: none;
-    }
+        }
     
     #PlayTime {
         font-family: Consolas, Monospace;
@@ -443,7 +531,7 @@ a {
         color: #fff;
         background-color: #333;
         border: 2px solid #fff;
-    }
+        }
     
     #TestMatch {
         position: absolute;
@@ -453,7 +541,7 @@ a {
         left: 563px;
         background-color: #fff;
         text-align: center;
-    }
+        }
     
 /* GAME OVER */
 #blueGoals { color: #00f; }
@@ -464,17 +552,17 @@ a {
     margin: 0 auto;
     display: table;
     clear: left;
-}
+    }
 
     #blueGoalsList {
         float: left;
         width: 290px;
-    }
+        }
 
     #redGoalsList {
         float: right;
         width: 290px;
-    }
+        }
 
     #blueGoalsList li { color: #00f; text-align: right; }
     #redGoalsList li  { color: #f00; }
@@ -486,7 +574,7 @@ a {
     padding-top: 14px;
     margin-top: 40px;
     clear: both;
-}
+    }
     
 /* PLAYERS */
 #PlayerList {
@@ -523,14 +611,14 @@ a {
         text-align: right;
         font-weight: bold;
         margin-right: 10px;
-    }
+        }
     
     #PlayerCard dd {
         line-height: 20px;
         float: left;
         width: 400px;
         text-align: left;
-    }
+        }
 
             
 /* STATISTICS */
@@ -547,7 +635,7 @@ a {
         border: 1px solid #dfdfdf;
         float: left;
         text-align: center;
-    }
+        }
     
         .awardTitle {
             font-style: italic;
@@ -567,11 +655,14 @@ a {
     display: table;
     margin: 0 auto;
     }
-            
+
 .dataList {
     margin: 0 auto;
-    width: 60%;
+    width: 70%;
+    min-width: 638px;
     border-collapse: collapse;
+    font-size: 20px;
+    font-family: 'BrandonGrotesqueMedium';
     }
     
     .dataList th {
@@ -579,12 +670,12 @@ a {
         padding: 10px 5px;
         border-bottom: 2px solid #3336;
         cursor: pointer;
-    }
+        }
             
         th span {
             display: block;
             float: left;
-        }
+            }
         
         th .sorter {
             border-color: transparent;
@@ -593,40 +684,17 @@ a {
             width: 0;
             height: 0;
             margin-left: 10px;
-        }
+            }
             
-        .headerSortDown .sorter { border-color: #f00 transparent transparent transparent; }
-        .headerSortUp .sorter   { border-color: transparent transparent #f00 transparent; }
+        .headerSortDown .sorter { border-color: #ff3000 transparent transparent transparent; }
+        .headerSortUp .sorter   { border-color: transparent transparent #ff3000 transparent; }
         
     .dataList td {
         padding: 10px 5px;
         border-bottom: 1px solid #dfdfdf;
-    }
+        }
     
-    .dataList tr.hover {
+    .dataList tr.hover, .dataList tr.focus {
         background-color: #dfdfdf;
         cursor: pointer;
         }
-            
-            
-            
-            
-            
- * jQuery UI Tabs 1.8.8
- *
- * Copyright 2010, AUTHORS.txt (http://jqueryui.com/about)
- * Dual licensed under the MIT or GPL Version 2 licenses.
- * http://jquery.org/license
- *
- * http://docs.jquery.com/UI/Tabs#theming
- */
-.ui-tabs { position: relative; padding: .2em; zoom: 1; } /* position: relative prevents IE scroll bug (element with position: relative inside container with overflow: auto appear as "fixed") */
-.ui-tabs .ui-tabs-nav { margin: 0; padding: .2em .2em 0; }
-.ui-tabs .ui-tabs-nav li { list-style: none; float: left; position: relative; top: 1px; margin: 0 .2em 1px 0; border-bottom: 0 !important; padding: 0; white-space: nowrap; }
-.ui-tabs .ui-tabs-nav li a { float: left; padding: .5em 1em; text-decoration: none; }
-.ui-tabs .ui-tabs-nav li.ui-tabs-selected { margin-bottom: 0; padding-bottom: 1px; }
-.ui-tabs .ui-tabs-nav li.ui-tabs-selected a, .ui-tabs .ui-tabs-nav li.ui-state-disabled a, .ui-tabs .ui-tabs-nav li.ui-state-processing a { cursor: text; }
-.ui-tabs .ui-tabs-nav li a, .ui-tabs.ui-tabs-collapsible .ui-tabs-nav li.ui-tabs-selected a { cursor: pointer; } /* first selector in group seems obsolete, but required to overcome bug in Opera applying cursor: text overall if defined elsewhere... */
-.ui-tabs .ui-tabs-panel { display: block; border-width: 0; padding: 1em 1.4em; background: none; }
-.ui-tabs .ui-tabs-hide { display: none !important; }
-.ui-tabs-selected { font-weight: bold; }
