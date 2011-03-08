@@ -139,7 +139,7 @@ $(document).ready(function () {
                     else
                         summary = $this.siblings(".summary");
 
-                    summary.append("<strong>" + scorerName + "</strong> - <a data-goalid='" + goalId + "'>Delete</a><br>");
+                    summary.append("<strong>" + scorerName + "</strong> - <a data-goalid='" + goalId + "'>Slett</a><br>");
 
                     $(".overlay").show();
                 }

@@ -184,6 +184,7 @@
     <None Include="Skin\fonts\brandon_reg-webfont.ttf" />
     <None Include="Skin\fonts\brandon_reg-webfont.woff" />
     <None Include="Skin\fonts\brandon_reg_it-webfont.woff" />
+    <Content Include="Views\Player\NewPlayer.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{3259AA49-8AA1-44D3-9025-A0B520596A8C}" />
