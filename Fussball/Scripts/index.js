@@ -1,12 +1,11 @@
 ﻿$(document).ready(function () {
 
-    picker.find("ul").width(width - 250 );
-
     var $picker = $("#playerPicker");
     var $list = $picker.find("ul");
     var playerCount = $list.find("li").length;
     var width = playerCount * ($list.find("li:first").outerWidth() + 13); //13px margin
     $list.width(width);
+    $picker.find("ul").width(width - 250);
 
     /* Playerlist navigation */
     $picker.find(".right").click(function () {
