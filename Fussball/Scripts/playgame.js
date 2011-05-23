@@ -124,6 +124,8 @@ $(document).ready(function () {
         var $this = $(this);
         Goal.selfGoal = 0;
 
+        $this.addClass("clicked");
+
         $("#SelfGoalOverlay").show().animate({ opacity: 1 }, 2000, function () {
             $("#SelfGoalOverlay").hide().removeClass("clicked");
 
@@ -175,6 +177,8 @@ $(document).ready(function () {
                     summary.append("<strong>" + scorerName + "</strong> - <a data-goalid='" + goalId + "'>Slett</a><br>");
 
                     $(".overlay").show();
+
+                    $this.removeClass("clicked");
                 }
             });
 
