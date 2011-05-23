@@ -387,7 +387,7 @@ a {
     top: 366px;
     text-align: center;
     font-size: 100px;
-    /*display: none;*/
+    display: none;
     }
 
 #PlayGame {
@@ -568,15 +568,16 @@ a {
     clear: left;
     }
 
-    #blueGoalsList {
-        float: left;
-        width: 290px;
+    #blueGoalsList, #redGoalsList { 
+        min-width: 48%; 
+        width: 48%;
         }
+        
+        #blueGoalsList li, #redGoalsList li { list-style-type: none; }
 
-    #redGoalsList {
-        float: right;
-        width: 290px;
-        }
+    #blueGoalsList { float: left; }
+
+    #redGoalsList { float: right; }
 
     #blueGoalsList li { color: #00f; text-align: right; }
     #redGoalsList li  { color: #f00; }
