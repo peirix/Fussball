@@ -24,18 +24,7 @@ namespace Fussball.Controllers
         }
 
         [AcceptVerbs(HttpVerbs.Post)]
-        public ActionResult Index(string name)
-        {
-            var player = new Player { Name = name };
-
-            playerRep.Add(player);
-            playerRep.Save();
-
-            return RedirectToAction("Index");
-        }
-
-        [AcceptVerbs(HttpVerbs.Post)]
-        public ActionResult Play(int BlueDef, int BlueOff, int RedDef, int RedOff, string IsTest)
+        public ActionResult Play(int BlueDef, int BlueOff, int RedDef, int RedOff, bool IsTest)
         {
             var game = new Game()
             {
@@ -45,7 +34,7 @@ namespace Fussball.Controllers
                 Red2 = RedOff,
                 DateStart = DateTime.Now,
                 DateEnd = DateTime.Now,
-                IsTest = IsTest == "true"
+                IsTest = IsTest
             };
 
             gameRep.Add(game);
@@ -77,6 +66,7 @@ namespace Fussball.Controllers
         public ActionResult GameOver(int gameID, int winningTeam)
         {
             var game = gameRep.GetGame(gameID);
+            game.DateEnd = DateTime.Now;
             game.WinningTeam = winningTeam;
             gameRep.Save();
 
@@ -96,8 +86,14 @@ namespace Fussball.Controllers
                 Red1 = playerRep.GetPlayer(game.Red1),
                 Red2 = playerRep.GetPlayer(game.Red2),
                 Game = game,
-                GameScore = goalRep.GetGoalsByGame(game.ID)
+                GameScore = goalRep.GetGoalsByGame(game.ID).ToList()
             };
+
+            if (game.IsTest)
+            {
+                gameRep.Delete(game);
+                gameRep.Save();
+            }
 
             return View(viewmodel);
         }

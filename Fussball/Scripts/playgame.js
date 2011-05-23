@@ -2,7 +2,7 @@
     blueTeam: 0,
     redTeam: 0,
     updateBlueScore: function () {
-        $("#BlueTeam .score strong").text(Fussball.blueTeam);
+        $("#BlueTeam .score a").text(Fussball.blueTeam);
         if (this.blueTeam == 5 && !this.blueSwitched) {
             if (!this.redSwitched)
                 $("#RedSwitch").show();
@@ -10,10 +10,17 @@
             $("#BlueTeam > button").toggleClass("playerDefense playerOffense");
             showMessage("Bytte!", "blue");
             this.blueSwitched = true;
+        } else if (this.blueTeam < 5 && this.blueSwitched) {
+            if (this.redSwitched) {
+                $("#BlueSwitch").show();
+            }
+            $("#BlueTeam > button").toggleClass("playerDefense playerOffense");
+            showMessage("Bytte tilbake!", "blue");
+            this.blueSwitched = false;
         }
     },
     updateRedScore: function () {
-        $("#RedTeam .score strong").text(Fussball.redTeam);
+        $("#RedTeam .score a").text(Fussball.redTeam);
         if (this.redTeam == 5 && !this.redSwitched) {
             if (!this.blueSwitched)
                 $("#BlueSwitch").show();
@@ -21,6 +28,13 @@
             $("#RedTeam > button").toggleClass("playerDefense playerOffense");
             showMessage("Bytte!", "red");
             this.redSwitched = true;
+        } else if (this.redTeam < 5 && this.redSwitched) {
+            if (this.blueSwitched) {
+                $("#RedSwitch").show();
+            }
+            $("#RedTeam > button").toggleClass("playerDefense playerOffense");
+            showMessage("Bytte tilbake!", "red");
+            this.redSwitched = false;
         }
     },
     blueSwitched: false,
@@ -73,6 +87,7 @@ $(document).ready(function () {
 
     $("#SelfGoalOverlay").click(function () {
         Goal.selfGoal = 1;
+        $(this).addClass("clicked");
     });
 
     $("#RedSwitch").click(function () {
@@ -94,7 +109,7 @@ $(document).ready(function () {
         Goal.selfGoal = 0;
 
         $("#SelfGoalOverlay").show().animate({ opacity: 1 }, 2000, function () {
-            $("#SelfGoalOverlay").hide();
+            $("#SelfGoalOverlay").hide().removeClass("clicked");
 
             var scorerName = $this.text();
 
@@ -113,18 +128,20 @@ $(document).ready(function () {
             else
                 Goal.oppDefId = $("#BlueTeam .playerDefense").attr("id");
 
+            if (Goal.team == 0) {
+                Fussball.blueTeam++;
+                Fussball.updateBlueScore();
+            } else {
+                Fussball.redTeam++;
+                Fussball.updateRedScore();
+            }
+
             $.ajax({
                 url: "ScoreGoal",
                 type: "post",
                 data: Goal,
                 success: function (goalId) {
-                    if (Goal.team == 0) {
-                        Fussball.blueTeam++;
-                        Fussball.updateBlueScore();
-                    } else {
-                        Fussball.redTeam++;
-                        Fussball.updateRedScore();
-                    }
+
 
                     if (Fussball.blueTeam == 10 || Fussball.redTeam == 10) {
                         Goal.team == 0 ? showMessage("Blå vinner!", "blue") : showMessage("Rød vinner!", "red");

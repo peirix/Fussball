@@ -1,0 +1,30 @@
+﻿@model IEnumerable<Fussball.Models.Player>
+
+@{
+    ViewBag.Title = "AllGames";
+}
+<table id="OverallList" class="dataList">
+    <thead>
+        <tr>
+            <th><span>Spiller</span> <span class="sorter"></span></th>
+            <th><span>Kamper</span> <span class="sorter"></span></th>
+            <th><span>Mål</span> <span class="sorter"></span></th>
+            <th><span>Gj.snittsmål</span> <span class="sorter"></span></th>
+            <th><span>Selvmål</span> <span class="sorter"></span></th>
+            <th><span>Sluppet inn</span> <span class="sorter"></span></th>
+        </tr>
+    </thead>
+    <tbody>
+    @foreach (var player in Model) {
+        <tr>
+            <td><a href="@Url.Content("~/Player/Details/" + player.ID)" class="playerName">@player.Name</a></td>
+            <td class="numberOfGames">@player.TotalGames()</td>
+            <td>@player.TotalGoals()</td>
+            <td>@Math.Round((decimal)player.AverageGoals(), 2)</td>
+            <td>@player.TotalSelfGoals()</td>
+            <td>@player.LetInGoals()</td>
+        </tr>
+    }
+    </tbody>
+</table>
+

@@ -29,5 +29,21 @@ namespace Fussball.Controllers
             return View(player);
         }
 
+        public ActionResult NewPlayer()
+        {
+            return View();
+        }
+
+        [AcceptVerbs(HttpVerbs.Post)]
+        public ActionResult NewPlayer(string name)
+        {
+            var player = new Player { Name = name };
+
+            playerRep.Add(player);
+            playerRep.Save();
+
+            return RedirectToRoute(new {controller = "Home", action = "Index"});
+        }
+
     }
 }

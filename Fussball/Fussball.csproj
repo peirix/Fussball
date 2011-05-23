@@ -76,6 +76,7 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\PlayerController.cs" />
     <Compile Include="Controllers\StatisticsController.cs" />
+    <Compile Include="Models\Game.cs" />
     <Compile Include="Models\Player.cs" />
     <Compile Include="Models\PlayerRepository.cs" />
     <Compile Include="Models\GoalRepository.cs" />
@@ -107,11 +108,13 @@
     <Content Include="Scripts\index.js" />
     <Content Include="Scripts\jquery.ui.js" />
     <Content Include="Scripts\playgame.js" />
+    <Content Include="Scripts\statistics.js" />
     <Content Include="Scripts\tablesorter.js" />
     <Content Include="Skin\fonts\brandon_bld-webfont.svg" />
     <Content Include="Skin\fonts\brandon_light_it-webfont.svg" />
     <Content Include="Skin\fonts\brandon_med-webfont.svg" />
     <Content Include="Skin\fonts\brandon_reg-webfont.svg" />
+    <Content Include="Skin\gfx\ajax-loader.gif" />
     <Content Include="Skin\gfx\arrow_left.png" />
     <Content Include="Skin\gfx\arrow_right.png" />
     <Content Include="Skin\gfx\bg_main.gif" />
@@ -185,6 +188,10 @@
     <None Include="Skin\fonts\brandon_reg-webfont.woff" />
     <None Include="Skin\fonts\brandon_reg_it-webfont.woff" />
     <Content Include="Views\Player\NewPlayer.cshtml" />
+    <Content Include="Views\Statistics\LastTen.cshtml" />
+    <Content Include="Views\Statistics\AllGames.cshtml" />
+    <Content Include="Views\Statistics\General.cshtml" />
+    <Content Include="Views\Player\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{3259AA49-8AA1-44D3-9025-A0B520596A8C}" />

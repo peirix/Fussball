@@ -15,7 +15,7 @@ namespace Fussball.Models
             return db.Players.Where(p => p.ID == id).Single();
         }
 
-        public List<Player> GetAllPlayers()
+        public IEnumerable<Player> GetAllPlayers()
         {
             return db.Players.OrderBy(p => p.Name).ToList();
         }
@@ -32,6 +32,7 @@ namespace Fussball.Models
                    || game.Blue2 == playerID
                    || game.Red1 == playerID
                    || game.Red2 == playerID
+                   && !game.IsTest
                    select game;
         }
 

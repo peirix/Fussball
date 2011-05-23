@@ -1,0 +1,23 @@
+﻿@model IEnumerable<Fussball.Models.Player>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+
+<table class="dataList">
+    <thead>
+        <tr>
+            <th><span>Spiller</span></th>
+        </tr>
+    </thead>
+    <tbody>
+    @{ int rank = 1; }
+    @foreach (var player in Model) {
+        <tr>
+            <td><a href="@Url.Content("~/Player/Details/" + player.ID)" class="playerName">@player.Name</a></td>
+        </tr>
+    }
+    </tbody>
+</table>
+

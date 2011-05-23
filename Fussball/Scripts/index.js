@@ -9,7 +9,6 @@
 
     /* Playerlist navigation */
     $picker.find(".right").click(function () {
-        console.log($list.css("margin-left"));
         if ($list.css("margin-left").replace("px", "") > -($list.width() - $("#PlayerListContainer").width())) {
             $list.animate({ "margin-left": "-=" + 200 });
         }
