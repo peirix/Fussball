@@ -1,5 +1,7 @@
 ﻿$(document).ready(function () {
 
+    picker.find("ul").width(width - 250 );
+
     var $picker = $("#playerPicker");
     var $list = $picker.find("ul");
     var playerCount = $list.find("li").length;
@@ -13,6 +15,7 @@
             $list.animate({ "margin-left": "-=" + 550 });
         }
     });
+
 
     $picker.find(".left").click(function () {
         if ($list.css("margin-left").replace("px", "") < 0) {

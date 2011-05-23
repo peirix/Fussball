@@ -9,7 +9,6 @@
         $("#Tabs").tabs();
     });
 </script>
-<a class="backBtn"></a>
 <h1>Statistikk</h1>
 @*
     * Generelle
@@ -79,7 +78,20 @@
         </table>
     </div>
     <div id="General">
-        <span>Blå seiere: @ViewData["BlueWins"]</span><br>
-        <span>Rød seiere: @ViewData["RedWins"]</span>
+
+		<table id="GeneralStatsList" class="dataList">
+			<thead>
+				<tr>
+					<th>Blå seiere</th>
+					<th>Rød seiere</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td>@ViewData["BlueWins"]</td>
+					<td>@ViewData["RedWins"]</td>
+				</tr>
+			</tbody>
+		</table>
     </div>
 </div>
