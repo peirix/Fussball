@@ -158,7 +158,6 @@ a {
 /* RED RIBBON */
 .ribbon {
     width: 100%;
-    overflow: hidden;
     height: 173px;
     clear: left;
     position: relative;
@@ -378,17 +377,17 @@ a {
 /* PLAY GAME */
 #message {
     width: 60%;
-    height: 20%;
+    height: 130px;
     position: absolute;
     background-color: red;
     z-index: 12;
-    border: 2px solid black;
+    padding: 30px;
     left: 50%;
     margin-left: -30%;
-    top: 50%;
-    margin-top: -10%;
+    top: 366px;
     text-align: center;
-    display: none;
+    font-size: 100px;
+    /*display: none;*/
     }
 
 #PlayGame {
