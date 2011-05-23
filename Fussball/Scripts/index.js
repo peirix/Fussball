@@ -2,22 +2,25 @@
 
     var $picker = $("#playerPicker");
     var $list = $picker.find("ul");
-    var playerCount = $list.find("li").length;
-    var width = playerCount * ($list.find("li:first").outerWidth() + 13); //13px margin
-    $list.width(width);
-    $picker.find("ul").width(width - 250);
+    function resizeList() {
+        var playerCount = $list.find("li").length;
+        var singleWidth = $list.find("li:first").outerWidth() + 5; //5px margin
+        var width = playerCount * singleWidth;
+        $list.width(width);
+    }
+    resizeList();
 
     /* Playerlist navigation */
     $picker.find(".right").click(function () {
         if ($list.css("margin-left").replace("px", "") > -($list.width() - $("#PlayerListContainer").width())) {
-            $list.animate({ "margin-left": "-=" + 200 });
+            $list.animate({ "margin-left": "-=" + 550 });
         }
     });
 
 
     $picker.find(".left").click(function () {
         if ($list.css("margin-left").replace("px", "") < 0) {
-            $("#playerPicker ul").animate({ "margin-left": "+=" + 200 });
+            $("#playerPicker ul").animate({ "margin-left": "+=" + 550 });
         }
     });
 
@@ -50,11 +53,13 @@
         $(".selected").removeClass("selected");
         $("li", this).addClass("selected");
         $("#playerForm .freeSpot").addClass("highlight");
+        resizeList();
     }).live("dblclick", function () {
         $("li", this).appendTo("#playerPicker ul");
         $(this).removeClass("filledSpot").addClass("freeSpot");
         $(".selected").removeClass("selected");
         $("#playerForm .highlight").removeClass("highlight");
+        resizeList();
     });
 
     function movePlayerToSpot($spot) {
@@ -67,6 +72,8 @@
         } else {
             $("#playBtn").attr("disabled", true);
         }
+
+        resizeList();
     }
 
     $("#playTestBtn").click(function () {

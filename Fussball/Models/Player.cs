@@ -45,6 +45,17 @@ namespace Fussball.Models
             return this.Games.Count() + this.Games1.Count() + this.Games2.Count() + this.Games3.Count();
         }
 
+        public int TotalWins()
+        {
+            return WinsInGameList(this.Games) + WinsInGameList(this.Games1) + WinsInGameList(this.Games2) + WinsInGameList(this.Games3);
+        }
+
+        private int WinsInGameList(IEnumerable<Game> games)
+        {
+            return games.Where(g => (g.WinningTeam == 0 && (g.Blue1 == this.ID || g.Blue2 == this.ID)) ||
+                                     g.WinningTeam == 1 && (g.Red1 == this.ID || g.Red2 == this.ID)).Count();
+        }
+
         public int TotalGoals()
         {
             return this.Goals.Where(g => g.SelfGoal == 0).Count();
@@ -103,16 +114,16 @@ namespace Fussball.Models
 
         public string BestColor()
         {
-            var games = this.GetAllGames();
+            var games = GetAllGames();
             var redWins = games.Where(g => g.WinningTeam == 1 && (g.Red1 == this.ID || g.Red2 == this.ID)).Count();
             var blueWins = games.Where(g => g.WinningTeam == 0 && (g.Blue1 == this.ID || g.Blue2 == this.ID)).Count();
 
             if (redWins > blueWins)
                 return "Rød (" + redWins + " seiere)";
-            else if (redWins < blueWins)
+            if (redWins < blueWins)
                 return "Blå (" + blueWins + " seiere)";
-            else
-                return "Begge";
+            
+            return "Begge";
         }
 
         public string BestPosition()
@@ -124,35 +135,41 @@ namespace Fussball.Models
 
             if (defGoals > offGoals)
                 return "Forsvar (" + defGoals + " mål)";
-            else if (defGoals < offGoals)
+            if (defGoals < offGoals)
                 return "Angrep (" + offGoals + " mål)";
-            else
-                return "Begge";
+            
+            return "Begge";
         }
 
-        public string PlayedMostWith()
+        private List<IEnumerable<Game>> GetGamesList()
         {
+            var gameList = new List<IEnumerable<Game>>();
             var games = this.GetAllGames();
+            gameList.Add(games.Where(g => g.Red1 == this.ID));
+            gameList.Add(games.Where(g => g.Red2 == this.ID));
+            gameList.Add(games.Where(g => g.Blue1 == this.ID));
+            gameList.Add(games.Where(g => g.Blue2 == this.ID));
 
-            var red1Games = games.Where(g => g.Red1 == this.ID);
-            var mostRed1Games = from r in red1Games
+            return gameList;
+        }
+
+        private string MostOccuredPlayerInGameList(List<IEnumerable<Game>> games)
+        {
+            var mostRed1Games = from r in games.ElementAt(0)
                                 group r by r.Red2 into g
                                 select new { ID = g.Key, Count = g.Count() };
 
-            var red2Games = games.Where(g => g.Red2 == this.ID);
-            var mostRed2Games = from r in red2Games
+            var mostRed2Games = from r in games.ElementAt(1)
                                 group r by r.Red1 into g
                                 select new { ID = g.Key, Count = g.Count() };
 
-            var blue1Games = games.Where(g => g.Blue1 == this.ID);
-            var mostBlue1Games = from r in blue1Games
-                                group r by r.Blue2 into g
-                                select new { ID = g.Key, Count = g.Count() };
+            var mostBlue1Games = from r in games.ElementAt(2)
+                                 group r by r.Blue2 into g
+                                 select new { ID = g.Key, Count = g.Count() };
 
-            var blue2Games = games.Where(g => g.Blue2 == this.ID);
-            var mostBlue2Games = from r in blue2Games
-                                group r by r.Blue1 into g
-                                select new { ID = g.Key, Count = g.Count() };
+            var mostBlue2Games = from r in games.ElementAt(3)
+                                 group r by r.Blue1 into g
+                                 select new { ID = g.Key, Count = g.Count() };
 
             var totalList = mostRed1Games.ToList();
             totalList.AddRange(mostRed2Games.ToList());
@@ -166,14 +183,28 @@ namespace Fussball.Models
 
             var temp = tempAgg.OrderByDescending(g => g.Count).First();
             var player = playerRep.GetPlayer(temp.ID);
-
             return player.Name + " (" + temp.Count + ")";
+        }
+
+        public string PlayedMostWith()
+        {
+            var games = GetGamesList();
+
+            return MostOccuredPlayerInGameList(games);
 
         }
 
         public string BestTeamPlayer()
         {
-            return "Ikke implementert";
+            var gamesList = GetGamesList();
+            var winningGames = new List<IEnumerable<Game>>();
+            foreach (var games in gamesList)
+            {
+                winningGames.Add(games.Where(g => (g.WinningTeam == 0 && (g.Blue1 == this.ID || g.Blue2 == this.ID)) ||
+                                                   g.WinningTeam == 1 && (g.Red1 == this.ID || g.Red2 == this.ID)));
+            }
+
+            return MostOccuredPlayerInGameList(winningGames);
         }
 
         private List<Game> GetAllGames()

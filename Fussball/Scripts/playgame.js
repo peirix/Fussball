@@ -66,6 +66,22 @@ function showMessage(msg, color) {
 
 $(document).ready(function () {
 
+    $("#MastHead nav a").click(function (e) {
+        e.preventDefault();
+        e.stopPropagation();
+        var $this = $(this);
+        if (confirm("Hvis du forlater spillet, vil alle mål gå tapt.\nSikker?")) {
+            $.ajax({
+                url: "DeleteGame",
+                data: { gameId: $("#gameID").val() },
+                type: "post",
+                success: function () {
+                    location.href = $this.attr("href");
+                }
+            });
+        }
+    });
+
     var min = 0, sec = 0;
 
     var st = setInterval(function () {

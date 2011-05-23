@@ -190,17 +190,25 @@ a {
             right: 0; 
             background-image: url(gfx/arrow_right.png);
             }
-
+            
+    #PlayerListContainer {
+        width: 1008px;
+        float: left;
+        overflow: hidden;
+        margin: 0 85px;
+        position: relative;
+        height: 172px;
+        }
+        
     #playerPicker ul {
-        width: auto!important;
         display: table;
         height: 100%;
         background-color: #ff3000;
+        margin-left: 0;
         position: absolute;
         right: 85px;
-        left: 85px;
+        left: 0;
         top: 0;
-        width: 100%;
         }
         
         #playerPicker ul li,
@@ -208,43 +216,15 @@ a {
             float: left;
             border-bottom: 0 none;
             list-style: none;
-            -webkit-border-radius: 5px;
             text-align: center;
-            padding: 0;
+            padding: 5px;
             position: relative;
-            margin: 23px 13px 0 0;
+            margin: 25px 5px 20px 0;
+            -moz-border-radius: 5px;
+            -webkit-border-radius: 5px;
+            border-radius: 5px;
+            cursor: pointer;
             }
-    
-    #PlayerListContainer {
-        width: 100%;
-        float: left;
-        overflow: hidden;
-        border: 1px solid blue;
-        margin: 0 85px;
-        }
-    
-        #playerPicker ul {
-            width: auto;
-            display: table;
-            height: 100%;
-            background-color: #ff3000;
-            margin-left: 0;
-            }
-        
-            #playerPicker ul li,
-            #playerForm > ul li {
-                float: left;
-                border-bottom: 0 none;
-                list-style: none;
-                text-align: center;
-                padding: 5px;
-                position: relative;
-                margin: 25px 5px 20px 0;
-                -moz-border-radius: 5px;
-                -webkit-border-radius: 5px;
-                border-radius: 5px;
-                cursor: pointer;
-                }
             
             #playerPicker ul li span,
             #playerForm ul li span {
@@ -387,7 +367,7 @@ a {
     top: 366px;
     text-align: center;
     font-size: 100px;
-    /*display: none;*/
+    display: none;
     }
 
 #PlayGame {

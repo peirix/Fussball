@@ -24,7 +24,7 @@ namespace Fussball.Controllers
         }
 
         [AcceptVerbs(HttpVerbs.Post)]
-        public ActionResult Play(int BlueDef, int BlueOff, int RedDef, int RedOff, bool IsTest)
+        public ActionResult Play(int BlueDef, int BlueOff, int RedDef, int RedOff, bool? IsTest = false)
         {
             var game = new Game()
             {
@@ -34,7 +34,7 @@ namespace Fussball.Controllers
                 Red2 = RedOff,
                 DateStart = DateTime.Now,
                 DateEnd = DateTime.Now,
-                IsTest = IsTest
+                IsTest = IsTest.Value
             };
 
             gameRep.Add(game);
@@ -127,6 +127,15 @@ namespace Fussball.Controllers
             var goal = goalRep.GetGoal(goalID);
             goalRep.Delete(goal);
             goalRep.Save();
+        }
+
+        //AJAX
+        [AcceptVerbs(HttpVerbs.Post)]
+        public void DeleteGame(int gameID)
+        {
+            var game = gameRep.GetGame(gameID);
+            gameRep.Delete(game);
+            gameRep.Save();
         }
     }
 }
