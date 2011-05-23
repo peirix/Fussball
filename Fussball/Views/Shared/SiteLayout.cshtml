@@ -15,13 +15,22 @@
 <body>
     <div id="Main">
 		<div id="MastHead">
-			<img id="SiteLogo" alt="hjem" src="@Url.Content("~/Skin/gfx/siteLogo.png")" />
+			<a href="/">
+				<img id="SiteLogo" alt="hjem" src="@Url.Content("~/Skin/gfx/siteLogo.png")" />
+			</a>
 			<nav>
 				<ul>
+<<<<<<< HEAD
 					<li><a href="@Url.Content("~/")" title="Opprett ny spiller">Nytt spill</a></li>
 					<li><a href="@Url.Content("~/Player/NewPlayer")" title="">Nye spillere</a></li>
 					<li><a href="@Url.Content("~/Statistics/")">Statistikk</a></li>
 					<li><a href="@Url.Content("~/Player/")" title="Se alle spillere">Spillere</a></li>
+=======
+					<li><a href="@Url.Content("~/Home/Index")" title="Opprett ny spiller">Nytt spill</a></li>
+					<li><a href="@Url.Content("~/Statistics/Index")" title="Gå til statistikk">Statistikk</a></li>
+					<li><a href="@Url.Content("~/Player/NewPlayer")" title="Opprett nye spillere">Ny spiller</a></li>
+					<li><a href="#" title="Rediger eksisterende spiller">Rediger spiller</a></li>
+>>>>>>> 247bf2864ae45cbf81787f215314f03833c51271
 				</ul>
 			</nav>
 		</div>

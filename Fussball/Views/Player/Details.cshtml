@@ -3,29 +3,66 @@
 @{
     ViewBag.Title = "Details";
 }
-
+<script src="@Url.Content("~/Scripts/jquery.ui.js")"></script>
+<script>
+	$(function () {
+		$("#Tabs").tabs();
+	});
+</script>
 <div id="PlayerCard">
     <h1>@Model.Name</h1>
     <img src="@Model.Image_Large" alt="Bilde av @Model.Name">
-    <dl>
-        <dt>Antall kamper</dt>
-        <dd>@Model.TotalGames()</dd>
-        <dt>Antall mål</dt>
-        <dd>@Model.TotalGoals()</dd>
-        <dt>Antall selvmål</dt>
-        <dd>@Model.TotalSelfGoals()</dd>
-        <dt>Sluppet inn</dt>
-        <dd>@Model.LetInGoals()</dd>
-        <dt>Gjennomsnittsmål pr kamp</dt>
-        <dd>@Math.Round(Model.AverageGoals(), 2)</dd>
-        <dt>Beste farge</dt>
-        <dd>@Model.BestColor()</dd>
-        <dt>Beste posisjon</dt>
-        <dd>@Model.BestPosition()</dd>
-        <dt>Spilt mest med</dt>
-        <dd>@Model.PlayedMostWith()</dd>
-        <dt>Vunnet mest med</dt>
-        <dd>@Model.BestTeamPlayer()</dd>
-    </dl>
-</div>
 
+	<div id="Tabs">
+		<ul>
+			<li><a href="#Overall">Overall</a></li>
+			<li><a href="#Last10">Siste 10 kamper</a></li>
+		</ul>
+		<div id="Overall">
+			<dl>
+				<dt>Antall kamper</dt>
+				<dd>@Model.TotalGames()</dd>
+				<dt>Antall mål</dt>
+				<dd>@Model.TotalGoals()</dd>
+				<dt>Antall selvmål</dt>
+				<dd>@Model.TotalSelfGoals()</dd>
+				<dt>Sluppet inn</dt>
+				<dd>@Model.LetInGoals()</dd>
+				<dt>Gjennomsnittsmål pr kamp</dt>
+				<dd>@Math.Round(Model.AverageGoals(), 2)</dd>
+				<dt>Beste farge</dt>
+				<dd>@Model.BestColor()</dd>
+				<dt>Beste posisjon</dt>
+				<dd>@Model.BestPosition()</dd>
+				<dt>Spilt mest med</dt>
+				<dd>@Model.PlayedMostWith()</dd>
+				<dt>Vunnet mest med</dt>
+				<dd>@Model.BestTeamPlayer()</dd>
+			</dl>
+		</div>
+		<div id="Last10">
+			
+			<table class="dataList">
+				<thead>
+					<tr>
+						<th><span>Dato</span></th>
+						<th><span>Blått lag</span></th>
+						<th><span>Rødt lag</span></th>
+						<th><span>Resultat</span></th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td>22.05.2011</td>
+						<td>Ola (X) / Hege (X) </td>
+						<td>Pål (X) / Andreas (X)</td>
+						<td>10 - 2</td>
+					</tr>
+				</tbody>
+			</table>
+			        
+		</div>
+
+	</div><!-- END TABS -->
+
+</div>

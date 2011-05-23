@@ -10,14 +10,14 @@
     /* Playerlist navigation */
     $picker.find(".right").click(function () {
         if ($list.css("margin-left").replace("px", "") > -($list.width() - $("#PlayerListContainer").width())) {
-            $list.animate({ "margin-left": "-=" + 550 });
+            $list.animate({ "margin-left": "-=" + 200 });
         }
     });
 
 
     $picker.find(".left").click(function () {
         if ($list.css("margin-left").replace("px", "") < 0) {
-            $("#playerPicker ul").animate({ "margin-left": "+=" + 550 });
+            $("#playerPicker ul").animate({ "margin-left": "+=" + 200 });
         }
     });
 
