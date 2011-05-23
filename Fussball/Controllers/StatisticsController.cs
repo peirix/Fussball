@@ -19,11 +19,11 @@ namespace Fussball.Controllers
         {
             var sw = new System.Diagnostics.Stopwatch();
             sw.Start();
-            ViewData["TopScorer"] = playerRep.GetTopScorer();
+            /*ViewData["TopScorer"] = playerRep.GetTopScorer();
             ViewData["WorstScorer"] = playerRep.GetWorstScorer();
             ViewData["MostSelfScore"] = playerRep.GetMostSelfScores();
             ViewData["LeastSelfScore"] = playerRep.GetLeastSelfScores();
-
+            */
             
             
             var allGames = gameRep.GetAllGames();
@@ -32,14 +32,14 @@ namespace Fussball.Controllers
             ViewData["RedWins"] = allGames.Where(g => g.WinningTeam == 1).Count();
             
             var players = playerRep.GetAllPlayers();
+            foreach (var player in players)
+                player.SetRanking();
 
             sw.Stop();
             System.Diagnostics.Debug.WriteLine("index() " + sw.Elapsed.Milliseconds);
 
             return View(players);
         }
-
-
 
     }
 }

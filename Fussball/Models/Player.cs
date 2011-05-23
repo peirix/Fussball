@@ -9,6 +9,8 @@ namespace Fussball.Models
 {
     public partial class Player
     {
+        public RankStats Stats { get; set; }
+
         public string GetSquareImage()
         {
             if (!string.IsNullOrEmpty(this.Image_Square))
@@ -67,20 +69,11 @@ namespace Fussball.Models
         GoalRepository goalRep = new GoalRepository();
         PlayerRepository playerRep = new PlayerRepository();
 
-        public double Ranking()
+        public void SetRanking()
         {
-            var stats = GetLast10Stats().Split(new string[] { "," }, StringSplitOptions.None);
-
-            return (double.Parse(stats[0]) - double.Parse(stats[1]) - (double.Parse(stats[2]) * 1.5)) / double.Parse(stats[3]);
-        }
-
-        public double AllTimeRanking()
-        {
-            return ((double)this.TotalGoals() - (double)this.LetInGoals() - ((double)this.TotalSelfGoals() * 2)) / (double)this.TotalGames();
-        }
-
-        public string GetLast10Stats()
-        {
+            var sw = new System.Diagnostics.Stopwatch();
+            sw.Start();
+            
             var lastGames = playerRep.GetPlayerGames(this.ID).OrderByDescending(g => g.DateStart).Take(10);
 
             int goals, letIn, selfGoals;
@@ -94,7 +87,10 @@ namespace Fussball.Models
                 selfGoals += gameGoals.Where(g => g.PlayerID == this.ID && g.SelfGoal == 1).Count();
             }
 
-            return goals + "," + letIn + "," + selfGoals + "," + lastGames.Count();
+            this.Stats = new RankStats(lastGames.Count(), goals, selfGoals, letIn);
+            
+            sw.Stop();
+            System.Diagnostics.Debug.WriteLine("SetRanking(" + this.Name + ") " + sw.Elapsed.Milliseconds);
         }
 
         public string BestColor()
@@ -181,6 +177,24 @@ namespace Fussball.Models
             games.AddRange(this.Games2);
             games.AddRange(this.Games3);
             return games;
+        }
+    }
+
+    public class RankStats
+    {
+        public int Games { get; set; }
+        public int Goals { get; set; }
+        public int SelfGoals { get; set; }
+        public int LetInGoals { get; set; }
+        public double Points { get; set; }
+
+        public RankStats(int games, int goals, int selfGoals, int letInGoals)
+        {
+            this.Games = games;
+            this.Goals = goals;
+            this.SelfGoals = selfGoals;
+            this.LetInGoals = letInGoals;
+            this.Points = goals - letInGoals - ((selfGoals * 1.5) / games);
         }
     }
 }

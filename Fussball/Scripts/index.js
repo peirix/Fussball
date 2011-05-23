@@ -10,13 +10,13 @@
     $picker.find(".right").click(function () {
         console.log($list.css("margin-left"));
         if ($list.css("margin-left").replace("px", "") > -($list.width() - $("#PlayerListContainer").width())) {
-            $list.animate({ "margin-left": "-=" + 200 });
+            $list.animate({ "margin-left": "-=" + 550 });
         }
     });
 
     $picker.find(".left").click(function () {
         if ($list.css("margin-left").replace("px", "") < 0) {
-            $("#playerPicker ul").animate({ "margin-left": "+=" + 200 });
+            $("#playerPicker ul").animate({ "margin-left": "+=" + 550 });
         }
     });
 
