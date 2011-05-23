@@ -529,8 +529,11 @@ div.largeBtn {
     #SelfGoalOverlay {
         text-align: center;
         clear: both;
-        /*display: none;*/
+        display: none;
         }
+        #SelfGoalOverlay.clicked {
+            background-color: #333;
+            }
     
     #PlayTime {
         font-family: 'BrandonGrotesqueBold';
@@ -630,6 +633,12 @@ div.largeBtn {
 
             
 /* STATISTICS */
+#Last10 img {
+    position: absolute;
+    top: 300px;
+    left: 500px;
+    }
+
 #HallOfFameAndShame {
     display: table;
     clear: both;

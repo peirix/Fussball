@@ -1,0 +1,36 @@
+﻿@model IEnumerable<Fussball.Models.Player>
+
+@{
+    ViewBag.Title = "LastTen";
+}
+
+<table id="StatisticList" class="dataList">
+    <thead>
+        <tr>
+            <th><span>Rank</span> <span class="sorter"></span></th>
+            <th><span>Spiller</span> <span class="sorter"></span></th>
+            <th><span>Mål</span> <span class="sorter"></span></th>
+            <th><span>Selvmål</span> <span class="sorter"></span></th>
+            <th><span>Sluppet inn</span> <span class="sorter"></span></th>
+            <th><span>Kamper vunnet</span> <span class="sorter"></span></th>
+            <th><span>Poeng</span> <span class="sorter"></span></th>
+        </tr>
+    </thead>
+    <tbody>
+    @{ int rank = 1; }
+    @foreach (var player in Model.OrderByDescending(p => p.Stats.Points)) {
+        if (player.TotalGames() > 0) {
+        <tr>
+            <td>@(rank++)</td>
+            <td><a href="@Url.Content("~/Player/Details/" + player.ID)" class="playerName">@player.Name</a></td>
+            <td>@((double)player.Stats.Goals / player.Stats.Games)</td>
+            <td>@((double)player.Stats.SelfGoals / player.Stats.Games)</td>
+            <td>@((double)player.Stats.LetInGoals / player.Stats.Games)</td>
+            <td>@player.Stats.GamesWon</td>
+            <td>@player.Stats.Points</td>
+        </tr>
+        }
+    }
+    </tbody>
+</table>
+

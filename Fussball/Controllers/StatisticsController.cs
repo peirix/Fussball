@@ -17,28 +17,33 @@ namespace Fussball.Controllers
 
         public ActionResult Index()
         {
-            var sw = new System.Diagnostics.Stopwatch();
-            sw.Start();
-            /*ViewData["TopScorer"] = playerRep.GetTopScorer();
-            ViewData["WorstScorer"] = playerRep.GetWorstScorer();
-            ViewData["MostSelfScore"] = playerRep.GetMostSelfScores();
-            ViewData["LeastSelfScore"] = playerRep.GetLeastSelfScores();
-            */
-            
-            
-            var allGames = gameRep.GetAllGames();
+            return View();
+        }
 
-            ViewData["BlueWins"] = allGames.Where(g => g.WinningTeam == 0).Count();
-            ViewData["RedWins"] = allGames.Where(g => g.WinningTeam == 1).Count();
-            
+        public ActionResult LastTen()
+        {
             var players = playerRep.GetAllPlayers();
             foreach (var player in players)
                 player.SetRanking();
 
-            sw.Stop();
-            System.Diagnostics.Debug.WriteLine("index() " + sw.Elapsed.Milliseconds);
-
             return View(players);
+        }
+
+        public ActionResult AllGames()
+        {
+            var players = playerRep.GetAllPlayers();
+            
+            return View(players);
+        }
+
+        public ActionResult General()
+        {
+            var allGames = gameRep.GetAllGames();
+
+            ViewData["BlueWins"] = allGames.Where(g => g.WinningTeam == 0).Count();
+            ViewData["RedWins"] = allGames.Where(g => g.WinningTeam == 1).Count();
+
+            return View();
         }
 
     }

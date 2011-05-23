@@ -15,27 +15,27 @@ namespace Fussball.Models
             return db.Goals.Where(s => s.ID == goalID).SingleOrDefault();
         }
 
-        public List<Goal> GetGoalsByGame(int gameID)
+        public IEnumerable<Goal> GetGoalsByGame(int gameID)
         {
             return (from goal in db.Goals
                     where goal.GameID == gameID
-                    select goal).ToList();
+                    select goal);
         }
 
-        public List<Goal> GetGoalsByGameAndTeam(int gameID, int team)
+        public IEnumerable<Goal> GetGoalsByGameAndTeam(int gameID, int team)
         {
             return (from goal in db.Goals
                     where goal.GameID == gameID
                     where goal.Team == team
-                    select goal).ToList();
+                    select goal);
         }
 
-        public List<Goal> GetGoalsByPlayer(int playerID)
+        public IEnumerable<Goal> GetGoalsByPlayer(int playerID)
         {
             return (from goal in db.Goals
                     where goal.PlayerID == playerID
                     where goal.SelfGoal == 0
-                    select goal).ToList();
+                    select goal);
         }
 
         //Insert/Delete/Update
