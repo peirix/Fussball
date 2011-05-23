@@ -1,4 +1,4 @@
 *.dll
 Build
-ReSharper.Fussball
+_ReSharper.Fussball
 Fussball.Tests
