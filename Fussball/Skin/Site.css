@@ -17,26 +17,31 @@ body { background: url(gfx/bg_main.gif) top left repeat;
     background: url(gfx/tilbake.png) no-repeat;
     float: left;
     }
-
-.largeBtn {
-    width: 296px;
-    height: 53px;
+    
+.btn, .largeBtn {
+    width: 150px;
+    height: 28px;
     background-color: #ff3000;
     border: 0;
     color: #fff;
-    font-size: 22px;
-    text-shadow: -1px -1px #000;
+    font-size: 30px;
     cursor: pointer;
-    margin: 0 0 30px -148px;
-    left: 50%;
+    margin: 0 0 30px 10px;
     position: relative;
-    display: block;
     text-align: center;
     -webkit-border-radius: 5px;
     -moz-border-radius: 5px;
     -o-border-radius: 5px;
     border-radius: 5px;
     text-transform: uppercase;
+    }
+
+.largeBtn {
+    width: 296px;
+    height: 53px;
+    display: block;
+    left: 50%;
+    margin-left: -148px;
     }
     
 div.largeBtn {
@@ -219,7 +224,6 @@ a {
         width: 100%;
         float: left;
         overflow: hidden;
-        border: 1px solid blue;
         margin: 0 85px;
         }
     
@@ -366,10 +370,15 @@ a {
         height: 40px;
         }
         
-#NewPlayer {
-    width: auto;
-    float: right;
+#NewPlayer { 
+    text-align: center;
+    margin-top: 50px;
     }
+    
+    #NewPlayer input { 
+        font-size: 18px;
+        margin-bottom: 30px;
+        }
 
 #Links { float: left; }
 
