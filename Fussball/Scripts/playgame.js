@@ -66,7 +66,7 @@ function showMessage(msg, color) {
 
 $(document).ready(function () {
 
-    $("#MastHead nav a").click(function (e) {
+    $("#MastHead a").click(function (e) {
         e.preventDefault();
         e.stopPropagation();
         var $this = $(this);
