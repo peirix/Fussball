@@ -11,12 +11,12 @@
             $("#BlueTeam > button").toggleClass("playerDefense playerOffense");
             showMessage("Bytte!", "blue");
             this.blueSwitched = true;
-        } else if (this.blueTeam < 5 && this.blueSwitched && inc < 0) {
+        } else if (this.blueTeam == 4 && this.blueSwitched && inc < 0) {
             if (this.redSwitched) {
                 $("#BlueSwitch").show();
             }
             $("#BlueTeam > button").toggleClass("playerDefense playerOffense");
-            showMessage("Bytte tilbake!", "blue");
+            showMessage("Bytt tilbake!", "blue");
             this.blueSwitched = false;
         }
     },
@@ -30,12 +30,12 @@
             $("#RedTeam > button").toggleClass("playerDefense playerOffense");
             showMessage("Bytte!", "red");
             this.redSwitched = true;
-        } else if (this.redTeam < 5 && this.redSwitched && inc < 0) {
+        } else if (this.redTeam == 4 && this.redSwitched && inc < 0) {
             if (this.blueSwitched) {
                 $("#RedSwitch").show();
             }
             $("#RedTeam > button").toggleClass("playerDefense playerOffense");
-            showMessage("Bytte tilbake!", "red");
+            showMessage("Bytt tilbake!", "red");
             this.redSwitched = false;
         }
     },
