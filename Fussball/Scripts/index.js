@@ -87,10 +87,10 @@
         if ($("li", this).length < 4)
             return false;
 
-        $("[name=BlueOff]").val($("#blueOff li").attr("data-playerid"));
-        $("[name=BlueDef]").val($("#blueDef li").attr("data-playerid"));
-        $("[name=RedOff]").val($("#redOff li").attr("data-playerid"));
-        $("[name=RedDef]").val($("#redDef li").attr("data-playerid"));
+        $("[name=Blue1]").val($("#blueOff li").attr("data-playerid"));
+        $("[name=Blue2]").val($("#blueDef li").attr("data-playerid"));
+        $("[name=Red1]").val($("#redOff li").attr("data-playerid"));
+        $("[name=Red2]").val($("#redDef li").attr("data-playerid"));
     });
 
 });

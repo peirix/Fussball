@@ -24,56 +24,56 @@ namespace Fussball.Controllers
         }
 
         [AcceptVerbs(HttpVerbs.Post)]
-        public ActionResult Play(int Blue1, int Blue2, int Red1, int Red2, bool? IsTest = false)
+        public ActionResult Play(int blue1, int blue2, int red1, int red2, bool? isTest = false)
         {
-            var blue1StartDefCount = gameRep.GetGamesForPlayer(Blue1).Where(g => g.Blue1 == Blue1 || g.Red1 == Blue1).Count();
-            var blue2StartDefCount = gameRep.GetGamesForPlayer(Blue2).Where(g => g.Blue1 == Blue2 || g.Red1 == Blue2).Count();
+            var blue1StartDefCount = GetDefCount(blue1);
+            var blue2StartDefCount = GetDefCount(blue2);
 
-            var red1StartDefCount = gameRep.GetGamesForPlayer(Red1).Where(g => g.Blue1 == Red1 || g.Red1 == Red1).Count();
-            var red2StartDefCount = gameRep.GetGamesForPlayer(Red2).Where(g => g.Blue1 == Red2 || g.Red1 == Red2).Count();
+            var red1StartDefCount = GetDefCount(red1);
+            var red2StartDefCount = GetDefCount(red2);
 
-            int BlueOff, BlueDef, RedOff, RedDef;
+            int blueOff, blueDef, redOff, redDef;
 
             if (blue1StartDefCount > blue2StartDefCount)
             {
-                BlueDef = Blue2;
-                BlueOff = Blue1;
+                blueDef = blue2;
+                blueOff = blue1;
             }
             else
             {
-                BlueDef = Blue1;
-                BlueOff = Blue2;
+                blueDef = blue1;
+                blueOff = blue2;
             }
 
             if (red1StartDefCount > red2StartDefCount)
             {
-                RedDef = Red2;
-                RedOff = Red1;
+                redDef = red2;
+                redOff = red1;
             }
             else
             {
-                RedDef = Red1;
-                RedOff = Red2;
+                redDef = red1;
+                redOff = red2;
             }
 
             var game = new Game()
             {
-                Blue1 = BlueDef,
-                Blue2 = BlueOff,
-                Red1 = RedDef,
-                Red2 = RedOff,
+                Blue1 = blueDef,
+                Blue2 = blueOff,
+                Red1 = redDef,
+                Red2 = redOff,
                 DateStart = DateTime.Now,
                 DateEnd = DateTime.Now,
-                IsTest = IsTest.Value
+                IsTest = isTest.Value
             };
 
             gameRep.Add(game);
             gameRep.Save();
 
-            return RedirectToAction("Play", "Home",  new { BlueDef = BlueDef,
-                                                           BlueOff = BlueOff,
-                                                           RedDef = RedDef,
-                                                           RedOff = RedOff,
+            return RedirectToAction("Play", "Home",  new { BlueDef = blueDef,
+                                                           BlueOff = blueOff,
+                                                           RedDef = redDef,
+                                                           RedOff = redOff,
                                                            GameID = game.ID });
         }
 
@@ -129,7 +129,7 @@ namespace Fussball.Controllers
         }
 
 
-        //AJAX
+        //AJAX-method
         [AcceptVerbs(HttpVerbs.Post)]
         public string ScoreGoal(int scorer, int position, int team, int gameID, int oppDefID, int selfGoal)
         {
@@ -150,7 +150,7 @@ namespace Fussball.Controllers
             return string.Format("{0}", score.ID);
         }
 
-        //AJAX
+        //AJAX-method
         [AcceptVerbs(HttpVerbs.Post)]
         public void DeleteGoal(int goalID)
         {
@@ -159,13 +159,23 @@ namespace Fussball.Controllers
             goalRep.Save();
         }
 
-        //AJAX
+        //AJAX-method
         [AcceptVerbs(HttpVerbs.Post)]
         public void DeleteGame(int gameID)
         {
             var game = gameRep.GetGame(gameID);
             gameRep.Delete(game);
             gameRep.Save();
+        }
+
+
+        //Helpers
+        private double GetDefCount(int playerId)
+        {
+            var games = gameRep.GetGamesForPlayer(playerId).Count();
+            var defCount = gameRep.GetGamesForPlayer(playerId).Where(g => g.Blue1 == playerId || g.Red1 == playerId).Count();
+
+            return games == 0 ? 0 : games / defCount;
         }
     }
 }
