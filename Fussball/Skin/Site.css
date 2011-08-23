@@ -349,9 +349,9 @@ a {
             
         #playerForm #redDef { right: -110px; }
         
-        #playerForm #blueDef { left: 96px; }
+        #playerForm #blueDef { left: -110px; }
             
-        #playerForm #blueOff { left: -110px; }
+        #playerForm #blueOff { left: 96px; }
         
         
     #table {
