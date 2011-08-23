@@ -10,6 +10,11 @@ namespace Fussball.Models
         FussballDataContext db = new FussballDataContext();
 
         //Queries
+        public IEnumerable<Goal> GetAllGoals()
+        {
+            return db.Goals;
+        }
+
         public Goal GetGoal(int goalID)
         {
             return db.Goals.Where(s => s.ID == goalID).SingleOrDefault();

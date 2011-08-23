@@ -15,6 +15,12 @@ namespace Fussball.Models
             return db.Games;
         }
 
+        public IEnumerable<Game> GetGamesForPlayer(int playerId)
+        {
+            return db.Games.Where(
+                    g => g.Blue1 == playerId || g.Blue2 == playerId || g.Red1 == playerId || g.Red2 == playerId);
+        }
+
         public Game GetGame(int GameID)
         {
             return db.Games.Where(g => g.ID == GameID).SingleOrDefault();

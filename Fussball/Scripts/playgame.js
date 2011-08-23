@@ -141,7 +141,7 @@ $(document).ready(function () {
             }
 
             Goal.scorer = $this.attr("id");
-            Goal.position = $this.attr("class") == "playerDefense" ? 0 : 1;
+            Goal.position = $this.hasClass("playerDefense") ? 0 : 1;
             Goal.gameID = $("#gameID").val();
             if (Goal.team === 0)
                 Goal.oppDefId = $("#RedTeam .playerDefense").attr("id");

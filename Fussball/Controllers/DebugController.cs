@@ -20,10 +20,15 @@ namespace Fussball.Controllers
             List<Game> redWins = new List<Game>();
             List<Game> blueWins = new List<Game>();
             List<Game> testGame = new List<Game>();
-
+            var allGoals = goalRep.GetAllGoals().ToList();
+            
             foreach (var game in gameRep.GetAllGames())
             {
                 var goals = goalRep.GetGoalsByGame(game.ID);
+                foreach (var goal in goals)
+                {
+                    allGoals.Remove(goal);
+                }
                 if (game.IsTest)
                 {
                     gameRep.Delete(game);
@@ -48,6 +53,13 @@ namespace Fussball.Controllers
                     gameRep.Save();
                 }
             }
+
+            foreach (var goal in allGoals)
+            {
+                goalRep.Delete(goal);
+                goalRep.Save();
+            }
+            ViewBag.Goals = allGoals;
 
             ViewData["BlueWins"] = blueWins;
 

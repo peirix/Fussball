@@ -13,7 +13,7 @@
         var scoreMin = new TimeSpan();
         scoreMin = score.GoalDate - Model.Game.DateStart; 
         
-        <li @score.SelfGoal == 1 ? "class='selfgoal'" : "">
+        <li @(score.SelfGoal == 1 ? "class=selfgoal" : "")>
             @score.Player.Name
             <small>(@Math.Round(scoreMin.TotalMinutes)min.)</small>
         </li>
@@ -25,7 +25,7 @@
         var scoreMin = new TimeSpan();
         scoreMin = score.GoalDate - Model.Game.DateStart;
         
-        <li @score.SelfGoal == 1 ? "class='selfgoal'" : "">
+        <li @(score.SelfGoal == 1 ? "class=selfgoal" : "")>
             @score.Player.Name
             <small>(@Math.Round(scoreMin.TotalMinutes)min.)</small>
         </li>

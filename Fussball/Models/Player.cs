@@ -88,13 +88,14 @@ namespace Fussball.Models
             
             var lastGames = playerRep.GetPlayerGames(this.ID).OrderByDescending(g => g.DateStart).Take(10);
 
-            int goals, letIn, selfGoals, gamesWon;
-            goals = letIn = selfGoals = gamesWon = 0;
+            int goalsFromDef, goalsFromOff, letIn, selfGoals, gamesWon;
+            goalsFromDef = goalsFromOff = letIn = selfGoals = gamesWon = 0;
 
             foreach (var game in lastGames)
             {
                 var gameGoals = goalRep.GetGoalsByGame(game.ID);
-                goals += gameGoals.Where(g => g.PlayerID == this.ID && g.SelfGoal == 0).Count();
+                goalsFromDef += gameGoals.Where(g => g.PlayerID == this.ID && g.Position == 0 && g.SelfGoal == 0).Count();
+                goalsFromOff += gameGoals.Where(g => g.PlayerID == this.ID && g.Position == 1 && g.SelfGoal == 0).Count();
                 letIn += gameGoals.Where(g => g.OppDefenseID == this.ID && g.SelfGoal == 0).Count();
                 selfGoals += gameGoals.Where(g => g.PlayerID == this.ID && g.SelfGoal == 1).Count();
                 if (game.WinningTeam == 0 && (game.Blue1 == this.ID || game.Blue2 == this.ID))
@@ -104,9 +105,9 @@ namespace Fussball.Models
 
                 Debug.WriteLine("foreach() " + sw.ElapsedMilliseconds);
             }
-            
 
-            this.Stats = new RankStats(lastGames.Count(), gamesWon, goals, selfGoals, letIn);
+
+            this.Stats = new RankStats(lastGames.Count(), gamesWon, goalsFromDef, goalsFromOff, selfGoals, letIn);
             
             sw.Stop();
             Debug.WriteLine("SetRanking(" + this.Name + ") " + sw.Elapsed.Milliseconds);
@@ -207,20 +208,20 @@ namespace Fussball.Models
             return MostOccuredPlayerInGameList(winningGames);
         }
 
-        public List<Game> GetLast10Games()
+        public IEnumerable<Game> GetLast10Games()
         {
-            
+            var games = GetAllGames().OrderByDescending(g => g.DateStart);
+
+            return games.Take(10);
         }
 
-        private List<Game> GetAllGames()
+        IEnumerable<Game> GetAllGames()
         {
-            List<Game> games = new List<Game>();
-
-            games.AddRange(this.Games);
-            games.AddRange(this.Games1);
-            games.AddRange(this.Games2);
-            games.AddRange(this.Games3);
-            return games;
+            IEnumerable<Game> AllGames = Games;
+            AllGames = AllGames.Union(Games1)
+                               .Union(Games2)
+                               .Union(Games3);
+            return AllGames;
         }
     }
 
@@ -233,14 +234,14 @@ namespace Fussball.Models
         public int LetInGoals { get; set; }
         public double Points { get; set; }
 
-        public RankStats(int games, int gamesWon, int goals, int selfGoals, int letInGoals)
+        public RankStats(int games, int gamesWon, int goalsFromDef, int goalsFromOff, int selfGoals, int letInGoals)
         {
             this.Games = games;
             this.GamesWon = gamesWon;
-            this.Goals = goals;
+            this.Goals = goalsFromDef + goalsFromOff;
             this.SelfGoals = selfGoals;
             this.LetInGoals = letInGoals;
-            this.Points = goals + gamesWon - letInGoals - ((selfGoals * 1.5) / games);
+            this.Points = (goalsFromDef * 1.2) + goalsFromOff + gamesWon - letInGoals - (selfGoals * 1.5);
         }
     }
 }

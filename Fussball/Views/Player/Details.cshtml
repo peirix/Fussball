@@ -54,12 +54,15 @@
 					</tr>
 				</thead>
 				<tbody>
+                    @foreach (var game in Model.GetLast10Games())
+                    {
 					<tr>
-						<td>22.05.2011</td>
-						<td>Ola (X) / Hege (X) </td>
-						<td>Pål (X) / Andreas (X)</td>
-						<td>10 - 2</td>
+						<td>@Html.ActionLink(game.DateStart.ToShortDateString(), "GameOver", "Home", new { game.ID }, null)</td>
+						<td>@game.Blue1Name() (@game.Blue1Goals())/ @game.Blue2Name() (@game.Blue2Goals())</td>
+						<td>@game.Red1Name() (@game.Red1Goals()) / @game.Red2Name() (@game.Red2Goals())</td>
+						<td>@game.BlueGoals() - @game.RedGoals()</td>
 					</tr>
+                    }
 				</tbody>
 			</table>
 			        

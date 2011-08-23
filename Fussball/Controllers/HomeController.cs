@@ -24,8 +24,38 @@ namespace Fussball.Controllers
         }
 
         [AcceptVerbs(HttpVerbs.Post)]
-        public ActionResult Play(int BlueDef, int BlueOff, int RedDef, int RedOff, bool? IsTest = false)
+        public ActionResult Play(int Blue1, int Blue2, int Red1, int Red2, bool? IsTest = false)
         {
+            var blue1StartDefCount = gameRep.GetGamesForPlayer(Blue1).Where(g => g.Blue1 == Blue1 || g.Red1 == Blue1).Count();
+            var blue2StartDefCount = gameRep.GetGamesForPlayer(Blue2).Where(g => g.Blue1 == Blue2 || g.Red1 == Blue2).Count();
+
+            var red1StartDefCount = gameRep.GetGamesForPlayer(Red1).Where(g => g.Blue1 == Red1 || g.Red1 == Red1).Count();
+            var red2StartDefCount = gameRep.GetGamesForPlayer(Red2).Where(g => g.Blue1 == Red2 || g.Red1 == Red2).Count();
+
+            int BlueOff, BlueDef, RedOff, RedDef;
+
+            if (blue1StartDefCount > blue2StartDefCount)
+            {
+                BlueDef = Blue2;
+                BlueOff = Blue1;
+            }
+            else
+            {
+                BlueDef = Blue1;
+                BlueOff = Blue2;
+            }
+
+            if (red1StartDefCount > red2StartDefCount)
+            {
+                RedDef = Red2;
+                RedOff = Red1;
+            }
+            else
+            {
+                RedDef = Red1;
+                RedOff = Red2;
+            }
+
             var game = new Game()
             {
                 Blue1 = BlueDef,
@@ -70,12 +100,12 @@ namespace Fussball.Controllers
             game.WinningTeam = winningTeam;
             gameRep.Save();
 
-            return RedirectToAction("GameOver", "Home", new { gameID = gameID });
+            return RedirectToAction("GameOver", "Home", new { id = gameID });
         }
 
-        public ActionResult GameOver(int gameID)
+        public ActionResult GameOver(int id)
         {
-            var game = gameRep.GetGame(gameID);
+            var game = gameRep.GetGame(id);
 
             var viewmodel = new GameOverViewModel
             {
