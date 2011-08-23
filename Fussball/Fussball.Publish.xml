@@ -19,7 +19,7 @@
     <file relUrl="bin/Fussball.pdb" publishTime="05/23/2011 19:44:35" />
     <file relUrl="bin/Newtonsoft.Json.xml" publishTime="12/10/2010 10:14:23" />
     <file relUrl="Scripts/MicrosoftMvcValidation.debug.js" publishTime="02/28/2011 18:55:41" />
-    <file relUrl="Skin/Site.css" publishTime="05/23/2011 19:47:45" />
+    <file relUrl="Skin/Site.css" publishTime="05/23/2011 20:36:26" />
     <file relUrl="App_Data/Fussball_log.ldf" publishTime="12/13/2010 08:27:17" />
     <file relUrl="Skin/gfx/bg_player_navigation.gif" publishTime="02/28/2011 20:01:59" />
     <file relUrl="Skin/gfx/arrow_left.png" publishTime="02/28/2011 20:01:59" />
@@ -28,7 +28,7 @@
     <file relUrl="Views/Shared/LogOnUserControl.ascx" publishTime="12/10/2010 10:14:22" />
     <file relUrl="Skin/gfx/playfuss.png" publishTime="02/28/2011 20:01:59" />
     <file relUrl="Views/Statistics/LastTen.cshtml" publishTime="05/23/2011 18:40:40" />
-    <file relUrl="Views/Shared/SiteLayout.cshtml" publishTime="05/23/2011 20:09:04" />
+    <file relUrl="Views/Shared/SiteLayout.cshtml" publishTime="05/23/2011 20:41:53" />
     <file relUrl="Views/Account/LogOn.aspx" publishTime="12/10/2010 10:14:22" />
     <file relUrl="Scripts/jquery-1.4.1.js" publishTime="12/10/2010 10:14:22" />
     <file relUrl="Views/Statistics/General.cshtml" publishTime="05/23/2011 18:16:26" />
@@ -38,7 +38,7 @@
     <file relUrl="Scripts/dragdrop.js" publishTime="12/10/2010 10:14:22" />
     <file relUrl="Scripts/jquery.ui.js" publishTime="01/17/2011 19:11:14" />
     <file relUrl="Views/Player/NewPlayer.cshtml" publishTime="05/23/2011 19:45:51" />
-    <file relUrl="Scripts/playgame.js" publishTime="05/23/2011 19:23:17" />
+    <file relUrl="Scripts/playgame.js" publishTime="05/23/2011 20:36:26" />
     <file relUrl="Views/Account/ChangePassword.aspx" publishTime="12/10/2010 10:14:22" />
     <file relUrl="Scripts/jquery-1.4.1-vsdoc.js" publishTime="12/10/2010 10:14:22" />
     <file relUrl="Skin/fonts/brandon_med-webfont.svg" publishTime="05/23/2011 17:08:09" />

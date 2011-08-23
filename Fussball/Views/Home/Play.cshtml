@@ -11,7 +11,9 @@
 </form>
 
 <div class="ribbon">
+    @if (Model.Game.IsTest) {
 	<div id="TestMatch">Testmatch!</div>
+    }
 	
 	<div id="message">Bytte!</div>
 	<div id="BlueSummary"></div>
