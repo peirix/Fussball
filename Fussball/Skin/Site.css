@@ -99,17 +99,17 @@ h2 {
     }
     
 h3 {
-    margin-bottom: 10px;
+    margin-top: -5px;
+    margin-bottom: 16px;
     text-transform: uppercase;
     font-size: 16px;
     }
     
 a {
     text-decoration: none;
-    color: #009d0c; 
+    color: #009d0c;
+    cursor: pointer; 
     }
-
-
 
 /* MASTERPAGE */
     #Main {
@@ -254,11 +254,11 @@ a {
                 text-align: left;
                 margin-top: 3px;
                 }
+                
+            #playerForm ul li span { display: none; }
         
         #playerPicker ul .selected,
-        #playerForm ul .selected {
-            background-color: #bbcaab;
-            }
+        #playerForm ul .selected { background-color: #bbcaab; }
         
         #playerPicker ul .selected img { opacity: 0.8; }
 
@@ -317,13 +317,46 @@ a {
         #playerForm > .highlight {
             background-color: #FF3000;
             -webkit-box-shadow: -1px -1px 10px #4f4;
+            }        
+        
+        /* NEW GAME SCREEN */
+        #blueTeamHeading, #redTeamHeading {            
+            position: absolute;
+            top: 335px;
+            width: 100px;
+            font-family: 'BrandonGrotesqueLightItalic';
+            font-size: 23px;
+            text-align: center;
+            }
+        
+        #blueTeamHeading { left: 34px; }
+        
+        #redTeamHeading { right: 34px; }
+        
+        #playerForm > ul {
+            width: 180px;
+            height: 180px;
             }
         
         #playerForm > ul li { margin: 0; }
         
+        #playerForm #redOff,            
+        #playerForm #redDef,        
+        #playerForm #blueDef,            
+        #playerForm #blueOff { top: 131px; }        
+        
+        #playerForm #redOff { right: 96px; }
+            
+        #playerForm #redDef { right: -110px; }
+        
+        #playerForm #blueDef { left: 96px; }
+            
+        #playerForm #blueOff { left: -110px; }
+        
+        
     #table {
         margin: 0 auto;
-        width: 43%;
+        width: 40%;
         }
         
         #table img { width: 100%; }
@@ -402,38 +435,39 @@ a {
     
     #RedTeam,
     #BlueTeam {
-        width: 28%;
+        width: 29.5%;
         position: relative;
         margin-top: -9%;
         height: 80%;
         }
-    
+     
         #PlayGame .summary {
             position: absolute;
             width: 60%;
-            height: 400px;
             left: 50%;
-            margin-left: -30%;
-            top: 50%;
-            margin-top: -200px;
+            margin-left: -33%;
+            top: 314px;
+            margin-top: -199px;
             padding: 15px;
             color: #000;
             display: none;
             z-index: 11;
             background-color: #fff;
-            line-height: 30px;
+            line-height:45px;
             }
             
             #PlayGame .closeSummary {
-                float: right;
-                background-color: White;
-                padding: 5px;
+                padding: 7px 18px;
+                position: absolute;
+                top: 0;
+                right: 0;
+                background: #ff3000 url(gfx/bg_player_navigation.gif) top left repeat; 
                 }
         
         #PlayGame .score {
             display: block;
             text-align: right;
-            height: 151px;
+            height: 113px;
             min-height: 30px;
             position: relative;
             z-index: 11;
@@ -482,12 +516,12 @@ a {
         #PlayGame #RedTeam button { left: 0; }
             
         #PlayGame #RedTeam .playerOffense { top: 305px; }
-        #PlayGame #RedTeam .playerDefense { top: 592px; }
+        #PlayGame #RedTeam .playerDefense { top: 571px; }
         
         #PlayGame #BlueTeam button { right: 0; }
             
         #PlayGame #BlueTeam .playerDefense { top: 130px; }
-        #PlayGame #BlueTeam .playerOffense { top: 416px; }
+        #PlayGame #BlueTeam .playerOffense { top: 397px; }
 
     #PlayGame .playerDefense { bottom: 50%; }
 
@@ -548,7 +582,6 @@ a {
         left: 565px;
         background-color: #fff;
         text-align: center;
-        display: none;
         }
     
 /* GAME OVER */
@@ -634,7 +667,7 @@ a {
 #Last10 img {
     position: absolute;
     top: 300px;
-    left: 500px;
+    left: 530px;
     }
 
 #HallOfFameAndShame {

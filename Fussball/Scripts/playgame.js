@@ -1,16 +1,17 @@
 ﻿Fussball = {
     blueTeam: 0,
     redTeam: 0,
-    updateBlueScore: function () {
+    updateBlueScore: function (inc) {
+        this.blueTeam += inc;
         $("#BlueTeam .score a").text(Fussball.blueTeam);
-        if (this.blueTeam == 5 && !this.blueSwitched) {
+        if (this.blueTeam == 5 && !this.blueSwitched && inc > 0) {
             if (!this.redSwitched)
                 $("#RedSwitch").show();
             $("#BlueSwitch").hide();
             $("#BlueTeam > button").toggleClass("playerDefense playerOffense");
             showMessage("Bytte!", "blue");
             this.blueSwitched = true;
-        } else if (this.blueTeam < 5 && this.blueSwitched) {
+        } else if (this.blueTeam < 5 && this.blueSwitched && inc < 0) {
             if (this.redSwitched) {
                 $("#BlueSwitch").show();
             }
@@ -19,16 +20,17 @@
             this.blueSwitched = false;
         }
     },
-    updateRedScore: function () {
+    updateRedScore: function (inc) {
+        this.redTeam += inc;
         $("#RedTeam .score a").text(Fussball.redTeam);
-        if (this.redTeam == 5 && !this.redSwitched) {
+        if (this.redTeam == 5 && !this.redSwitched && inc > 0) {
             if (!this.blueSwitched)
                 $("#BlueSwitch").show();
             $("#RedSwitch").hide();
             $("#RedTeam > button").toggleClass("playerDefense playerOffense");
             showMessage("Bytte!", "red");
             this.redSwitched = true;
-        } else if (this.redTeam < 5 && this.redSwitched) {
+        } else if (this.redTeam < 5 && this.redSwitched && inc < 0) {
             if (this.blueSwitched) {
                 $("#RedSwitch").show();
             }
@@ -66,7 +68,7 @@ function showMessage(msg, color) {
 
 $(document).ready(function () {
 
-    $("#MastHead nav a").click(function (e) {
+    $("#MastHead a").click(function (e) {
         e.preventDefault();
         e.stopPropagation();
         var $this = $(this);
@@ -84,7 +86,7 @@ $(document).ready(function () {
 
     var min = 0, sec = 0;
 
-    var st = setInterval(function () {
+    setInterval(function () {
         sec++;
         if (sec == 60) {
             min++;
@@ -135,23 +137,21 @@ $(document).ready(function () {
             Goal.team = $this.parent().attr("id") == "BlueTeam" ? 0 : 1;
 
             if (Goal.selfGoal) {
-                Goal.team = Goal.team == 0 ? 1 : 0;
+                Goal.team = Goal.team === 0 ? 1 : 0;
             }
 
             Goal.scorer = $this.attr("id");
             Goal.position = $this.attr("class") == "playerDefense" ? 0 : 1;
             Goal.gameID = $("#gameID").val();
-            if (Goal.team == 0)
+            if (Goal.team === 0)
                 Goal.oppDefId = $("#RedTeam .playerDefense").attr("id");
             else
                 Goal.oppDefId = $("#BlueTeam .playerDefense").attr("id");
 
-            if (Goal.team == 0) {
-                Fussball.blueTeam++;
-                Fussball.updateBlueScore();
+            if (Goal.team === 0) {
+                Fussball.updateBlueScore(1);
             } else {
-                Fussball.redTeam++;
-                Fussball.updateRedScore();
+                Fussball.updateRedScore(1);
             }
 
             $.ajax({
@@ -161,8 +161,8 @@ $(document).ready(function () {
                 success: function (goalId) {
 
 
-                    if (Fussball.blueTeam == 10 || Fussball.redTeam == 10) {
-                        Goal.team == 0 ? showMessage("Blå vinner!", "blue") : showMessage("Rød vinner!", "red");
+                    if (Fussball.blueTeam === 10 || Fussball.redTeam === 10) {
+                        Goal.team === 0 ? showMessage("Blå vinner!", "blue") : showMessage("Rød vinner!", "red");
                         $("#winningTeam").val(Goal.team);
                         $("#GameOver").submit();
                     }
@@ -209,11 +209,9 @@ $(document).ready(function () {
                 $this.prev().remove();
                 $this.remove();
                 if (team == "BlueTeam") {
-                    Fussball.blueTeam--;
-                    Fussball.updateBlueScore();
+                    Fussball.updateBlueScore(-1);
                 } else {
-                    Fussball.redTeam--;
-                    Fussball.updateRedScore();
+                    Fussball.updateRedScore(-1);
                 }
             }
         });

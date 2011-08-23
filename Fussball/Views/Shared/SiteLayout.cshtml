@@ -2,9 +2,9 @@
 <head runat="server">
     <meta charset="utf-8">
     <title>Awesome Foosball App</title>
-    <link href="../../Skin/Reset.css" rel="stylesheet">
-    <link href="../../Skin/Site.css" rel="stylesheet">
-	<link href="../../Skin/ui-tabs.css" rel="stylesheet">
+    <link href="@Url.Content("~/Skin/Reset.css")" rel="stylesheet">
+    <link href="@Url.Content("~/Skin/Site.css")" rel="stylesheet">
+	<link href="@Url.Content("~/Skin/ui-tabs.css")" rel="stylesheet">
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.4/jquery.min.js"></script>
     <script src="@Url.Content("~/Scripts/global.js")"></script>
     <script src="@Url.Content("~/Scripts/bigtarget.js")"></script>
@@ -15,7 +15,7 @@
 <body>
     <div id="Main">
 		<div id="MastHead">
-			<a href="/">
+			<a href="@Url.Content("~/")">
 				<img id="SiteLogo" alt="hjem" src="@Url.Content("~/Skin/gfx/siteLogo.png")" />
 			</a>
 			<nav>
@@ -23,7 +23,6 @@
 					<li><a href="@Url.Content("~/")" title="Opprett ny spiller">Nytt spill</a></li>
 					<li><a href="@Url.Content("~/Player/NewPlayer")" title="">Nye spillere</a></li>
 					<li><a href="@Url.Content("~/Statistics/")">Statistikk</a></li>
-					<li><a href="@Url.Content("~/Player/")" title="Se alle spillere">Spillere</a></li>
 				</ul>
 			</nav>
 		</div>

@@ -1,7 +1,14 @@
 ﻿@model IEnumerable<Fussball.Models.Player>
 
 @{
-    ViewBag.Title = "LastTen";
+    ViewBag.Title = "LastTen";    
+}
+
+@functions {
+    private string GetAverage(int digit1, double digit2)
+    {
+        return Math.Round(digit1/digit2, 2).ToString().Replace(",", ".");
+    }
 }
 
 <table id="StatisticList" class="dataList">
@@ -23,9 +30,9 @@
         <tr>
             <td>@(rank++)</td>
             <td><a href="@Url.Content("~/Player/Details/" + player.ID)" class="playerName">@player.Name</a></td>
-            <td>@((double)player.Stats.Goals / player.Stats.Games)</td>
-            <td>@((double)player.Stats.SelfGoals / player.Stats.Games)</td>
-            <td>@((double)player.Stats.LetInGoals / player.Stats.Games)</td>
+            <td>@GetAverage(player.Stats.Goals, player.Stats.Games)</td>
+            <td>@GetAverage(player.Stats.SelfGoals, player.Stats.Games)</td>
+            <td>@GetAverage(player.Stats.LetInGoals, player.Stats.Games)</td>
             <td>@player.Stats.GamesWon</td>
             <td>@player.Stats.Points</td>
         </tr>

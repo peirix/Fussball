@@ -207,6 +207,11 @@ namespace Fussball.Models
             return MostOccuredPlayerInGameList(winningGames);
         }
 
+        public List<Game> GetLast10Games()
+        {
+            
+        }
+
         private List<Game> GetAllGames()
         {
             List<Game> games = new List<Game>();
