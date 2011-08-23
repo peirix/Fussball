@@ -21,28 +21,6 @@
 </div>
 
 <div id="PlayGame">
-    <div id="RedTeam" class="teamView">
-        <div class="summary">
-            <span class="closeSummary">Lukk</span>
-            <h3>Røde mål</h3>
-        </div>
-        <div class="score"><a>0</a></div>
-        <button id="@Model.Red2.ID" class="playerOffense">
-            <img src="@Model.Red2.GetSquareImage()" alt="bilde av @Model.Red2.Name">
-            <span>@Model.Red2.Name</span>
-        </button>
-        <button id="@Model.Red1.ID" class="playerDefense">
-            <img src="@Model.Red1.GetSquareImage()" alt="bilde av @Model.Red1.Name">
-            <span>@Model.Red1.Name</span>
-        </button>
-        <a id="RedSwitch">bytte</a>
-		<div class="clear"></div>
-    </div>
-
-	 <div id="table">
-		<img src="@Url.Content("~/Skin/gfx/fussballTable.png")" alt="table" id="FussBallTable" />
-	</div>
-
     <div id="BlueTeam" class="teamView">
         <div class="summary">
             <span class="closeSummary">Lukk</span>
@@ -58,6 +36,28 @@
             <span>@Model.Blue2.Name</span>
         </button>
         <a id="BlueSwitch">bytte</a>
+		<div class="clear"></div>
+    </div>
+
+	 <div id="table">
+		<img src="@Url.Content("~/Skin/gfx/fussballTable.png")" alt="table" id="FussBallTable" />
+	</div>
+    
+    <div id="RedTeam" class="teamView">
+        <div class="summary">
+            <span class="closeSummary">Lukk</span>
+            <h3>Røde mål</h3>
+        </div>
+        <div class="score"><a>0</a></div>
+        <button id="@Model.Red2.ID" class="playerOffense">
+            <img src="@Model.Red2.GetSquareImage()" alt="bilde av @Model.Red2.Name">
+            <span>@Model.Red2.Name</span>
+        </button>
+        <button id="@Model.Red1.ID" class="playerDefense">
+            <img src="@Model.Red1.GetSquareImage()" alt="bilde av @Model.Red1.Name">
+            <span>@Model.Red1.Name</span>
+        </button>
+        <a id="RedSwitch">bytte</a>
 		<div class="clear"></div>
     </div>
 </div>
