@@ -34,7 +34,7 @@
             <td>@GetAverage(player.Stats.SelfGoals, player.Stats.Games)</td>
             <td>@GetAverage(player.Stats.LetInGoals, player.Stats.Games)</td>
             <td>@player.Stats.GamesWon</td>
-            <td>@player.Stats.Points</td>
+            <td>@player.Stats.Points.ToString().Replace(",", ".")</td>
         </tr>
         }
     }

@@ -126,9 +126,7 @@
     <Content Include="Skin\gfx\playfuss-inactive.png" />
     <Content Include="Skin\gfx\playfuss.png" />
     <Content Include="Skin\gfx\siteLogo.png" />
-    <Content Include="Skin\gfx\table-hor.png" />
-    <Content Include="Skin\gfx\table-vert.png" />
-    <Content Include="Skin\gfx\tilbake.png" />
+    <Content Include="Skin\gfx\switch.png" />
     <Content Include="Skin\Reset.css" />
     <Content Include="Skin\Site.css" />
     <Content Include="Skin\ui-tabs.css" />

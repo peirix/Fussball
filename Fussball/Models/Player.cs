@@ -93,24 +93,30 @@ namespace Fussball.Models
 
             foreach (var game in lastGames)
             {
-                var gameGoals = goalRep.GetGoalsByGame(game.ID);
+                Debug.WriteLine("foreach() start " + sw.ElapsedMilliseconds);
+                var gameGoals = goalRep.GetGoalsByGame(game.ID).ToList();
+                Debug.WriteLine("foreach() 1 " + sw.ElapsedMilliseconds);
                 goalsFromDef += gameGoals.Where(g => g.PlayerID == this.ID && g.Position == 0 && g.SelfGoal == 0).Count();
+                Debug.WriteLine("foreach() 2 " + sw.ElapsedMilliseconds);
                 goalsFromOff += gameGoals.Where(g => g.PlayerID == this.ID && g.Position == 1 && g.SelfGoal == 0).Count();
+                Debug.WriteLine("foreach() 3 " + sw.ElapsedMilliseconds);
                 letIn += gameGoals.Where(g => g.OppDefenseID == this.ID && g.SelfGoal == 0).Count();
+                Debug.WriteLine("foreach() 4 " + sw.ElapsedMilliseconds);
                 selfGoals += gameGoals.Where(g => g.PlayerID == this.ID && g.SelfGoal == 1).Count();
+                Debug.WriteLine("foreach() 5 " + sw.ElapsedMilliseconds);
                 if (game.WinningTeam == 0 && (game.Blue1 == this.ID || game.Blue2 == this.ID))
                     gamesWon++;
                 else if (game.WinningTeam == 1 && (game.Red1 == this.ID || game.Red2 == this.ID))
                     gamesWon++;
 
-                Debug.WriteLine("foreach() " + sw.ElapsedMilliseconds);
+                Debug.WriteLine("foreach() stop " + sw.ElapsedMilliseconds);
             }
 
 
             this.Stats = new RankStats(lastGames.Count(), gamesWon, goalsFromDef, goalsFromOff, selfGoals, letIn);
             
-            sw.Stop();
             Debug.WriteLine("SetRanking(" + this.Name + ") " + sw.Elapsed.Milliseconds);
+            sw.Stop();
         }
 
         public string BestColor()

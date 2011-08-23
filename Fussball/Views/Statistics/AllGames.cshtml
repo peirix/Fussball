@@ -20,7 +20,7 @@
             <td><a href="@Url.Content("~/Player/Details/" + player.ID)" class="playerName">@player.Name</a></td>
             <td class="numberOfGames">@player.TotalGames()</td>
             <td>@player.TotalGoals()</td>
-            <td>@Math.Round((decimal)player.AverageGoals(), 2)</td>
+            <td>@Math.Round((decimal)player.AverageGoals(), 2).ToString().Replace(",", ".")</td>
             <td>@player.TotalSelfGoals()</td>
             <td>@player.LetInGoals()</td>
         </tr>

@@ -31,7 +31,7 @@
 				<dt>Sluppet inn</dt>
 				<dd>@Model.LetInGoals()</dd>
 				<dt>Gjennomsnittsmål pr kamp</dt>
-				<dd>@Math.Round(Model.AverageGoals(), 2)</dd>
+				<dd>@Math.Round(Model.AverageGoals(), 2).ToString().Replace(",", ".")</dd>
 				<dt>Beste farge</dt>
 				<dd>@Model.BestColor()</dd>
 				<dt>Beste posisjon</dt>

@@ -42,7 +42,7 @@ namespace Fussball.Models
     #endregion
 		
 		public FussballDataContext() : 
-				base(global::System.Configuration.ConfigurationManager.ConnectionStrings["FussballConnectionString1"].ConnectionString, mappingSource)
+				base(global::System.Configuration.ConfigurationManager.ConnectionStrings["FussballConnectionString2"].ConnectionString, mappingSource)
 		{
 			OnCreated();
 		}

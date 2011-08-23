@@ -355,8 +355,9 @@ a {
         
         
     #table {
-        margin: 0 auto;
+        margin: 4% 0 0 30%;
         width: 40%;
+        float: left;
         }
         
         #table img { width: 100%; }
@@ -461,6 +462,7 @@ a {
                 position: absolute;
                 top: 0;
                 right: 0;
+                display: block;
                 background: #ff3000 url(gfx/bg_player_navigation.gif) top left repeat; 
                 }
         
