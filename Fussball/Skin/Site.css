@@ -641,7 +641,7 @@ a {
     padding: 20px 10px;
     }
     
-    #PlayerCard img { margin-bottom: 20px; }
+    #PlayerCard img { margin-bottom: 10px; }
     
     #PlayerCard dl { 
         display: table; 
@@ -742,6 +742,7 @@ a {
     .dataList td {
         padding: 6px 5px;
         border-bottom: 1px solid #fff;
+        text-align: left;
         }
     
     .dataList tr.hover, .dataList tr.focus {
