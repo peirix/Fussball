@@ -30,6 +30,7 @@
 <form action="@Url.Content("~/Home/Play/")" method="post" name="StartupForm" id="playerForm">
     <ul id="blueDef" class="freeSpot"></ul>
     <ul id="blueOff" class="freeSpot"></ul>
+	<h2 id="blueTeamHeading">Blått lag</h2>
 
     <div id="table">
 		<img src="@Url.Content("~/Skin/gfx/fussballTable.png")" alt="table" id="FussBallTable" />
@@ -37,13 +38,14 @@
         
     <ul id="redOff" class="freeSpot"></ul>
     <ul id="redDef" class="freeSpot"></ul>
+	<h2 id="redTeamHeading">Rødt lag</h2>
 
     <input type="hidden" name="BlueDef">
     <input type="hidden" name="BlueOff">
     <input type="hidden" name="RedDef">
     <input type="hidden" name="RedOff">
     <input type="hidden" name="IsTest">
-    <button type="submit" id="playBtn" class="largeBtn" disabled>Spill fussball</button>
+    <button type="submit" id="playBtn" class="largeBtn" disabled>Spill foosball</button>
     <button type="submit" id="playTestBtn">Spill testkamp</button>
 </form>
 

@@ -1,0 +1,22 @@
+﻿@model List<Fussball.Models.Game>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<h2>Kamper</h2>
+<ul>
+@foreach(var game in Model) {
+    <li>@game.ID</li>
+}
+</ul>
+
+<h2>Mål uten kamp</h2>
+<ul>
+@foreach (var goal in ViewBag.Goals as List<Fussball.Models.Goal>) {
+    <li>@goal.ID</li>
+}
+</ul>
+
