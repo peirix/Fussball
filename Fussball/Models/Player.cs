@@ -17,7 +17,7 @@ namespace Fussball.Models
             if (!string.IsNullOrEmpty(this.Image_Square))
                 return this.Image_Square;
             else
-                return HttpContext.Current.Request.ApplicationPath + "/Content/img/default_square.jpg";
+                return HttpContext.Current.Request.ApplicationPath + "/Skin/gfx/default_square.jpg";
         }
 
         public string GetSmallImage()
@@ -25,7 +25,7 @@ namespace Fussball.Models
             if (!string.IsNullOrEmpty(this.Image_Small))
                 return this.Image_Small;
             else
-                return HttpContext.Current.Request.ApplicationPath + "/Content/img/default_small.jpg";
+                return HttpContext.Current.Request.ApplicationPath + "/Skin/gfx/default_small.jpg";
         }
 
         public string GetLargeImage()
@@ -33,7 +33,7 @@ namespace Fussball.Models
             if (!string.IsNullOrEmpty(this.Image_Large))
                 return this.Image_Large;
             else
-                return HttpContext.Current.Request.ApplicationPath + "/Content/img/default_large.jpg";
+                return HttpContext.Current.Request.ApplicationPath + "/Skin/gfx/default_large.jpg";
         }
 
         // goals  = mål
@@ -228,6 +228,11 @@ namespace Fussball.Models
                                .Union(Games2)
                                .Union(Games3);
             return AllGames;
+        }
+
+        public override string ToString()
+        {
+            return this.Name;
         }
     }
 
