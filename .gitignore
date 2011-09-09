@@ -6,3 +6,4 @@ Fussball.Tests
 Fussball/obj
 *.suo
 *.sln
+*.config
